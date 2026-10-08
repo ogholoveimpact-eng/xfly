@@ -1,0 +1,1253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Xfly Strategies | Scale Readiness Platform</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<style>
+:root {
+  --fire: #FF3D00;
+  --fire-dim: #CC3100;
+  --cyan: #00E5FF;
+  --gold: #FFB800;
+  --success: #00FF88;
+  --ink: #070708;
+  --ink2: #111113;
+  --ink3: #1C1C1F;
+  --ink4: #2A2A2E;
+  --muted: #5A5A62;
+  --dim: #9494A0;
+  --white: #F4F4F6;
+  --pure: #FFFFFF;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit',sans-serif;background:var(--ink);color:var(--white);overflow-x:hidden}
+
+/* ═══ SCROLLBAR ═══ */
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:var(--ink2)}
+::-webkit-scrollbar-thumb{background:var(--fire);border-radius:0}
+
+/* ═══ UTILITY ═══ */
+.hidden{display:none!important}
+.page{display:none;min-height:100vh;animation:pageIn .4s ease}
+.page.active{display:block}
+@keyframes pageIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(255,61,0,.4)}50%{box-shadow:0 0 0 12px rgba(255,61,0,0)}}
+
+/* ═══ NAVIGATION ═══ */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(7,7,8,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--ink4);padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:64px}
+.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:3px;cursor:pointer;color:var(--white)}
+.nav-logo span{color:var(--fire)}
+.nav-right{display:flex;align-items:center;gap:16px}
+.nav-link{font-family:'Space Mono',monospace;font-size:12px;text-transform:uppercase;letter-spacing:1.5px;color:var(--dim);background:none;border:none;cursor:pointer;padding:8px 16px;transition:color .2s}
+.nav-link:hover{color:var(--white)}
+.nav-admin-btn{font-family:'Space Mono',monospace;font-size:12px;text-transform:uppercase;letter-spacing:1px;color:var(--white);background:var(--ink4);border:1px solid var(--ink4);cursor:pointer;padding:8px 20px;transition:all .2s}
+.nav-admin-btn:hover{border-color:var(--fire);color:var(--fire)}
+
+/* ═══ LANDING PAGE ═══ */
+#page-landing{padding-top:64px;position:relative;overflow:hidden}
+.hero{min-height:100vh;display:flex;align-items:center;position:relative}
+.hero-bg{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.hero-bg::before{content:'';position:absolute;top:-20%;left:-10%;width:600px;height:600px;background:radial-gradient(circle,rgba(255,61,0,.18) 0%,transparent 70%);animation:driftA 8s ease-in-out infinite alternate}
+.hero-bg::after{content:'';position:absolute;bottom:-20%;right:-5%;width:500px;height:500px;background:radial-gradient(circle,rgba(0,229,255,.1) 0%,transparent 70%);animation:driftB 10s ease-in-out infinite alternate}
+@keyframes driftA{from{transform:translate(0,0)}to{transform:translate(40px,-40px)}}
+@keyframes driftB{from{transform:translate(0,0)}to{transform:translate(-30px,30px)}}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:60px 60px;pointer-events:none}
+.hero-inner{position:relative;z-index:2;padding:80px 40px;max-width:1200px;margin:0 auto;width:100%}
+.hero-eyebrow{font-family:'Space Mono',monospace;font-size:13px;letter-spacing:3px;text-transform:uppercase;color:var(--cyan);margin-bottom:28px;animation:fadeUp .6s ease .1s both}
+.hero-h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(60px,8vw,110px);line-height:.92;letter-spacing:-1px;margin-bottom:36px;animation:fadeUp .6s ease .2s both}
+.hero-h1 em{color:var(--fire);font-style:normal}
+.hero-sub{font-size:22px;line-height:1.6;color:var(--dim);max-width:680px;margin-bottom:56px;font-weight:300;animation:fadeUp .6s ease .3s both}
+.hero-benefits{list-style:none;margin-bottom:64px;max-width:680px;animation:fadeUp .6s ease .4s both}
+.hero-benefits li{display:flex;align-items:flex-start;gap:14px;margin-bottom:18px;font-size:18px;line-height:1.5}
+.benefit-arrow{color:var(--fire);font-size:20px;font-weight:900;flex-shrink:0;margin-top:2px}
+
+/* SCORECARD SELECTOR */
+.selector-section{animation:fadeUp .6s ease .5s both;margin-bottom:48px;max-width:760px}
+.selector-label{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);margin-bottom:12px;display:flex;align-items:center;gap:10px}
+.selector-label::after{content:'';flex:1;height:1px;background:var(--ink4)}
+.selector-dropdown-wrapper{position:relative}
+.selector-dropdown{width:100%;background:var(--ink3);border:2px solid var(--ink4);color:var(--white);font-family:'Outfit',sans-serif;font-size:18px;font-weight:600;padding:20px 56px 20px 24px;cursor:pointer;appearance:none;-webkit-appearance:none;outline:none;transition:all .25s}
+.selector-dropdown:focus,.selector-dropdown:hover{border-color:var(--fire)}
+.selector-dropdown option{background:var(--ink3)}
+.selector-chevron{position:absolute;right:20px;top:50%;transform:translateY(-50%);pointer-events:none;color:var(--fire);font-size:20px}
+.selector-preview{background:var(--ink3);border:1px solid var(--ink4);padding:20px 24px;margin-top:8px;display:flex;align-items:center;justify-content:space-between;gap:16px;opacity:0;transition:all .3s;max-height:0;overflow:hidden}
+.selector-preview.show{opacity:1;max-height:200px}
+.preview-info h4{font-size:16px;font-weight:700;margin-bottom:4px}
+.preview-info p{font-size:14px;color:var(--dim);line-height:1.5}
+.preview-meta{font-family:'Space Mono',monospace;font-size:12px;color:var(--cyan);text-align:right;white-space:nowrap}
+.for-block{background:var(--ink3);border-left:3px solid var(--fire);padding:24px 28px;max-width:680px;margin-bottom:48px;animation:fadeUp .6s ease .35s both}
+.for-block h3{font-family:'Space Mono',monospace;font-size:12px;text-transform:uppercase;letter-spacing:2px;color:var(--cyan);margin-bottom:12px}
+.for-block p{font-size:17px;line-height:1.7;color:var(--dim)}
+
+/* CTA BUTTON */
+.cta-btn{display:inline-flex;align-items:center;gap:12px;background:var(--fire);color:var(--white);font-family:'Space Mono',monospace;font-size:15px;font-weight:700;text-transform:uppercase;letter-spacing:1px;padding:22px 52px;border:none;cursor:pointer;transition:all .3s;position:relative;overflow:hidden;animation:pulse 2s infinite}
+.cta-btn::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.15),transparent);transition:left .5s}
+.cta-btn:hover{background:#FF5722;transform:translateY(-3px);box-shadow:0 12px 32px rgba(255,61,0,.4);animation:none}
+.cta-btn:hover::before{left:100%}
+.cta-btn:disabled{opacity:.4;cursor:not-allowed;animation:none}
+
+/* ═══ SCORECARD PAGE ═══ */
+#page-scorecard{padding-top:64px}
+.scorecard-wrap{max-width:860px;margin:0 auto;padding:60px 40px}
+.sc-header{margin-bottom:48px}
+.sc-meta{display:flex;align-items:center;gap:16px;margin-bottom:20px}
+.sc-category-tag{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--cyan);background:rgba(0,229,255,.08);padding:6px 14px;border:1px solid rgba(0,229,255,.2)}
+.sc-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,5vw,56px);letter-spacing:1px;margin-bottom:12px;line-height:1}
+.sc-desc{font-size:17px;color:var(--dim);line-height:1.6;max-width:640px}
+.progress-track{height:3px;background:var(--ink4);margin-bottom:48px;overflow:hidden}
+.progress-bar{height:100%;background:linear-gradient(90deg,var(--fire),var(--cyan));transition:width .5s cubic-bezier(.4,0,.2,1)}
+.q-counter{font-family:'Space Mono',monospace;font-size:13px;color:var(--dim);margin-bottom:32px;letter-spacing:1px}
+.question-card{background:var(--ink2);border:1px solid var(--ink4);padding:48px;margin-bottom:32px}
+.q-label{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--fire);margin-bottom:16px}
+.q-text{font-size:24px;font-weight:700;line-height:1.4;margin-bottom:36px}
+.answers-grid{display:grid;gap:12px}
+.answer-opt{background:var(--ink3);padding:20px 24px;border:2px solid transparent;cursor:pointer;transition:all .25s;display:flex;align-items:center;gap:16px}
+.answer-dot{width:18px;height:18px;border-radius:50%;border:2px solid var(--muted);flex-shrink:0;transition:all .25s;position:relative}
+.answer-opt:hover{border-color:rgba(255,61,0,.4);background:rgba(255,61,0,.04)}
+.answer-opt.selected{border-color:var(--fire);background:rgba(255,61,0,.08)}
+.answer-opt.selected .answer-dot{background:var(--fire);border-color:var(--fire);box-shadow:0 0 0 4px rgba(255,61,0,.15)}
+.answer-text{font-size:17px;line-height:1.4}
+.nav-row{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:8px}
+.btn-outline{font-family:'Space Mono',monospace;font-size:12px;text-transform:uppercase;letter-spacing:1px;padding:14px 32px;border:2px solid var(--ink4);background:transparent;color:var(--dim);cursor:pointer;transition:all .2s}
+.btn-outline:hover:not(:disabled){border-color:var(--white);color:var(--white)}
+.btn-outline:disabled{opacity:.3;cursor:not-allowed}
+.btn-fire{font-family:'Space Mono',monospace;font-size:12px;text-transform:uppercase;letter-spacing:1px;padding:14px 32px;background:var(--fire);border:2px solid var(--fire);color:var(--white);cursor:pointer;transition:all .2s}
+.btn-fire:hover{background:#FF5722;box-shadow:0 4px 16px rgba(255,61,0,.4)}
+
+/* ═══ RESULTS PAGE ═══ */
+#page-results{padding-top:64px}
+.results-wrap{max-width:860px;margin:0 auto;padding:60px 40px}
+.results-top{text-align:center;padding:64px 0 56px;border-bottom:1px solid var(--ink4);margin-bottom:56px}
+.results-top h2{font-family:'Space Mono',monospace;font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);margin-bottom:24px}
+.score-ring{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;width:200px;height:200px;border:3px solid var(--fire);border-radius:50%;margin:0 auto 32px;position:relative;box-shadow:0 0 40px rgba(255,61,0,.2),inset 0 0 40px rgba(255,61,0,.05)}
+.score-num{font-family:'Bebas Neue',sans-serif;font-size:80px;color:var(--fire);line-height:1}
+.score-denom{font-family:'Space Mono',monospace;font-size:14px;color:var(--muted);margin-top:-8px}
+.segment-badge{display:inline-block;font-family:'Space Mono',monospace;font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:2px;padding:12px 32px;border:2px solid var(--fire);color:var(--fire);margin-bottom:16px}
+.results-scorecard-name{font-family:'Outfit',sans-serif;font-size:16px;color:var(--dim);margin-bottom:8px}
+.result-headline{font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,5vw,56px);line-height:1.05;letter-spacing:.5px;margin-bottom:0}
+.result-body{margin-bottom:56px}
+.result-description{font-size:19px;line-height:1.7;color:var(--dim);margin-bottom:40px}
+.risk-panel{background:rgba(255,61,0,.07);border-left:4px solid var(--fire);padding:32px;margin-bottom:32px}
+.risk-panel h3{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--fire);margin-bottom:14px}
+.risk-panel p{font-size:17px;line-height:1.7}
+.actions-panel{background:var(--ink2);border:1px solid var(--ink4);padding:36px;margin-bottom:32px}
+.actions-panel h3{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--cyan);margin-bottom:20px}
+.actions-list{list-style:none}
+.actions-list li{display:flex;align-items:flex-start;gap:14px;margin-bottom:14px;font-size:17px;line-height:1.5}
+.check-icon{color:var(--success);font-size:18px;flex-shrink:0;margin-top:2px}
+.result-cta-text{font-size:20px;font-weight:700;line-height:1.6;color:var(--white);padding:24px 0}
+/* PDF / Download bar */
+.download-bar{background:var(--ink2);border:1px solid var(--ink4);padding:20px 28px;display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:48px}
+.download-bar p{font-size:16px;color:var(--dim)}
+.download-bar strong{color:var(--white)}
+.btn-download{font-family:'Space Mono',monospace;font-size:12px;text-transform:uppercase;letter-spacing:1px;padding:12px 28px;background:var(--ink4);border:2px solid var(--ink4);color:var(--white);cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:8px;white-space:nowrap}
+.btn-download:hover{border-color:var(--gold);color:var(--gold)}
+/* Lead Capture */
+.lead-block{background:var(--ink2);border:2px solid var(--fire);padding:56px;text-align:center;margin-top:16px}
+.lead-block h3{font-family:'Bebas Neue',sans-serif;font-size:44px;letter-spacing:1px;margin-bottom:20px}
+.lead-block .offer-sub{font-size:19px;line-height:1.6;color:var(--dim);max-width:560px;margin:0 auto 36px}
+.lead-form{max-width:480px;margin:0 auto 28px;display:grid;gap:12px}
+.lead-input{background:var(--ink3);border:2px solid var(--ink4);color:var(--white);padding:16px 20px;font-size:16px;font-family:'Outfit',sans-serif;transition:all .2s;width:100%}
+.lead-input:focus{outline:none;border-color:var(--fire);background:var(--ink)}
+.lead-input::placeholder{color:var(--muted)}
+.btn-submit{width:100%;background:var(--fire);color:var(--white);font-family:'Space Mono',monospace;font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:1px;padding:20px;border:none;cursor:pointer;transition:all .25s;margin-top:4px}
+.btn-submit:hover{background:#FF5722;box-shadow:0 8px 24px rgba(255,61,0,.4)}
+.offer-note{font-size:14px;color:var(--muted);font-style:italic;margin-top:16px;line-height:1.6}
+.success-banner{display:none;background:rgba(0,255,136,.07);border:2px solid var(--success);padding:32px;text-align:center}
+.success-banner.show{display:block}
+.success-banner h4{font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--success);margin-bottom:8px}
+.success-banner p{font-size:17px;color:var(--dim)}
+
+/* ═══ ADMIN LOGIN ═══ */
+#page-admin-login{padding-top:64px}
+.login-wrap{min-height:calc(100vh - 64px);display:flex;align-items:center;justify-content:center;padding:40px}
+.login-card{background:var(--ink2);border:1px solid var(--ink4);padding:56px;width:100%;max-width:440px}
+.login-logo{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:3px;margin-bottom:8px}
+.login-logo span{color:var(--fire)}
+.login-sub{font-size:14px;color:var(--muted);margin-bottom:40px;font-family:'Space Mono',monospace;font-size:12px;text-transform:uppercase;letter-spacing:1px}
+.field-label{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--dim);margin-bottom:8px;display:block}
+.field-input{width:100%;background:var(--ink3);border:2px solid var(--ink4);color:var(--white);padding:14px 18px;font-size:16px;font-family:'Outfit',sans-serif;transition:all .2s;margin-bottom:20px}
+.field-input:focus{outline:none;border-color:var(--fire)}
+.login-error{font-size:14px;color:var(--fire);margin-bottom:16px;font-family:'Space Mono',monospace;min-height:20px}
+.btn-login{width:100%;background:var(--fire);color:var(--white);font-family:'Space Mono',monospace;font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:1px;padding:18px;border:none;cursor:pointer;transition:all .25s}
+.btn-login:hover{background:#FF5722;box-shadow:0 8px 24px rgba(255,61,0,.4)}
+
+/* ═══ ADMIN DASHBOARD ═══ */
+#page-admin{padding-top:64px}
+.admin-layout{display:grid;grid-template-columns:260px 1fr;min-height:calc(100vh - 64px)}
+.admin-sidebar{background:var(--ink2);border-right:1px solid var(--ink4);padding:32px 0}
+.sidebar-section{padding:0 20px 28px;border-bottom:1px solid var(--ink4);margin-bottom:8px}
+.sidebar-section-title{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);padding:12px 12px 8px;display:block}
+.sidebar-item{display:flex;align-items:center;gap:10px;padding:10px 12px;cursor:pointer;transition:all .2s;border-radius:0;font-size:15px;color:var(--dim);background:none;border:none;width:100%;text-align:left}
+.sidebar-item:hover{background:var(--ink4);color:var(--white)}
+.sidebar-item.active{background:rgba(255,61,0,.12);color:var(--fire);border-left:3px solid var(--fire)}
+.sidebar-item .icon{font-size:16px;width:20px;text-align:center}
+.admin-main{padding:48px;overflow-y:auto}
+.admin-page-title{font-family:'Bebas Neue',sans-serif;font-size:44px;letter-spacing:1px;margin-bottom:8px}
+.admin-page-sub{font-size:16px;color:var(--dim);margin-bottom:40px}
+/* Stats row */
+.stats-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;margin-bottom:48px}
+.stat-card{background:var(--ink2);border:1px solid var(--ink4);padding:24px}
+.stat-label{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.stat-num{font-family:'Bebas Neue',sans-serif;font-size:48px;color:var(--fire);line-height:1}
+.stat-sub{font-size:13px;color:var(--dim);margin-top:4px}
+/* Scorecards list */
+.sc-list{display:grid;gap:12px}
+.sc-list-item{background:var(--ink2);border:1px solid var(--ink4);padding:24px 28px;display:flex;align-items:center;justify-content:space-between;gap:16px;transition:border-color .2s}
+.sc-list-item:hover{border-color:var(--ink4);border-left:3px solid var(--fire)}
+.sc-list-info h4{font-size:18px;font-weight:700;margin-bottom:4px}
+.sc-list-info p{font-size:14px;color:var(--dim)}
+.sc-list-meta{font-family:'Space Mono',monospace;font-size:12px;color:var(--cyan);text-align:right}
+.sc-list-actions{display:flex;gap:8px;flex-shrink:0}
+.btn-sm{font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:.5px;padding:8px 16px;border:1px solid;cursor:pointer;transition:all .2s;background:transparent;white-space:nowrap}
+.btn-sm-edit{color:var(--dim);border-color:var(--ink4)}
+.btn-sm-edit:hover{color:var(--white);border-color:var(--white)}
+.btn-sm-delete{color:var(--fire);border-color:rgba(255,61,0,.3)}
+.btn-sm-delete:hover{background:rgba(255,61,0,.1);border-color:var(--fire)}
+.btn-sm-preview{color:var(--cyan);border-color:rgba(0,229,255,.3)}
+.btn-sm-preview:hover{background:rgba(0,229,255,.07);border-color:var(--cyan)}
+.empty-state{background:var(--ink2);border:2px dashed var(--ink4);padding:64px;text-align:center}
+.empty-state p{font-size:18px;color:var(--muted);margin-bottom:24px}
+/* Builder */
+.builder-card{background:var(--ink2);border:1px solid var(--ink4);padding:40px;margin-bottom:24px}
+.builder-card h3{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--cyan);margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid var(--ink4)}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+.field-full{grid-column:1/-1}
+.field-group{margin-bottom:0}
+label.fl{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--dim);margin-bottom:6px;display:block}
+input.fi,textarea.fi,select.fi{width:100%;background:var(--ink3);border:2px solid var(--ink4);color:var(--white);padding:12px 16px;font-size:15px;font-family:'Outfit',sans-serif;transition:border-color .2s;resize:vertical}
+input.fi:focus,textarea.fi:focus,select.fi:focus{outline:none;border-color:var(--fire)}
+textarea.fi{min-height:80px}
+select.fi option{background:var(--ink3)}
+/* Questions builder */
+.q-builder-item{background:var(--ink3);border:1px solid var(--ink4);padding:24px;margin-bottom:16px;position:relative}
+.q-builder-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+.q-builder-num{font-family:'Bebas Neue',sans-serif;font-size:24px;color:var(--fire)}
+.q-builder-body{display:grid;gap:12px}
+.answer-fields{background:var(--ink);border:1px solid var(--ink4);padding:16px;margin-top:8px}
+.answer-fields h5{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+.answer-row{display:grid;grid-template-columns:1fr auto;gap:10px;margin-bottom:8px;align-items:start}
+.score-select{width:100px;flex-shrink:0}
+.btn-add-q{width:100%;background:transparent;border:2px dashed var(--ink4);color:var(--dim);font-family:'Space Mono',monospace;font-size:12px;text-transform:uppercase;letter-spacing:1px;padding:16px;cursor:pointer;transition:all .2s}
+.btn-add-q:hover{border-color:var(--cyan);color:var(--cyan)}
+.builder-actions{display:flex;justify-content:flex-end;gap:12px;margin-top:32px}
+.btn-cancel{font-family:'Space Mono',monospace;font-size:12px;text-transform:uppercase;letter-spacing:1px;padding:14px 32px;border:2px solid var(--ink4);background:transparent;color:var(--dim);cursor:pointer;transition:all .2s}
+.btn-cancel:hover{border-color:var(--white);color:var(--white)}
+.btn-save{font-family:'Space Mono',monospace;font-size:12px;text-transform:uppercase;letter-spacing:1px;padding:14px 40px;background:var(--fire);border:2px solid var(--fire);color:var(--white);cursor:pointer;transition:all .2s}
+.btn-save:hover{background:#FF5722;box-shadow:0 4px 16px rgba(255,61,0,.4)}
+/* Segments builder */
+.segments-grid{display:grid;gap:16px}
+.segment-build-item{background:var(--ink3);border:1px solid var(--ink4);padding:24px}
+.segment-build-item h4{font-size:16px;font-weight:700;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--ink4);display:flex;align-items:center;gap:10px}
+.seg-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+/* Notification Toast */
+.toast{position:fixed;bottom:32px;right:32px;z-index:9999;background:var(--ink2);border:1px solid var(--success);padding:16px 24px;font-family:'Space Mono',monospace;font-size:13px;color:var(--success);transform:translateY(100px);opacity:0;transition:all .3s;pointer-events:none}
+.toast.show{transform:translateY(0);opacity:1}
+.toast.error{border-color:var(--fire);color:var(--fire)}
+/* Confirm Modal */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:999;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .2s}
+.modal-overlay.show{opacity:1;pointer-events:all}
+.modal-box{background:var(--ink2);border:1px solid var(--ink4);padding:40px;max-width:420px;width:90%;transform:scale(.95);transition:transform .2s}
+.modal-overlay.show .modal-box{transform:scale(1)}
+.modal-box h3{font-family:'Bebas Neue',sans-serif;font-size:28px;margin-bottom:12px}
+.modal-box p{font-size:16px;color:var(--dim);margin-bottom:28px;line-height:1.6}
+.modal-actions{display:flex;gap:12px;justify-content:flex-end}
+/* Responsive */
+@media(max-width:900px){
+  .admin-layout{grid-template-columns:1fr}
+  .admin-sidebar{display:none}
+  .hero-inner,.scorecard-wrap,.results-wrap{padding-left:24px;padding-right:24px}
+  .question-card{padding:28px}
+  nav{padding:0 20px}
+}
+@media(max-width:600px){
+  .field-row{grid-template-columns:1fr}
+  .download-bar{flex-direction:column;align-items:flex-start}
+  .lead-block{padding:32px 24px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo" onclick="goToLanding()">XFLY <span>STRATEGIES</span></div>
+  <div class="nav-right">
+    <button class="nav-link" onclick="goToLanding()">Scorecards</button>
+    <button class="nav-admin-btn" onclick="goToAdminLogin()">⚙ Admin</button>
+  </div>
+</nav>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<!-- CONFIRM MODAL -->
+<div class="modal-overlay" id="confirmModal">
+  <div class="modal-box">
+    <h3 id="modalTitle">Confirm Action</h3>
+    <p id="modalMsg">Are you sure?</p>
+    <div class="modal-actions">
+      <button class="btn-cancel" onclick="closeModal()">Cancel</button>
+      <button class="btn-save" id="modalConfirmBtn" style="background:var(--fire-dim)">Confirm</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     PAGE 1: LANDING
+═════════════════════════════════════════ -->
+<div class="page active" id="page-landing">
+  <div class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-inner">
+      <div class="hero-eyebrow">Strategic Diagnostics Platform</div>
+      <h1 class="hero-h1">Scale from <em>10X</em><br>to <em>1000X</em><br>in 90 Days to 3 Years</h1>
+      <p class="hero-sub">Discover your exact growth bottlenecks and unlock the strategic roadmap to exponential scale—before your competition does.</p>
+
+      <ul class="hero-benefits">
+        <li><span class="benefit-arrow">→</span><span><strong>Pinpoint clarity</strong> on what's blocking your breakthrough growth in under 5 minutes</span></li>
+        <li><span class="benefit-arrow">→</span><span><strong>Instant strategic diagnosis</strong> across vision, execution, leadership, and systems</span></li>
+        <li><span class="benefit-arrow">→</span><span><strong>Custom growth roadmap</strong> tailored to your current scale stage—not generic advice</span></li>
+        <li><span class="benefit-arrow">→</span><span><strong>Downloadable PDF report</strong> you can act on immediately and share with your team</span></li>
+        <li><span class="benefit-arrow">→</span><span><strong>Zero fluff</strong>—only what matters to accelerate faster than you thought possible</span></li>
+      </ul>
+
+      <div class="for-block">
+        <h3>Who This Is For</h3>
+        <p>Ambitious founders, CEOs, and leadership teams of SMEs and startups committed to achieving 10X–1000X growth. Choose the scorecard most relevant to your current challenge and get your strategic diagnosis now.</p>
+      </div>
+
+      <!-- SCORECARD SELECTOR -->
+      <div class="selector-section">
+        <div class="selector-label">Choose Your Scorecard</div>
+        <div class="selector-dropdown-wrapper">
+          <select class="selector-dropdown" id="scorecardSelect" onchange="onScorecardSelect()">
+            <option value="">— Select a Scorecard to Begin —</option>
+          </select>
+          <span class="selector-chevron">▾</span>
+        </div>
+        <div class="selector-preview" id="selectorPreview">
+          <div class="preview-info">
+            <h4 id="previewTitle">—</h4>
+            <p id="previewDesc">—</p>
+          </div>
+          <div class="preview-meta" id="previewMeta">—</div>
+        </div>
+      </div>
+
+      <button class="cta-btn" id="landingCta" onclick="launchScorecard()" disabled>
+        Start Your Assessment →
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     PAGE 2: SCORECARD RUNNER
+═════════════════════════════════════════ -->
+<div class="page" id="page-scorecard">
+  <div class="scorecard-wrap">
+    <div class="sc-header">
+      <div class="sc-meta">
+        <span class="sc-category-tag" id="scCategoryTag">Assessment</span>
+      </div>
+      <div class="sc-title" id="scTitle">Loading...</div>
+      <div class="sc-desc" id="scDesc"></div>
+    </div>
+    <div class="progress-track"><div class="progress-bar" id="scProgress"></div></div>
+    <div class="q-counter" id="scCounter">Question 1 of 12</div>
+    <div id="scQuestionArea"></div>
+    <div class="nav-row">
+      <button class="btn-outline" id="scPrev" onclick="scNav(-1)" disabled>← Prev</button>
+      <button class="btn-fire" id="scNext" onclick="scNav(1)">Next →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     PAGE 3: RESULTS
+═════════════════════════════════════════ -->
+<div class="page" id="page-results">
+  <div class="results-wrap">
+    <div class="results-top">
+      <h2>Your Scale Readiness Assessment</h2>
+      <div class="score-ring">
+        <div class="score-num" id="resScore">—</div>
+        <div class="score-denom" id="resScoreDenom">/ 120</div>
+      </div>
+      <div class="segment-badge" id="resBadge">—</div>
+      <div class="results-scorecard-name" id="resScorecardName">—</div>
+      <div class="result-headline" id="resHeadline">—</div>
+    </div>
+
+    <!-- Download bar -->
+    <div class="download-bar">
+      <p><strong>Your full report is ready.</strong> Download your personalized PDF to share with your leadership team.</p>
+      <button class="btn-download" onclick="downloadPDF()">⬇ Download PDF Report</button>
+    </div>
+
+    <div class="result-body" id="resBody"></div>
+
+    <!-- Lead Capture -->
+    <div class="lead-block">
+      <h3>Claim Your Free Strategy Session</h3>
+      <p class="offer-sub">Book your complimentary 45-minute Strategic Growth Session with Xfly Strategies. We'll analyze your results, identify your highest-leverage opportunities, and create a custom 90-day roadmap to unlock your next level of growth—at zero cost to you.</p>
+      <div id="leadFormWrap">
+        <div class="lead-form">
+          <input class="lead-input" id="lName" type="text" placeholder="Full Name" required>
+          <input class="lead-input" id="lEmail" type="email" placeholder="Email Address" required>
+          <input class="lead-input" id="lPhone" type="tel" placeholder="Phone Number" required>
+          <input class="lead-input" id="lCompany" type="text" placeholder="Company Name" required>
+          <button class="btn-submit" onclick="submitLead()">Claim My Free Strategy Session →</button>
+        </div>
+        <p class="offer-note"><strong>Limited spots available.</strong> This session is typically valued at $2,500—yours is complimentary as a scorecard participant. No pressure, no pitch—just high-value strategic insight.</p>
+      </div>
+      <div class="success-banner" id="leadSuccess">
+        <h4>✓ Session Request Received</h4>
+        <p>We'll reach out within 24 hours to schedule your Strategic Growth Session. Check your inbox for confirmation and preparation materials.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     PAGE 4: ADMIN LOGIN
+═════════════════════════════════════════ -->
+<div class="page" id="page-admin-login">
+  <div class="login-wrap">
+    <div class="login-card">
+      <div class="login-logo">XFLY <span>ADMIN</span></div>
+      <div class="login-sub">Scorecard Management Portal</div>
+      <label class="field-label">Username</label>
+      <input class="field-input" id="loginUser" type="text" placeholder="admin" onkeydown="if(event.key==='Enter')doLogin()">
+      <label class="field-label">Password</label>
+      <input class="field-input" id="loginPass" type="password" placeholder="••••••••" onkeydown="if(event.key==='Enter')doLogin()">
+      <div class="login-error" id="loginError"></div>
+      <button class="btn-login" onclick="doLogin()">Access Admin Dashboard →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     PAGE 5: ADMIN DASHBOARD
+═════════════════════════════════════════ -->
+<div class="page" id="page-admin">
+  <div class="admin-layout">
+    <!-- Sidebar -->
+    <aside class="admin-sidebar">
+      <div class="sidebar-section">
+        <span class="sidebar-section-title">Dashboard</span>
+        <button class="sidebar-item active" id="sb-overview" onclick="adminNav('overview')">
+          <span class="icon">📊</span> Overview
+        </button>
+        <button class="sidebar-item" id="sb-scorecards" onclick="adminNav('scorecards')">
+          <span class="icon">📋</span> All Scorecards
+        </button>
+        <button class="sidebar-item" id="sb-create" onclick="adminNav('create')">
+          <span class="icon">➕</span> Create New
+        </button>
+      </div>
+      <div class="sidebar-section">
+        <span class="sidebar-section-title">Account</span>
+        <button class="sidebar-item" onclick="adminLogout()">
+          <span class="icon">🚪</span> Logout
+        </button>
+        <button class="sidebar-item" onclick="goToLanding()">
+          <span class="icon">↩</span> Back to Site
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main -->
+    <main class="admin-main" id="adminMain">
+      <!-- Loaded dynamically -->
+    </main>
+  </div>
+</div>
+
+<script>
+// ════════════════════════════════════════════════════════
+//  DATA LAYER — localStorage persistence
+// ════════════════════════════════════════════════════════
+const STORAGE_KEY = 'xfly_scorecards_v2';
+
+const DEFAULT_SCORECARDS = [
+  {
+    id: 'scale-readiness',
+    title: 'Scale Readiness Scorecard',
+    category: 'Growth & Scale',
+    description: 'Diagnose your organization\'s readiness to scale 10X–1000X. Evaluates vision clarity, execution rhythm, leadership capacity, and growth infrastructure.',
+    audience: 'SME founders & CEOs targeting rapid scale',
+    questions: [
+      { id:1, category:'Vision Clarity', text:'How clear and specific is your 3-year vision for the organization?', answers:[{text:'No documented vision beyond vague aspirations',score:1},{text:'Vision statement exists but not tied to measurable outcomes',score:4},{text:'Clear vision with targets, but alignment is inconsistent',score:7},{text:'Crystal clear vision—every leader can articulate measurable milestones',score:10}] },
+      { id:2, category:'Strategic Focus', text:'How ruthlessly focused is your strategy on the vital few priorities that drive growth?', answers:[{text:'Pursuing too many initiatives simultaneously with limited impact',score:1},{text:'Have priorities, but new opportunities constantly distract us',score:4},{text:'Focused on 3–5 key priorities, though discipline wavers under pressure',score:7},{text:'Absolute focus on 1–3 strategic imperatives—we say no to everything else',score:10}] },
+      { id:3, category:'Execution Rhythm', text:'How consistently does your organization execute on strategic commitments?', answers:[{text:'Plans are made but rarely completed—execution is sporadic and reactive',score:1},{text:'Complete about 50–60% of committed initiatives, often late',score:4},{text:'Strong execution on most commitments (70–80%) with clear accountability',score:7},{text:'Relentless execution machine—95%+ completion rate with predictable cadence',score:10}] },
+      { id:4, category:'Leadership Capacity', text:'How capable is your leadership team at operating at 10X your current scale?', answers:[{text:'Current leaders are maxed out—we lack capacity for significant growth',score:1},{text:'Functional team but would struggle beyond 2–3X current scale',score:4},{text:'Strong team that could handle 5–10X with some additional development',score:7},{text:'World-class leadership bench ready to scale 10X–100X today',score:10}] },
+      { id:5, category:'Decision Speed', text:'How quickly can your organization make and implement critical strategic decisions?', answers:[{text:'Decisions take weeks or months—analysis paralysis is common',score:1},{text:'Decisions made in days to weeks, but implementation is slow',score:4},{text:'Most decisions happen within days with rapid implementation cycles',score:7},{text:'High-velocity decision-making—hours to days with immediate execution',score:10}] },
+      { id:6, category:'Systems & Processes', text:'How scalable and documented are your core business systems and processes?', answers:[{text:'Critical knowledge lives in people\'s heads—chaos when someone leaves',score:1},{text:'Some documentation exists but processes are inconsistent and manual',score:4},{text:'Most core processes documented and repeatable with some automation',score:7},{text:'Fully systematized operations—scalable, automated, and continuously optimized',score:10}] },
+      { id:7, category:'Performance Measurement', text:'How effectively do you measure and track the metrics that matter most?', answers:[{text:'Track basic financials but lack real-time operational metrics',score:1},{text:'Monitor several KPIs but data is delayed and review is inconsistent',score:4},{text:'Weekly KPI dashboard with most leading indicators and regular reviews',score:7},{text:'Real-time metrics dashboard—leading indicators predict outcomes with precision',score:10}] },
+      { id:8, category:'Cash & Capital', text:'How confident are you in your access to capital for growth opportunities?', answers:[{text:'Cash-strapped—growth is limited by funding constraints',score:1},{text:'Break-even or slight positive cash flow, limited runway for investment',score:4},{text:'Healthy cash position with 6–12 months runway and access to growth capital',score:7},{text:'Strong cash reserves, proven fundraising ability, and multiple capital options',score:10}] },
+      { id:9, category:'Talent Density', text:'What percentage of your team consists of A-players who drive outsized results?', answers:[{text:'Less than 25%—carrying too many C-players',score:1},{text:'About 40–50% are solid performers, rest are adequate',score:4},{text:'60–75% are high performers—we\'re consistently raising the bar',score:7},{text:'80%+ are exceptional—we only hire and keep A-players',score:10}] },
+      { id:10, category:'Market Position', text:'How differentiated and defensible is your market position?', answers:[{text:'One of many—competing primarily on price with weak differentiation',score:1},{text:'Some unique features but competitors can replicate easily',score:4},{text:'Clear differentiation and growing brand—customers choose us for specific reasons',score:7},{text:'Category leader or creator—defensible moats, customers can\'t imagine alternatives',score:10}] },
+      { id:11, category:'Culture & Speed', text:'How would you describe your organizational culture around speed and accountability?', answers:[{text:'Slow, bureaucratic, excuse-driven—accountability is weak',score:1},{text:'Mixed—some pockets of urgency but overall culture lacks intensity',score:4},{text:'Generally fast-moving with clear ownership, though inconsistencies remain',score:7},{text:'High-performance culture—speed, ownership, and results are non-negotiable',score:10}] },
+      { id:12, category:'Customer Economics', text:'How strong are your unit economics and customer lifetime value metrics?', answers:[{text:'Unprofitable or unclear—no solid unit economics yet',score:1},{text:'Marginal profitability—LTV/CAC ratio below 2:1',score:4},{text:'Healthy economics—LTV/CAC between 3:1 and 5:1 with improving trends',score:7},{text:'Exceptional economics—LTV/CAC above 5:1 with compounding network effects',score:10}] }
+    ],
+    segments: [
+      { label:'Survival Mode', min:0, max:40, color:'#FF3D00', headline:'You\'re Stuck in Survival Mode—Fighting Fires Daily', description:'Your assessment reveals critical gaps across vision, execution, and systems. You\'re working incredibly hard but not making meaningful progress toward scale. The organization lacks the strategic foundation required for exponential growth.', risks:'Without intervention, you\'ll remain trapped in reactive mode—burning out your team, losing market opportunities, and watching competitors pass you by. The longer these foundational issues persist, the harder it becomes to break free.', priorities:['Establish crystal-clear 90-day strategic priorities—stop chasing every opportunity','Install weekly execution rhythm with ruthless accountability for commitments','Document your top 3 critical processes to reduce hero-dependency','Identify and address your #1 leadership capacity constraint immediately'], cta:'You need a strategic reset, not incremental improvements. Let\'s build the foundation for your breakthrough.' },
+      { label:'Structured but Stuck', min:41, max:70, color:'#FFB800', headline:'You\'re Organized but Hitting a Ceiling—Incremental Gains Aren\'t Enough', description:'You\'ve built a functional organization with decent systems. However, you\'re experiencing a frustrating plateau—executing reasonably well, but not seeing the exponential results you\'re capable of. Key bottlenecks in leadership capacity, strategic focus, or execution velocity are limiting your scale potential.', risks:'\'Good enough\' becomes the enemy of breakthrough growth. While you\'re maintaining, competitors are accelerating past you. The gap between your current trajectory and your 10X potential widens every quarter you delay bold moves.', priorities:['Conduct a ruthless strategic audit—eliminate the 80% that doesn\'t drive growth','Upgrade your top 2–3 leadership positions to players ready for 10X scale','Implement a high-velocity decision-making framework to 10X your speed','Build a real-time metrics dashboard that predicts outcomes, not just reports history'], cta:'Breaking through your ceiling requires strategic courage and precise execution. Let\'s identify your highest-leverage breakthrough moves.' },
+      { label:'Growth Ready', min:71, max:95, color:'#00E5FF', headline:'You\'re Primed for Acceleration—Time to Step on the Gas', description:'Your organization has strong fundamentals. You have clear strategy, solid execution capability, and decent systems. Well-positioned to scale significantly—but not yet operating at the intensity required for 10X–100X growth. Small adjustments to focus, velocity, and talent density will unlock disproportionate results.', risks:'The danger is underestimating how much faster and bolder you could move. You have the foundation for extraordinary growth, but hesitation or incrementalism will cause you to leave massive value on the table.', priorities:['Narrow focus to your single highest-leverage growth driver—double down completely','Accelerate decision-to-execution cycle time by 50% across all critical paths','Upgrade to world-class talent in 2–3 positions that will 10X organizational output','Build predictive analytics that give you 30–60 day foresight on key outcomes'], cta:'You\'re closer to breakthrough than you realize. Let\'s engineer your acceleration with surgical precision.' },
+      { label:'Scale Ready', min:96, max:120, color:'#00FF88', headline:'You\'re Built to Dominate—Execute with Extreme Velocity', description:'Exceptional. Your organization demonstrates the vision clarity, strategic focus, execution discipline, and operational infrastructure that defines high-growth category leaders. You\'re operating at a level most organizations never reach. The question isn\'t whether you\'ll scale—it\'s how fast and how far.', risks:'At this level, risks are different: moving too slowly on massive opportunities, underestimating how dominant you could become, or losing the relentless edge that got you here. Complacency is your only real threat.', priorities:['Identify your \'unfair advantage\' and build an insurmountable moat around it','Scale your A-player talent acquisition system to bring in 10–20 exceptional leaders','Build strategic optionality—multiple paths to 100X you can execute simultaneously','Establish category leadership positioning that makes competition irrelevant'], cta:'You\'re ready for category dominance. Let\'s architect your path to 100X–1000X scale with precision and speed.' }
+    ]
+  },
+  {
+    id: 'leadership-audit',
+    title: 'Leadership Effectiveness Audit',
+    category: 'Leadership',
+    description: 'A deep assessment of your leadership team\'s capacity to drive performance, inspire culture, and execute at scale under pressure.',
+    audience: 'CEOs, Directors & Senior Leadership Teams',
+    questions: [
+      { id:1, category:'Self-Awareness', text:'How well does your leadership team understand their individual strengths and blind spots?', answers:[{text:'Little self-awareness—feedback is rarely sought or acted upon',score:1},{text:'Some awareness, but it\'s not integrated into daily leadership practice',score:4},{text:'Regular feedback loops exist and most leaders adapt based on insights',score:7},{text:'Deep self-mastery—leaders continuously evolve and invite radical honesty',score:10}] },
+      { id:2, category:'Strategic Thinking', text:'How effectively does your leadership team think and plan 12–24 months ahead?', answers:[{text:'Mostly reactive—planning rarely extends beyond 30–90 days',score:1},{text:'Annual planning exists but lacks depth and real strategic foresight',score:4},{text:'Strong 12-month plans with scenarios and contingency thinking',score:7},{text:'Visionary 2–5 year strategic roadmaps with quarterly alignment sessions',score:10}] },
+      { id:3, category:'Decision Quality', text:'How consistently does your leadership make high-quality decisions under pressure?', answers:[{text:'Frequent poor decisions—often emotional, rushed, or poorly informed',score:1},{text:'Decisions are inconsistent—good in calm conditions, poor under pressure',score:4},{text:'Generally solid decisions with structured frameworks in most situations',score:7},{text:'Exceptional decision quality consistently—even in ambiguous, high-stakes moments',score:10}] },
+      { id:4, category:'Team Development', text:'How committed is leadership to developing the next layer of talent?', answers:[{text:'Little to no deliberate talent development or succession planning',score:1},{text:'Some mentoring happens informally but no structured development programs',score:4},{text:'Defined development plans for key roles with regular coaching conversations',score:7},{text:'World-class talent factory—every leader develops leaders below them relentlessly',score:10}] },
+      { id:5, category:'Communication', text:'How effectively does your leadership communicate vision, priorities, and expectations?', answers:[{text:'Communication is unclear, inconsistent, or largely top-down without feedback',score:1},{text:'Key messages are shared, but understanding and alignment are inconsistent',score:4},{text:'Regular, clear communication with decent feedback loops across the org',score:7},{text:'Masterful communicators—every level of the org is aligned and engaged',score:10}] },
+      { id:6, category:'Accountability Culture', text:'How strongly does your leadership model and enforce accountability?', answers:[{text:'Accountability is rare—missed commitments have no real consequences',score:1},{text:'Accountability exists in pockets but is applied inconsistently',score:4},{text:'Clear expectations with follow-through, though some gaps remain',score:7},{text:'Zero-tolerance culture for missed commitments—accountability is non-negotiable',score:10}] },
+      { id:7, category:'Change Leadership', text:'How capable is your leadership team at driving major organizational change?', answers:[{text:'Change is feared and resisted—most initiatives stall or fail',score:1},{text:'Change is managed reactively with frequent confusion and resistance',score:4},{text:'Change is navigated competently with structured communication plans',score:7},{text:'Change masters—the team creates momentum and brings the whole org with them',score:10}] },
+      { id:8, category:'Resilience', text:'How does your leadership team perform under sustained pressure and adversity?', answers:[{text:'Cracks under pressure—morale drops and decision quality deteriorates',score:1},{text:'Manages short-term pressure but struggles with sustained challenges',score:4},{text:'Generally resilient with good recovery patterns and team support',score:7},{text:'Antifragile—gets stronger under pressure and inspires the whole organization',score:10}] }
+    ],
+    segments: [
+      { label:'Critical Gaps', min:0, max:28, color:'#FF3D00', headline:'Leadership Is Your Biggest Risk Factor Right Now', description:'Your leadership assessment reveals fundamental gaps that are directly limiting organizational performance and scale. Without urgent leadership development, growth ambitions will remain out of reach.', risks:'Leadership deficits compound exponentially as organizations grow. Poor leadership is the #1 predictor of organizational failure—and every day without intervention accelerates the decline.', priorities:['Conduct urgent individual leadership assessments for each team member','Bring in executive coaching or leadership development immediately','Clarify roles, decision rights, and accountability for every leader','Establish weekly leadership team check-ins with structured feedback'], cta:'Leadership transformation is the fastest path to organizational breakthrough. Let\'s start your leadership audit today.' },
+      { label:'Developing', min:29, max:50, color:'#FFB800', headline:'Leadership Potential Exists but Remains Untapped', description:'Your leadership team has a solid foundation but significant development opportunities. You\'re leaving performance on the table because leadership capability isn\'t yet at the level your growth ambitions demand.', risks:'Without deliberate leadership development, you\'ll hit a ceiling in 12–18 months. As complexity grows, underdeveloped leaders create organizational drag that becomes harder to reverse.', priorities:['Create individual leadership development plans for each member','Establish structured peer coaching and cross-functional learning','Upgrade decision-making frameworks to improve quality and speed','Build stronger feedback culture—regular, honest, growth-oriented conversations'], cta:'Investing in leadership capability now creates compounding returns for years. Let\'s build your leadership excellence program.' },
+      { label:'Capable', min:51, max:68, color:'#00E5FF', headline:'Solid Leadership Foundation—Time to Elevate to Elite', description:'Your leadership team is genuinely capable and performs well in most conditions. To achieve the scale ambitions you\'re targeting, you need to elevate from capable to world-class—and the gap is smaller than you might think.', risks:'At your growth stage, the difference between capable and exceptional leadership is worth tens of millions in value creation. Staying at \'good enough\' is a strategic choice with significant opportunity cost.', priorities:['Identify 2–3 targeted leadership capabilities to develop to elite level','Implement a 360-degree feedback program across all leadership levels','Create stretch assignments that develop leaders faster than classroom training','Build leadership succession depth for every critical role'], cta:'The gap between good and great leadership is where fortunes are made. Let\'s take your team to world-class.' },
+      { label:'Elite Leadership', min:69, max:80, color:'#00FF88', headline:'You Have Elite Leadership—Now Scale It and Protect It', description:'Your leadership team is exceptional by any measure. You\'ve built something genuinely rare—a high-performing, aligned, accountable leadership culture that gives you a decisive competitive advantage.', risks:'Elite leadership cultures require constant nurturing. The biggest risk is assuming it will sustain itself—top talent needs challenge, development, and recognition to stay engaged and loyal.', priorities:['Document your leadership culture to protect and scale it intentionally','Develop next-generation leaders who can replace and surpass current team','Build external brand as an elite leadership organization to attract top talent','Create advanced leadership challenges that keep your best people growing'], cta:'Your leadership is a genuine competitive moat. Let\'s build a strategy to leverage and protect this advantage at scale.' }
+    ]
+  }
+];
+
+function loadScorecards() {
+  const stored = localStorage.getItem(STORAGE_KEY);
+  if (stored) {
+    try { return JSON.parse(stored); } catch(e) {}
+  }
+  saveScorecards(DEFAULT_SCORECARDS);
+  return DEFAULT_SCORECARDS;
+}
+
+function saveScorecards(data) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+}
+
+let SCORECARDS = loadScorecards();
+
+// ════════════════════════════════════════════════════════
+//  ROUTING
+// ════════════════════════════════════════════════════════
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0,0);
+}
+
+function goToLanding() {
+  SCORECARDS = loadScorecards();
+  populateSelectorDropdown();
+  showPage('page-landing');
+}
+
+function goToAdminLogin() { showPage('page-admin-login'); }
+
+// ════════════════════════════════════════════════════════
+//  LANDING — SCORECARD SELECTOR
+// ════════════════════════════════════════════════════════
+function populateSelectorDropdown() {
+  const sel = document.getElementById('scorecardSelect');
+  sel.innerHTML = '<option value="">— Select a Scorecard to Begin —</option>';
+  SCORECARDS.forEach(sc => {
+    const opt = document.createElement('option');
+    opt.value = sc.id;
+    opt.textContent = sc.title;
+    sel.appendChild(opt);
+  });
+}
+
+function onScorecardSelect() {
+  const id = document.getElementById('scorecardSelect').value;
+  const preview = document.getElementById('selectorPreview');
+  const cta = document.getElementById('landingCta');
+  if (!id) {
+    preview.classList.remove('show');
+    cta.disabled = true;
+    return;
+  }
+  const sc = SCORECARDS.find(s => s.id === id);
+  if (sc) {
+    document.getElementById('previewTitle').textContent = sc.title;
+    document.getElementById('previewDesc').textContent = sc.description;
+    document.getElementById('previewMeta').innerHTML = `${sc.questions.length} Questions<br>${sc.category}`;
+    preview.classList.add('show');
+    cta.disabled = false;
+  }
+}
+
+// ════════════════════════════════════════════════════════
+//  SCORECARD RUNNER
+// ════════════════════════════════════════════════════════
+let currentSC = null;
+let scAnswers = {};
+let scIndex = 0;
+
+function launchScorecard() {
+  const id = document.getElementById('scorecardSelect').value;
+  if (!id) return;
+  currentSC = SCORECARDS.find(s => s.id === id);
+  if (!currentSC) return;
+  scAnswers = {};
+  scIndex = 0;
+  document.getElementById('scTitle').textContent = currentSC.title;
+  document.getElementById('scDesc').textContent = currentSC.description;
+  document.getElementById('scCategoryTag').textContent = currentSC.category;
+  showPage('page-scorecard');
+  renderQuestion();
+}
+
+function renderQuestion() {
+  const q = currentSC.questions[scIndex];
+  const total = currentSC.questions.length;
+  document.getElementById('scProgress').style.width = ((scIndex+1)/total*100) + '%';
+  document.getElementById('scCounter').textContent = `Question ${scIndex+1} of ${total}`;
+  document.getElementById('scPrev').disabled = scIndex === 0;
+  document.getElementById('scNext').textContent = scIndex === total-1 ? 'See My Results →' : 'Next →';
+
+  document.getElementById('scQuestionArea').innerHTML = `
+    <div class="question-card">
+      <div class="q-label">${q.category}</div>
+      <div class="q-text">${q.text}</div>
+      <div class="answers-grid">
+        ${q.answers.map((a,i) => `
+          <div class="answer-opt ${scAnswers[q.id]===a.score?'selected':''}" onclick="pickAnswer(${a.score},${q.id})" data-score="${a.score}">
+            <div class="answer-dot"></div>
+            <div class="answer-text">${a.text}</div>
+          </div>
+        `).join('')}
+      </div>
+    </div>`;
+}
+
+function pickAnswer(score, qid) {
+  scAnswers[qid] = score;
+  document.querySelectorAll('.answer-opt').forEach(el => el.classList.remove('selected'));
+  document.querySelector(`.answer-opt[data-score="${score}"]`).classList.add('selected');
+  if (scIndex < currentSC.questions.length - 1) {
+    setTimeout(() => scNav(1), 380);
+  }
+}
+
+function scNav(dir) {
+  const q = currentSC.questions[scIndex];
+  if (dir === 1 && scAnswers[q.id] === undefined) {
+    showToast('Please select an answer to continue', true); return;
+  }
+  scIndex += dir;
+  if (scIndex >= currentSC.questions.length) { showResults(); return; }
+  renderQuestion();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+// ════════════════════════════════════════════════════════
+//  RESULTS
+// ════════════════════════════════════════════════════════
+let currentResult = null;
+
+function showResults() {
+  const maxScore = currentSC.questions.length * 10;
+  const totalScore = Object.values(scAnswers).reduce((s,v)=>s+v,0);
+  const seg = currentSC.segments.find(s => totalScore >= s.min && totalScore <= s.max) || currentSC.segments[currentSC.segments.length-1];
+  currentResult = { sc: currentSC, score: totalScore, maxScore, segment: seg };
+
+  document.getElementById('resScore').textContent = totalScore;
+  document.getElementById('resScoreDenom').textContent = `/ ${maxScore}`;
+  document.getElementById('resBadge').textContent = seg.label;
+  document.getElementById('resBadge').style.borderColor = seg.color;
+  document.getElementById('resBadge').style.color = seg.color;
+  document.getElementById('resScorecardName').textContent = currentSC.title;
+  document.getElementById('resHeadline').textContent = seg.headline;
+
+  document.getElementById('resBody').innerHTML = `
+    <p class="result-description">${seg.description}</p>
+    <div class="risk-panel">
+      <h3>⚠ Critical Risks If Nothing Changes</h3>
+      <p>${seg.risks}</p>
+    </div>
+    <div class="actions-panel">
+      <h3>✦ Immediate Priority Actions</h3>
+      <ul class="actions-list">
+        ${seg.priorities.map(p=>`<li><span class="check-icon">✓</span><span>${p}</span></li>`).join('')}
+      </ul>
+    </div>
+    <p class="result-cta-text">${seg.cta}</p>`;
+
+  document.getElementById('lName').value = '';
+  document.getElementById('lEmail').value = '';
+  document.getElementById('lPhone').value = '';
+  document.getElementById('lCompany').value = '';
+  document.getElementById('leadFormWrap').style.display = 'block';
+  document.getElementById('leadSuccess').classList.remove('show');
+
+  showPage('page-results');
+}
+
+// ════════════════════════════════════════════════════════
+//  PDF DOWNLOAD
+// ════════════════════════════════════════════════════════
+function downloadPDF() {
+  if (!currentResult) return;
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF({ orientation:'portrait', unit:'mm', format:'a4' });
+  const W = 210, MARGIN = 18;
+  let y = 0;
+
+  const hex2rgb = hex => {
+    const r = parseInt(hex.slice(1,3),16), g = parseInt(hex.slice(3,5),16), b = parseInt(hex.slice(5,7),16);
+    return [r,g,b];
+  };
+
+  // Cover
+  doc.setFillColor(7,7,8);
+  doc.rect(0,0,W,297,'F');
+  doc.setFillColor(255,61,0);
+  doc.rect(0,0,W,6,'F');
+  y = 30;
+  doc.setFont('helvetica','bold');
+  doc.setFontSize(28);
+  doc.setTextColor(255,61,0);
+  doc.text('XFLY STRATEGIES', MARGIN, y);
+  y += 10;
+  doc.setFontSize(11);
+  doc.setTextColor(148,148,160);
+  doc.text('STRATEGIC DIAGNOSTICS PLATFORM', MARGIN, y);
+  y += 22;
+  doc.setDrawColor(40,40,46);
+  doc.line(MARGIN, y, W-MARGIN, y);
+  y += 14;
+  doc.setFontSize(18);
+  doc.setTextColor(244,244,246);
+  const titleLines = doc.splitTextToSize(currentResult.sc.title, W - MARGIN*2);
+  doc.text(titleLines, MARGIN, y);
+  y += titleLines.length * 8 + 8;
+  doc.setFontSize(12);
+  doc.setTextColor(148,148,160);
+  doc.text(currentResult.sc.category, MARGIN, y);
+  y += 24;
+
+  // Score ring (simulated)
+  const segColor = hex2rgb(currentResult.segment.color);
+  doc.setDrawColor(...segColor);
+  doc.setLineWidth(2);
+  doc.circle(W/2, y+18, 24, 'S');
+  doc.setFont('helvetica','bold');
+  doc.setFontSize(32);
+  doc.setTextColor(...segColor);
+  doc.text(String(currentResult.score), W/2, y+22, {align:'center'});
+  doc.setFontSize(10);
+  doc.setTextColor(148,148,160);
+  doc.text(`out of ${currentResult.maxScore}`, W/2, y+30, {align:'center'});
+  y += 60;
+
+  // Segment badge
+  doc.setFillColor(28,28,31);
+  doc.rect(MARGIN, y-5, W-MARGIN*2, 16, 'F');
+  doc.setFont('helvetica','bold');
+  doc.setFontSize(13);
+  doc.setTextColor(...segColor);
+  doc.text(currentResult.segment.label.toUpperCase(), W/2, y+5, {align:'center'});
+  y += 22;
+
+  // Headline
+  doc.setFontSize(15);
+  doc.setTextColor(244,244,246);
+  const hlLines = doc.splitTextToSize(currentResult.segment.headline, W-MARGIN*2);
+  doc.text(hlLines, MARGIN, y);
+  y += hlLines.length * 7 + 12;
+
+  // Description
+  doc.setFont('helvetica','normal');
+  doc.setFontSize(10);
+  doc.setTextColor(148,148,160);
+  const descLines = doc.splitTextToSize(currentResult.segment.description, W-MARGIN*2);
+  doc.text(descLines, MARGIN, y);
+  y += descLines.length * 5 + 14;
+
+  // Risks
+  if (y > 240) { doc.addPage(); doc.setFillColor(7,7,8); doc.rect(0,0,W,297,'F'); y = 20; }
+  doc.setFillColor(40,15,10);
+  doc.rect(MARGIN-2, y-4, W-MARGIN*2+4, 10, 'F');
+  doc.setFont('helvetica','bold');
+  doc.setFontSize(9);
+  doc.setTextColor(255,61,0);
+  doc.text('⚠  KEY RISKS IF NOTHING CHANGES', MARGIN, y+3);
+  y += 14;
+  doc.setFont('helvetica','normal');
+  doc.setFontSize(10);
+  doc.setTextColor(200,200,210);
+  const riskLines = doc.splitTextToSize(currentResult.segment.risks, W-MARGIN*2);
+  doc.text(riskLines, MARGIN, y);
+  y += riskLines.length * 5 + 14;
+
+  // Priorities
+  if (y > 240) { doc.addPage(); doc.setFillColor(7,7,8); doc.rect(0,0,W,297,'F'); y = 20; }
+  doc.setFont('helvetica','bold');
+  doc.setFontSize(9);
+  doc.setTextColor(0,229,255);
+  doc.text('✦  IMMEDIATE PRIORITY ACTIONS', MARGIN, y);
+  y += 10;
+  currentResult.segment.priorities.forEach((p, i) => {
+    if (y > 270) { doc.addPage(); doc.setFillColor(7,7,8); doc.rect(0,0,W,297,'F'); y = 20; }
+    doc.setFont('helvetica','bold');
+    doc.setFontSize(10);
+    doc.setTextColor(0,255,136);
+    doc.text(`${i+1}.`, MARGIN, y);
+    doc.setFont('helvetica','normal');
+    doc.setTextColor(200,200,210);
+    const pLines = doc.splitTextToSize(p, W-MARGIN*2-8);
+    doc.text(pLines, MARGIN+8, y);
+    y += pLines.length * 5 + 6;
+  });
+
+  // CTA block
+  y += 6;
+  if (y > 250) { doc.addPage(); doc.setFillColor(7,7,8); doc.rect(0,0,W,297,'F'); y = 20; }
+  doc.setFillColor(40,10,5);
+  doc.setDrawColor(255,61,0);
+  doc.setLineWidth(0.5);
+  doc.rect(MARGIN-2, y-4, W-MARGIN*2+4, 28, 'FD');
+  doc.setFont('helvetica','bold');
+  doc.setFontSize(11);
+  doc.setTextColor(244,244,246);
+  doc.text('Ready to Scale? Book Your Free Strategy Session', W/2, y+4, {align:'center'});
+  doc.setFont('helvetica','normal');
+  doc.setFontSize(10);
+  doc.setTextColor(148,148,160);
+  doc.text('www.xflystrategies.com  |  strategy@xflystrategies.com', W/2, y+13, {align:'center'});
+
+  // Footer
+  doc.setFont('helvetica','normal');
+  doc.setFontSize(8);
+  doc.setTextColor(60,60,65);
+  doc.text(`Xfly Strategies — Confidential Assessment Report — ${new Date().toLocaleDateString()}`, W/2, 290, {align:'center'});
+
+  doc.save(`Xfly-Scorecard-${currentResult.sc.title.replace(/\s+/g,'-')}-${currentResult.score}.pdf`);
+  showToast('PDF Report Downloaded ✓');
+}
+
+// ════════════════════════════════════════════════════════
+//  LEAD FORM
+// ════════════════════════════════════════════════════════
+function submitLead() {
+  const name = document.getElementById('lName').value.trim();
+  const email = document.getElementById('lEmail').value.trim();
+  const phone = document.getElementById('lPhone').value.trim();
+  const company = document.getElementById('lCompany').value.trim();
+  if (!name||!email||!phone||!company) { showToast('Please fill in all fields',true); return; }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showToast('Please enter a valid email',true); return; }
+  console.log('Lead:', {name,email,phone,company, score:currentResult?.score, scorecard:currentResult?.sc?.title});
+  document.getElementById('leadFormWrap').style.display = 'none';
+  document.getElementById('leadSuccess').classList.add('show');
+  showToast('Session request received ✓');
+}
+
+// ════════════════════════════════════════════════════════
+//  ADMIN — AUTH
+// ════════════════════════════════════════════════════════
+const ADMIN_CREDS = { user: 'admin', pass: 'xfly2024' };
+let adminAuthed = false;
+
+function doLogin() {
+  const u = document.getElementById('loginUser').value.trim();
+  const p = document.getElementById('loginPass').value;
+  document.getElementById('loginError').textContent = '';
+  if (u === ADMIN_CREDS.user && p === ADMIN_CREDS.pass) {
+    adminAuthed = true;
+    showPage('page-admin');
+    adminNav('overview');
+  } else {
+    document.getElementById('loginError').textContent = '✕ Invalid credentials. Try admin / xfly2024';
+  }
+}
+
+function adminLogout() {
+  adminAuthed = false;
+  showPage('page-admin-login');
+  document.getElementById('loginPass').value = '';
+}
+
+// ════════════════════════════════════════════════════════
+//  ADMIN — NAVIGATION
+// ════════════════════════════════════════════════════════
+let editingId = null;
+
+function adminNav(section) {
+  document.querySelectorAll('.sidebar-item').forEach(b => b.classList.remove('active'));
+  const sb = document.getElementById('sb-'+section);
+  if (sb) sb.classList.add('active');
+  const main = document.getElementById('adminMain');
+  SCORECARDS = loadScorecards();
+  if (section === 'overview') renderAdminOverview(main);
+  else if (section === 'scorecards') renderAdminScorecards(main);
+  else if (section === 'create') { editingId = null; renderAdminBuilder(main); }
+}
+
+// ════════════════════════════════════════════════════════
+//  ADMIN — OVERVIEW
+// ════════════════════════════════════════════════════════
+function renderAdminOverview(main) {
+  const totalQ = SCORECARDS.reduce((s,sc)=>s+sc.questions.length,0);
+  main.innerHTML = `
+    <div class="admin-page-title">Dashboard Overview</div>
+    <div class="admin-page-sub">Welcome back. Manage and monitor your Xfly scorecard platform.</div>
+    <div class="stats-row">
+      <div class="stat-card"><div class="stat-label">Scorecards</div><div class="stat-num">${SCORECARDS.length}</div><div class="stat-sub">Active assessments</div></div>
+      <div class="stat-card"><div class="stat-label">Total Questions</div><div class="stat-num">${totalQ}</div><div class="stat-sub">Across all scorecards</div></div>
+      <div class="stat-card"><div class="stat-label">Categories</div><div class="stat-num">${[...new Set(SCORECARDS.map(s=>s.category))].length}</div><div class="stat-sub">Unique categories</div></div>
+      <div class="stat-card"><div class="stat-label">Status</div><div class="stat-num" style="font-size:32px;color:var(--success)">●</div><div class="stat-sub">Platform live</div></div>
+    </div>
+    <div class="admin-page-sub" style="margin-bottom:20px;font-size:18px;font-weight:700;color:var(--white)">Active Scorecards</div>
+    <div class="sc-list">
+      ${SCORECARDS.map(sc => `
+        <div class="sc-list-item">
+          <div class="sc-list-info">
+            <h4>${sc.title}</h4>
+            <p>${sc.category} · ${sc.questions.length} questions · ${sc.segments.length} outcome segments</p>
+          </div>
+          <div class="sc-list-meta">${sc.audience || '—'}</div>
+          <div class="sc-list-actions">
+            <button class="btn-sm btn-sm-edit" onclick="adminEditSC('${sc.id}')">Edit</button>
+            <button class="btn-sm btn-sm-delete" onclick="confirmDeleteSC('${sc.id}')">Delete</button>
+          </div>
+        </div>`).join('')}
+    </div>`;
+}
+
+// ════════════════════════════════════════════════════════
+//  ADMIN — SCORECARD LIST
+// ════════════════════════════════════════════════════════
+function renderAdminScorecards(main) {
+  main.innerHTML = `
+    <div class="admin-page-title">All Scorecards</div>
+    <div class="admin-page-sub">View, edit, or delete your existing scorecards.</div>
+    ${SCORECARDS.length === 0 ? `
+      <div class="empty-state">
+        <p>No scorecards yet. Create your first one!</p>
+        <button class="btn-fire" onclick="adminNav('create')">Create Scorecard →</button>
+      </div>` : `
+    <div class="sc-list">
+      ${SCORECARDS.map(sc => `
+        <div class="sc-list-item">
+          <div class="sc-list-info">
+            <h4>${sc.title}</h4>
+            <p>${sc.category} · ${sc.questions.length} questions · ${sc.segments.length} outcome segments · ${sc.audience || 'General audience'}</p>
+          </div>
+          <div class="sc-list-actions">
+            <button class="btn-sm btn-sm-preview" onclick="previewSC('${sc.id}')">Preview</button>
+            <button class="btn-sm btn-sm-edit" onclick="adminEditSC('${sc.id}')">Edit</button>
+            <button class="btn-sm btn-sm-delete" onclick="confirmDeleteSC('${sc.id}')">Delete</button>
+          </div>
+        </div>`).join('')}
+    </div>
+    <div style="margin-top:24px">
+      <button class="btn-fire" onclick="adminNav('create')">+ Create New Scorecard</button>
+    </div>`}`;
+}
+
+function previewSC(id) {
+  const sc = SCORECARDS.find(s=>s.id===id);
+  if (!sc) return;
+  document.getElementById('scorecardSelect').value = id;
+  currentSC = sc;
+  scAnswers = {}; scIndex = 0;
+  document.getElementById('scTitle').textContent = sc.title;
+  document.getElementById('scDesc').textContent = sc.description;
+  document.getElementById('scCategoryTag').textContent = sc.category;
+  showPage('page-scorecard');
+  renderQuestion();
+}
+
+// ════════════════════════════════════════════════════════
+//  ADMIN — BUILDER (Create / Edit)
+// ════════════════════════════════════════════════════════
+let builderQuestions = [];
+
+function adminEditSC(id) {
+  editingId = id;
+  const sc = SCORECARDS.find(s=>s.id===id);
+  if (!sc) return;
+  renderAdminBuilder(document.getElementById('adminMain'), sc);
+  document.querySelectorAll('.sidebar-item').forEach(b=>b.classList.remove('active'));
+}
+
+function renderAdminBuilder(main, sc = null) {
+  const isEdit = !!sc;
+  builderQuestions = sc ? JSON.parse(JSON.stringify(sc.questions)) : [newBlankQuestion(1)];
+
+  main.innerHTML = `
+    <div class="admin-page-title">${isEdit ? 'Edit Scorecard' : 'Create New Scorecard'}</div>
+    <div class="admin-page-sub">${isEdit ? `Editing: ${sc.title}` : 'Build a new diagnostic scorecard from scratch.'}</div>
+
+    <!-- Section 1: Info -->
+    <div class="builder-card">
+      <h3>01 — Scorecard Info</h3>
+      <div class="field-row">
+        <div class="field-group">
+          <label class="fl">Scorecard Title *</label>
+          <input class="fi" id="bTitle" type="text" placeholder="e.g. Sales Readiness Scorecard" value="${sc?.title||''}">
+        </div>
+        <div class="field-group">
+          <label class="fl">Category *</label>
+          <input class="fi" id="bCategory" type="text" placeholder="e.g. Sales, Leadership, Finance" value="${sc?.category||''}">
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field-group field-full">
+          <label class="fl">Description *</label>
+          <textarea class="fi" id="bDesc" placeholder="Describe what this scorecard measures and why it matters...">${sc?.description||''}</textarea>
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field-group field-full">
+          <label class="fl">Target Audience</label>
+          <input class="fi" id="bAudience" type="text" placeholder="e.g. Founders & CEOs of high-growth startups" value="${sc?.audience||''}">
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 2: Questions -->
+    <div class="builder-card">
+      <h3>02 — Questions <span style="color:var(--muted);font-family:'Space Mono',monospace;font-size:10px">(ADD 1–20)</span></h3>
+      <div id="questionsBuilder"></div>
+      <button class="btn-add-q" onclick="addBuilderQuestion()">+ Add Question</button>
+    </div>
+
+    <!-- Section 3: Outcome Segments -->
+    <div class="builder-card">
+      <h3>03 — Outcome Segments <span style="color:var(--muted);font-family:'Space Mono',monospace;font-size:10px">(SCORE RANGES)</span></h3>
+      <p style="font-size:14px;color:var(--dim);margin-bottom:20px">Define what each score band means. Scores are calculated 1–10 per question. Maximum = questions × 10.</p>
+      <div class="segments-grid" id="segmentsBuilder"></div>
+    </div>
+
+    <!-- Actions -->
+    <div class="builder-actions">
+      <button class="btn-cancel" onclick="adminNav('scorecards')">Cancel</button>
+      <button class="btn-save" onclick="saveScorecard()">${isEdit?'Save Changes':'Publish Scorecard'} →</button>
+    </div>`;
+
+  renderBuilderQuestions();
+  renderSegmentsBuilder(sc?.segments || null);
+}
+
+function newBlankQuestion(id) {
+  return { id, category:'', text:'', answers:[
+    {text:'',score:1},{text:'',score:4},{text:'',score:7},{text:'',score:10}
+  ]};
+}
+
+function renderBuilderQuestions() {
+  const container = document.getElementById('questionsBuilder');
+  if (!container) return;
+  container.innerHTML = builderQuestions.map((q,i) => `
+    <div class="q-builder-item" id="qb-${i}">
+      <div class="q-builder-header">
+        <div class="q-builder-num">Q${i+1}</div>
+        <button class="btn-sm btn-sm-delete" onclick="removeBuilderQuestion(${i})" ${builderQuestions.length<=1?'disabled':''}>Remove</button>
+      </div>
+      <div class="q-builder-body">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+          <div>
+            <label class="fl">Category Label</label>
+            <input class="fi" placeholder="e.g. Vision Clarity" value="${q.category||''}" oninput="builderQuestions[${i}].category=this.value">
+          </div>
+          <div></div>
+        </div>
+        <div>
+          <label class="fl">Question Text *</label>
+          <textarea class="fi" placeholder="Write your diagnostic question..." oninput="builderQuestions[${i}].text=this.value" style="min-height:64px">${q.text||''}</textarea>
+        </div>
+        <div class="answer-fields">
+          <h5>Answer Options (Weak → Strong)</h5>
+          ${q.answers.map((a,ai) => `
+            <div class="answer-row">
+              <div>
+                <label class="fl">Answer ${ai+1} — Score: <span style="color:var(--fire)">${a.score}</span></label>
+                <input class="fi" placeholder="Answer text..." value="${a.text||''}" oninput="builderQuestions[${i}].answers[${ai}].text=this.value">
+              </div>
+            </div>`).join('')}
+        </div>
+      </div>
+    </div>`).join('');
+}
+
+function addBuilderQuestion() {
+  builderQuestions.push(newBlankQuestion(builderQuestions.length+1));
+  renderBuilderQuestions();
+  document.getElementById(`qb-${builderQuestions.length-1}`)?.scrollIntoView({behavior:'smooth',block:'center'});
+}
+
+function removeBuilderQuestion(i) {
+  if (builderQuestions.length <= 1) return;
+  builderQuestions.splice(i,1);
+  builderQuestions.forEach((q,idx)=>q.id=idx+1);
+  renderBuilderQuestions();
+}
+
+const SEG_DEFAULTS = [
+  {label:'Survival Mode', color:'#FF3D00', headline:'', description:'', risks:'', priorities:['','',''], cta:''},
+  {label:'Structured but Stuck', color:'#FFB800', headline:'', description:'', risks:'', priorities:['','',''], cta:''},
+  {label:'Growth Ready', color:'#00E5FF', headline:'', description:'', risks:'', priorities:['','',''], cta:''},
+  {label:'Scale Ready', color:'#00FF88', headline:'', description:'', risks:'', priorities:['','',''], cta:''}
+];
+
+let builderSegments = [];
+
+function renderSegmentsBuilder(existingSegs) {
+  builderSegments = existingSegs ? JSON.parse(JSON.stringify(existingSegs)) : JSON.parse(JSON.stringify(SEG_DEFAULTS));
+  const container = document.getElementById('segmentsBuilder');
+  if (!container) return;
+  container.innerHTML = builderSegments.map((seg,i) => `
+    <div class="segment-build-item">
+      <h4><span class="seg-dot" style="background:${seg.color}"></span>${seg.label}</h4>
+      <div class="field-row">
+        <div>
+          <label class="fl">Min Score</label>
+          <input class="fi" type="number" value="${seg.min||0}" oninput="builderSegments[${i}].min=+this.value">
+        </div>
+        <div>
+          <label class="fl">Max Score</label>
+          <input class="fi" type="number" value="${seg.max||10}" oninput="builderSegments[${i}].max=+this.value">
+        </div>
+      </div>
+      <div>
+        <label class="fl">Label</label>
+        <input class="fi" value="${seg.label}" oninput="builderSegments[${i}].label=this.value">
+      </div>
+      <div>
+        <label class="fl">Result Headline</label>
+        <input class="fi" placeholder="Bold, punchy headline for this outcome..." value="${seg.headline||''}" oninput="builderSegments[${i}].headline=this.value">
+      </div>
+      <div>
+        <label class="fl">Description</label>
+        <textarea class="fi" placeholder="What does this score mean for the user?" oninput="builderSegments[${i}].description=this.value" style="min-height:72px">${seg.description||''}</textarea>
+      </div>
+      <div>
+        <label class="fl">Key Risks</label>
+        <textarea class="fi" placeholder="What risks does this person face if nothing changes?" oninput="builderSegments[${i}].risks=this.value" style="min-height:64px">${seg.risks||''}</textarea>
+      </div>
+      <div>
+        <label class="fl">Priority Action 1</label>
+        <input class="fi" placeholder="First priority action..." value="${seg.priorities?.[0]||''}" oninput="if(!builderSegments[${i}].priorities)builderSegments[${i}].priorities=['','',''];builderSegments[${i}].priorities[0]=this.value">
+      </div>
+      <div>
+        <label class="fl">Priority Action 2</label>
+        <input class="fi" placeholder="Second priority action..." value="${seg.priorities?.[1]||''}" oninput="if(!builderSegments[${i}].priorities)builderSegments[${i}].priorities=['','',''];builderSegments[${i}].priorities[1]=this.value">
+      </div>
+      <div>
+        <label class="fl">Priority Action 3</label>
+        <input class="fi" placeholder="Third priority action..." value="${seg.priorities?.[2]||''}" oninput="if(!builderSegments[${i}].priorities)builderSegments[${i}].priorities=['','',''];builderSegments[${i}].priorities[2]=this.value">
+      </div>
+      <div>
+        <label class="fl">Call to Action Text</label>
+        <input class="fi" placeholder="Compelling CTA to book a strategy session..." value="${seg.cta||''}" oninput="builderSegments[${i}].cta=this.value">
+      </div>
+    </div>`).join('');
+}
+
+// ════════════════════════════════════════════════════════
+//  ADMIN — SAVE SCORECARD
+// ════════════════════════════════════════════════════════
+function saveScorecard() {
+  const title = document.getElementById('bTitle').value.trim();
+  const category = document.getElementById('bCategory').value.trim();
+  const desc = document.getElementById('bDesc').value.trim();
+  const audience = document.getElementById('bAudience').value.trim();
+
+  if (!title) { showToast('Please enter a scorecard title', true); return; }
+  if (!category) { showToast('Please enter a category', true); return; }
+  if (!desc) { showToast('Please enter a description', true); return; }
+
+  for (let i=0;i<builderQuestions.length;i++) {
+    const q = builderQuestions[i];
+    if (!q.text.trim()) { showToast(`Q${i+1}: Please enter the question text`, true); return; }
+    for (let j=0;j<q.answers.length;j++) {
+      if (!q.answers[j].text.trim()) { showToast(`Q${i+1}, Answer ${j+1}: Please enter answer text`, true); return; }
+    }
+  }
+
+  const newSC = {
+    id: editingId || 'sc-'+Date.now(),
+    title, category, description: desc, audience,
+    questions: builderQuestions.map((q,i) => ({...q, id:i+1})),
+    segments: builderSegments.map(s => ({...s, priorities:(s.priorities||[]).filter(p=>p.trim())}))
+  };
+
+  SCORECARDS = loadScorecards();
+  if (editingId) {
+    const idx = SCORECARDS.findIndex(s=>s.id===editingId);
+    if (idx !== -1) SCORECARDS[idx] = newSC;
+    else SCORECARDS.push(newSC);
+  } else {
+    SCORECARDS.push(newSC);
+  }
+
+  saveScorecards(SCORECARDS);
+  editingId = null;
+  showToast(editingId ? 'Scorecard updated ✓' : 'Scorecard published ✓');
+  adminNav('scorecards');
+}
+
+// ════════════════════════════════════════════════════════
+//  ADMIN — DELETE
+// ════════════════════════════════════════════════════════
+function confirmDeleteSC(id) {
+  const sc = SCORECARDS.find(s=>s.id===id);
+  document.getElementById('modalTitle').textContent = 'Delete Scorecard';
+  document.getElementById('modalMsg').textContent = `Are you sure you want to delete "${sc?.title}"? This action cannot be undone.`;
+  const btn = document.getElementById('modalConfirmBtn');
+  btn.textContent = 'Delete';
+  btn.onclick = () => { deleteSC(id); closeModal(); };
+  document.getElementById('confirmModal').classList.add('show');
+}
+
+function deleteSC(id) {
+  SCORECARDS = SCORECARDS.filter(s=>s.id!==id);
+  saveScorecards(SCORECARDS);
+  showToast('Scorecard deleted');
+  adminNav('scorecards');
+}
+
+function closeModal() {
+  document.getElementById('confirmModal').classList.remove('show');
+}
+
+// ════════════════════════════════════════════════════════
+//  TOAST
+// ════════════════════════════════════════════════════════
+let toastTimer;
+function showToast(msg, isError=false) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = 'toast show' + (isError?' error':'');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 3000);
+}
+
+// ════════════════════════════════════════════════════════
+//  INIT
+// ════════════════════════════════════════════════════════
+populateSelectorDropdown();
+</script>
+</body>
+</html>

@@ -146,16 +146,11 @@ button{font-family:var(--font-body);cursor:pointer}
 .mobile-menu .nav-link:last-child{border-bottom:none}
 .mobile-menu .nav-cta{margin-top:32px;width:100%;justify-content:center;padding:16px;font-size:15px}
 /* Mobile visibility */
-
-@media screen and (max-width:900px){
-  .nav-links{display:none !important;}
-  .hamburger{display:flex !important;}
-   .nav-inner{padding:0 24px}
+@media(max-width:900px){
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .nav-inner{padding:0 24px}
 }
-@media(min-width:901px){
-  .hamburger{display:none!important}
- }
-
 @media(max-width:600px){
   .nav-inner{padding:0 20px}
   .mobile-menu{padding:32px 20px}
@@ -166,7 +161,7 @@ button{font-family:var(--font-body);cursor:pointer}
 ═══════════════════════════════════════════════ */
 .hero{min-height:100vh;background:var(--navy);display:flex;align-items:center;position:relative;overflow:hidden}
 .hero-bg{position:absolute;inset:0;overflow:hidden}
-.hero-bg-photo{position:absolute;inset:0;background-image:url(hero\ bg.avif);background-size:cover;background-position:center 30%;opacity:.18;filter:grayscale(20%)}
+.hero-bg-photo{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1800&auto=format&fit=crop&q=80');background-size:cover;background-position:center 30%;opacity:.18;filter:grayscale(20%)}
 .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(201,168,76,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,.04) 1px,transparent 1px);background-size:80px 80px;animation:gridMove 20s linear infinite}
 .hero-glow-1{position:absolute;top:-20%;right:-10%;width:700px;height:700px;background:radial-gradient(circle,rgba(30,58,138,.5) 0%,transparent 65%);pointer-events:none}
 .hero-glow-2{position:absolute;bottom:-10%;left:-10%;width:500px;height:500px;background:radial-gradient(circle,rgba(201,168,76,.14) 0%,transparent 65%);pointer-events:none}
@@ -250,25 +245,6 @@ button{font-family:var(--font-body);cursor:pointer}
 /* Founder photo */
 .founder-portrait-real{width:100%;height:100%;object-fit:cover;object-position:top center}
 .founder-upload-overlay{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(160deg,rgba(30,58,138,.6),rgba(27,94,75,.4));z-index:2}
-
-/* ═══════════════════════════════════════════════
-   TARGET vs TIME SECTION
-═══════════════════════════════════════════════ */
-.target-time{padding:100px 0;background:var(--gold)}
-.tt-intro{background:var(--navy);padding:48px 32px;margin-bottom:32px;text-align:center}
-.tt-intro h2{font-family:var(--font-display);font-size:clamp(28px,4vw,48px);font-weight:600;color:var(--white);margin-bottom:24px;line-height:1.2}
-.tt-intro p{font-size:17px;line-height:1.8;color:rgba(255,255,255,.75);margin-bottom:16px}
-.tt-intro p strong{color:var(--gold);font-weight:700}
-.tt-cols{display:grid;grid-template-columns:1fr;gap:24px;margin-bottom:32px}
-@media(min-width:768px){.tt-cols{grid-template-columns:1fr 1fr}}
-.tt-col{background:rgba(11,22,40,.08);padding:40px 32px;border:2px solid rgba(11,22,40,.12);text-align:center;transition:all .3s}
-.tt-col:hover{border-color:var(--navy);transform:translateY(-4px)}
-.tt-icon{width:72px;height:72px;background:var(--navy);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:32px;margin:0 auto 24px}
-.tt-title{font-family:var(--font-title);font-size:22px;letter-spacing:2px;text-transform:uppercase;color:var(--navy);margin-bottom:16px}
-.tt-desc{font-size:15px;line-height:1.7;color:rgba(11,22,40,.7)}
-.tt-question{background:var(--navy);padding:48px 32px;text-align:center}
-.tt-question h3{font-family:var(--font-display);font-size:clamp(24px,4vw,40px);font-weight:600;color:var(--gold);margin-bottom:16px;line-height:1.3}
-.tt-question p{font-size:16px;color:rgba(255,255,255,.7);margin-bottom:32px;line-height:1.7}
 
 /* ═══════════════════════════════════════════════
    HOME — WHAT WE DO
@@ -550,7 +526,7 @@ footer{background:var(--navy);padding:80px 0 0}
 /* ═══════════════════════════════════════════════
    RESPONSIVE
 ═══════════════════════════════════════════════ */
-media(max-width:1100px){
+@media(max-width:1100px){
   .container{padding:0 32px}
   .hero-image-side{display:none}
   .footer-top{grid-template-columns:1fr 1fr;gap:40px}
@@ -677,15 +653,15 @@ html{scroll-behavior:smooth}
     </div>
     <div class="hero-image-side">
       <div class="hero-img-overlay"></div>
-      <img class="hero-img-real" src="hero africa plan.avif" alt="African business professionals in strategic planning session" loading="eager">
+      <img class="hero-img-real" src="https://images.unsplash.com/photo-1664575602276-acd073f104c1?w=1200&auto=format&fit=crop&q=80" alt="African business professionals in strategic planning session" loading="eager">
     </div>
     <div class="container">
       <div class="hero-content">
         <div class="hero-eyebrow anim-fade-up"><span>Transformation & Growth Advisory</span></div>
         <h1 class="hero-h1 anim-fade-up-d1">
           We help you<br>   
-          Design and Achieve <em><br> BIGGER</em>
-          GOALS FASTER
+          SET and ACHIEVE <em><br> Bigger</em>
+          GOALS Faster.
         </h1>
         <p class="hero-sub anim-fade-up-d2">XFLY Strategies helps organizations move from ambition to structured execution — building systems that produce measurable, scalable performance.</p>
         <div class="hero-ctas anim-fade-up-d3">
@@ -710,35 +686,6 @@ html{scroll-behavior:smooth}
             <div class="hero-stat-label">Countries Reached</div>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- TARGET vs TIME (Core Philosophy) -->
-  <section class="target-time">
-    <div class="container">
-      <div class="tt-intro reveal">
-        <h2>The Two Factors That Determine Everything You Achieve</h2>
-        <p>To be the best version of yourself or achieve your best results depends on just two critical factors:</p>
-        <p>Your <strong>GOALS</strong> (which is your TARGET) and your <strong>DAILY ACTIVITIES</strong> (which is your TIME).</p>
-        <p>You're either missing it or failing at your <strong>TARGET</strong> level, missing it or failing at the use of your <strong>TIME</strong>, or both.</p>
-      </div>
-      <div class="tt-cols">
-        <div class="tt-col reveal reveal-delay-1">
-          <div class="tt-icon">🎯</div>
-          <div class="tt-title">TARGET</div>
-          <div class="tt-desc">Your goals, vision, strategy, and what you're aiming to achieve. Are your targets clear, compelling, and correctly architected for exponential results?</div>
-        </div>
-        <div class="tt-col reveal reveal-delay-2">
-          <div class="tt-icon">⏰</div>
-          <div class="tt-title">TIME</div>
-          <div class="tt-desc">How you structure your days, manage your energy, and execute your priorities. Is your time aligned with your highest-value activities?</div>
-        </div>
-      </div>
-      <div class="tt-question reveal reveal-delay-3">
-        <h3>Which Are You Failing At?</h3>
-        <p>Most people struggle with TARGET clarity, TIME mastery, or both. Take our free assessment to discover your exact constraint — and the precise system to fix it.</p>
-        <button class="btn btn-gold btn-lg btn-arrow" onclick="navigate('assessments')">Take the Assessment Now</button>
       </div>
     </div>
   </section>
@@ -843,19 +790,19 @@ html{scroll-behavior:smooth}
     <div class="container" style="padding:0">
       <div class="impact-inner">
         <div class="impact-stat reveal">
-          <div class="impact-num" data-count="">0</div>
+          <div class="impact-num" data-count="500">0+</div>
           <div class="impact-label">Leaders Trained</div>
         </div>
         <div class="impact-stat reveal reveal-delay-1">
-          <div class="impact-num" data-count="">0</div>
+          <div class="impact-num" data-count="80">0+</div>
           <div class="impact-label">Institutions Advised</div>
         </div>
         <div class="impact-stat reveal reveal-delay-2">
-          <div class="impact-num" data-count="">0</div>
+          <div class="impact-num" data-count="40">0+</div>
           <div class="impact-label">Frameworks Deployed</div>
         </div>
         <div class="impact-stat reveal reveal-delay-3">
-          <div class="impact-num" data-count=""></div>
+          <div class="impact-num" data-count="12">0</div>
           <div class="impact-label">Countries Reached</div>
         </div>
       </div>
@@ -981,7 +928,7 @@ html{scroll-behavior:smooth}
       <div class="blog-grid">
         <div class="blog-card blog-card-large reveal">
           <div class="blog-card-img blog-card-img-large img-wrap">
-            <img class="blog-card-img-real" src="strategy article.avif" alt="Strategy article - African business professional" style="height:340px">
+            <img class="blog-card-img-real" src="https://images.unsplash.com/photo-1664575196412-ed801e8333a1?w=900&auto=format&fit=crop&q=80" alt="Strategy article - African business professional" style="height:340px">
             <span class="blog-category">Strategy & Growth</span>
           </div>
           <div class="blog-card-body">
@@ -994,7 +941,7 @@ html{scroll-behavior:smooth}
         <div style="display:flex;flex-direction:column;gap:24px">
           <div class="blog-card reveal reveal-delay-1">
             <div class="blog-card-img img-wrap">
-              <img class="blog-card-img-real" src="hero africa plan.avif" alt="Leadership article - African team collaboration" style="height:220px">
+              <img class="blog-card-img-real" src="https://images.unsplash.com/photo-1664575602276-acd073f104c1?w=700&auto=format&fit=crop&q=80" alt="Leadership article - African team collaboration" style="height:220px">
               <span class="blog-category">Leadership</span>
             </div>
             <div class="blog-card-body">
@@ -1005,7 +952,7 @@ html{scroll-behavior:smooth}
           </div>
           <div class="blog-card reveal reveal-delay-2">
             <div class="blog-card-img img-wrap">
-              <img class="blog-card-img-real" src="execution article.avif" alt="Execution article" style="height:220px">
+              <img class="blog-card-img-real" src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=700&auto=format&fit=crop&q=80" alt="Execution article" style="height:220px">
               <span class="blog-category">Execution</span>
             </div>
             <div class="blog-card-body">
@@ -1050,8 +997,8 @@ html{scroll-behavior:smooth}
           <div class="testimonial-stars">★★★★★</div>
           <div class="testimonial-text">"XFLY didn't give us a deck and leave. They helped us rebuild the operating architecture of our organization from the inside out. The results in 90 days were beyond what I thought possible."</div>
           <div class="testimonial-author">
-            <div class="testimonial-avatar"><img src="https://images.unsplash.com/photo-1506863530036-1efeddceb993?w=96&auto=format&fit=crop&q=80" alt="Joyce Effiong - Nigerian CEO"></div>
-            <div><div class="testimonial-name">Joyce Effiong</div><div class="testimonial-role">CEO, Goldrich Africa</div></div>
+            <div class="testimonial-avatar"><img src="https://images.unsplash.com/photo-1506863530036-1efeddceb993?w=96&auto=format&fit=crop&q=80" alt="David Mensah - Nigerian CEO"></div>
+            <div><div class="testimonial-name">David Mensah</div><div class="testimonial-role">CEO, TechVentures Africa</div></div>
           </div>
         </div>
         <div class="testimonial-card reveal reveal-delay-1">
@@ -1092,7 +1039,7 @@ html{scroll-behavior:smooth}
 ═══════════════════════════════════════ -->
 <div class="page" id="page-services">
   <section class="page-hero">
-    <div class="page-hero-img"><img src="hero africa plan.avif" alt="Services - African business professionals"></div>
+    <div class="page-hero-img"><img src="https://images.unsplash.com/photo-1664575602276-acd073f104c1?w=1600&auto=format&fit=crop&q=80" alt="Services - African business professionals"></div>
     <div class="container">
       <div class="page-hero-inner">
         <div class="gold-rule anim-fade-up"><span>What We Offer</span></div>
@@ -1119,7 +1066,7 @@ html{scroll-behavior:smooth}
           <button class="btn btn-gold btn-arrow" style="margin-top:36px" onclick="navigate('booking')">Enquire About This Service</button>
         </div>
         <div class="service-visual-img reveal">
-          <img src="strategy consulting.avif" alt="Strategy Consulting - Nigerian business professionals" style="width:100%;height:100%;min-height:420px;object-fit:cover">
+          <img src="https://images.unsplash.com/photo-1664575196644-808978af9b1f?w=800&auto=format&fit=crop&q=80" alt="Strategy Consulting - Nigerian business professionals" style="width:100%;height:100%;min-height:420px;object-fit:cover">
           <div class="sv-label">Strategy & Advisory</div>
         </div>
       </div>
@@ -1159,7 +1106,7 @@ html{scroll-behavior:smooth}
           <button class="btn btn-gold btn-arrow" style="margin-top:36px" onclick="navigate('booking')">Enquire About This Service</button>
         </div>
         <div class="service-visual-img reveal">
-          <img src="leadership development.avif" alt="Leadership Development - Kenyan team leadership" style="width:100%;height:100%;min-height:420px;object-fit:cover">
+          <img src="https://images.unsplash.com/photo-1664575262619-b28fef7a40a4?w=800&auto=format&fit=crop&q=80" alt="Leadership Development - Kenyan team leadership" style="width:100%;height:100%;min-height:420px;object-fit:cover">
           <div class="sv-label">Leadership Development</div>
         </div>
       </div>
@@ -1179,7 +1126,7 @@ html{scroll-behavior:smooth}
           <button class="btn btn-gold btn-arrow" style="margin-top:36px" onclick="navigate('booking')">Enquire About This Service</button>
         </div>
         <div class="service-visual-img reveal">
-          <img src="Training.jpg" alt="Capacity Building" style="width:100%;height:100%;min-height:420px;object-fit:cover">
+          <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=800&auto=format&fit=crop&q=80" alt="Capacity Building" style="width:100%;height:100%;min-height:420px;object-fit:cover">
           <div class="sv-label">Capacity Building</div>
         </div>
       </div>
@@ -1200,7 +1147,7 @@ html{scroll-behavior:smooth}
 ═══════════════════════════════════════ -->
 <div class="page" id="page-resources">
   <section class="page-hero">
-    <div class="page-hero-img"><img src="strategy consulting.avif" alt="Resources - Nigerian professionals"></div>
+    <div class="page-hero-img"><img src="https://images.unsplash.com/photo-1664575196644-808978af9b1f?w=1600&auto=format&fit=crop&q=80" alt="Resources - Nigerian professionals"></div>
     <div class="container">
       <div class="page-hero-inner">
         <div class="gold-rule anim-fade-up"><span>Resource Hub</span></div>
@@ -1212,15 +1159,14 @@ html{scroll-behavior:smooth}
   <section class="section" style="background:var(--white)">
     <div class="container">
       <div class="resource-filters reveal">
-  <button class="filter-btn active" onclick="filterResources('all',this)">All Resources</button>
-  <button class="filter-btn" onclick="filterResources('free',this)">Free</button>
-  <button class="filter-btn" onclick="filterResources('ebook',this)">eBooks</button>
-  <button class="filter-btn" onclick="filterResources('audio',this)">Audio</button>
-  <button class="filter-btn" onclick="filterResources('video',this)">Video</button>
-  <button class="filter-btn" onclick="filterResources('course',this)">Courses</button>
-  <button class="filter-btn" onclick="filterResources('toolkit',this)">Premium Toolkits</button>
-  <button class="filter-btn" onclick="openAdminDashboard()" style="background:var(--gold);color:var(--navy);margin-left:auto;font-weight:600;border-color:var(--gold)">📊 Admin Dashboard →</button>
-</div>
+        <button class="filter-btn active" onclick="filterResources('all',this)">All Resources</button>
+        <button class="filter-btn" onclick="filterResources('free',this)">Free</button>
+        <button class="filter-btn" onclick="filterResources('ebook',this)">eBooks</button>
+        <button class="filter-btn" onclick="filterResources('audio',this)">Audio</button>
+        <button class="filter-btn" onclick="filterResources('video',this)">Video</button>
+        <button class="filter-btn" onclick="filterResources('course',this)">Courses</button>
+        <button class="filter-btn" onclick="filterResources('toolkit',this)">Premium Toolkits</button>
+      </div>
       <div class="hub-grid" id="resourcesGrid">
         <!-- Populated by JS -->
       </div>
@@ -1242,7 +1188,7 @@ html{scroll-behavior:smooth}
 ═══════════════════════════════════════ -->
 <div class="page" id="page-assessments">
   <section class="page-hero">
-    <div class="page-hero-img"><img src="performance framework.avif" alt="Assessments"></div>
+    <div class="page-hero-img"><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1600&auto=format&fit=crop&q=80" alt="Assessments"></div>
     <div class="container">
       <div class="page-hero-inner">
         <div class="gold-rule anim-fade-up"><span>Diagnostic Tools</span></div>
@@ -1263,7 +1209,7 @@ html{scroll-behavior:smooth}
             <div class="assess-meta-item">Questions: <span>12</span></div>
             <div class="assess-meta-item">Result: <span>Instant PDF</span></div>
           </div>
-          <a href="file:///C:/Users/PERSONAL/Downloads/xfly-scorecard-platform.html"> <button class="btn btn-gold btn-arrow" style="margin-top:28px">Start Assessment</button></a>
+          <button class="btn btn-gold btn-arrow" style="margin-top:28px">Start Assessment</button>
         </div>
         <div class="assess-card reveal reveal-delay-1">
           <div class="assess-icon">🎯</div>
@@ -1274,7 +1220,7 @@ html{scroll-behavior:smooth}
             <div class="assess-meta-item">Questions: <span>10</span></div>
             <div class="assess-meta-item">Result: <span>Instant PDF</span></div>
           </div>
-          <a href="file:///C:/Users/PERSONAL/Downloads/xfly-scorecard-platform.html" target="_blank" rel="noopener noreferrer"><button class="btn btn-gold btn-arrow" style="margin-top:28px">Start Assessment</button></a>
+          <button class="btn btn-gold btn-arrow" style="margin-top:28px">Start Assessment</button>
         </div>
         <div class="assess-card reveal reveal-delay-2">
           <div class="assess-icon">👑</div>
@@ -1285,7 +1231,7 @@ html{scroll-behavior:smooth}
             <div class="assess-meta-item">Questions: <span>8</span></div>
             <div class="assess-meta-item">Result: <span>Instant PDF</span></div>
           </div>
-         <a href="file:///C:/Users/PERSONAL/Downloads/xfly-scorecard-platform.html" target="_blank" rel="noopener noreferrer"> <button class="btn btn-gold btn-arrow" style="margin-top:28px">Start Assessment</button></a>
+          <button class="btn btn-gold btn-arrow" style="margin-top:28px">Start Assessment</button>
         </div>
         <div class="assess-card reveal reveal-delay-3">
           <div class="assess-icon">📊</div>
@@ -1296,7 +1242,7 @@ html{scroll-behavior:smooth}
             <div class="assess-meta-item">Questions: <span>12</span></div>
             <div class="assess-meta-item">Result: <span>Instant PDF</span></div>
           </div>
-         <a href="file:///C:/Users/PERSONAL/Downloads/xfly-scorecard-platform.html" target="_blank" rel="noopener noreferrer"><button class="btn btn-gold btn-arrow" style="margin-top:28px">Start Assessment</button></a>
+          <button class="btn btn-gold btn-arrow" style="margin-top:28px">Start Assessment</button>
         </div>
       </div>
       <!-- Results promise -->
@@ -1330,7 +1276,7 @@ html{scroll-behavior:smooth}
 ═══════════════════════════════════════ -->
 <div class="page" id="page-blog">
   <section class="page-hero">
-    <div class="page-hero-img"><img src="blog.avif" alt="Blog"></div>
+    <div class="page-hero-img"><img src="https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=1600&auto=format&fit=crop&q=80" alt="Blog"></div>
     <div class="container">
       <div class="page-hero-inner">
         <div class="gold-rule anim-fade-up"><span>Insights & Intelligence</span></div>
@@ -1492,7 +1438,7 @@ html{scroll-behavior:smooth}
 ═══════════════════════════════════════ -->
 <div class="page" id="page-booking">
   <section class="page-hero" style="padding-bottom:60px">
-    <div class="page-hero-img"><img src="booking call" alt="Booking - West African professional"></div>
+    <div class="page-hero-img"><img src="https://images.unsplash.com/photo-1664575602554-2f5d8e7a8c4d?w=1600&auto=format&fit=crop&q=80" alt="Booking - West African professional"></div>
     <div class="container">
       <div class="page-hero-inner">
         <div class="gold-rule anim-fade-up"><span>Get in Touch</span></div>
@@ -1985,22 +1931,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const img = new Image();
     img.src = src;
   });
-  // ════════════════════════════════════════
-// ADMIN DASHBOARD ACCESS
-// ════════════════════════════════════════
-window.openAdminDashboard = function
-() {
-  const password = prompt('Enter admin password:');
-  const correctPassword = 'xfly2025'; // Change this to your desired password
-  
-  if (password === correctPassword) {
-    window.open('xfly-admin.html', '_blank');
-  } else if (password !== null) {
-    showToast('Incorrect password. Access denied.');
-  }
-}
 });
 </script>
 </body>
 </html>
-
