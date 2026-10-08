@@ -1,0 +1,2006 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>XFLY Strategies | Engineer Growth. Multiply Capacity. Scale Impact.</title>
+<meta name="description" content="XFLY Strategies is a transformation and growth advisory firm helping organizations design strategy, strengthen leadership, and build systems for scalable global impact.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════
+   CSS CUSTOM PROPERTIES
+═══════════════════════════════════════════════ */
+:root {
+  --navy: #0B1628;
+  --navy-mid: #122040;
+  --navy-light: #1A3060;
+  --gold: #C9A84C;
+  --gold-light: #E2C06A;
+  --gold-pale: #F5EDD8;
+  --white: #FFFFFF;
+  --off-white: #F8F6F1;
+  --gray-100: #F0EDE8;
+  --gray-200: #D8D4CC;
+  --gray-400: #9A9590;
+  --gray-600: #5C5750;
+  --emerald: #1B5E4B;
+  --emerald-light: #2D8C6E;
+  --royal: #1E3A8A;
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-title: 'Cinzel', Georgia, serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
+  --shadow-sm: 0 2px 12px rgba(11,22,40,.08);
+  --shadow-md: 0 8px 32px rgba(11,22,40,.12);
+  --shadow-lg: 0 24px 64px rgba(11,22,40,.18);
+  --shadow-gold: 0 8px 32px rgba(201,168,76,.2);
+  --max: 1320px;
+  --r: 0px;
+}
+/* ═══════════════════════════════════════════════
+   RESET & BASE
+═══════════════════════════════════════════════ */
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:var(--font-body);background:var(--white);color:var(--navy);line-height:1.6;overflow-x:hidden;transition:opacity .2s}
+body.loading{opacity:0}
+img{max-width:100%;display:block;image-rendering:-webkit-optimize-contrast;image-rendering:crisp-edges}
+a{color:inherit;text-decoration:none}
+button{font-family:var(--font-body);cursor:pointer}
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:var(--navy)}
+::-webkit-scrollbar-thumb{background:var(--gold)}
+::selection{background:var(--gold);color:var(--navy)}
+
+/* ═══════════════════════════════════════════════
+   UTILITY CLASSES
+═══════════════════════════════════════════════ */
+.container{max-width:var(--max);margin:0 auto;padding:0 48px}
+.section{padding:112px 0}
+.section-sm{padding:72px 0}
+.text-center{text-align:center}
+.text-gold{color:var(--gold)}
+.text-navy{color:var(--navy)}
+.text-white{color:var(--white)}
+.bg-navy{background:var(--navy)}
+.bg-off-white{background:var(--off-white)}
+.bg-gold-pale{background:var(--gold-pale)}
+.hidden{display:none!important}
+.page{display:none}
+.page.active{display:block}
+@keyframes fadeUp{from{opacity:0;transform:translateY(32px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes slideRight{from{opacity:0;transform:translateX(-24px)}to{opacity:1;transform:translateX(0)}}
+@keyframes countUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+@keyframes shimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.6}}
+@keyframes gridMove{from{transform:translateY(0)}to{transform:translateY(-60px)}}
+.anim-fade-up{animation:fadeUp .8s ease both}
+.anim-fade-up-d1{animation:fadeUp .8s ease .15s both}
+.anim-fade-up-d2{animation:fadeUp .8s ease .3s both}
+.anim-fade-up-d3{animation:fadeUp .8s ease .45s both}
+
+/* ═══════════════════════════════════════════════
+   TYPOGRAPHY
+═══════════════════════════════════════════════ */
+.display-xl{font-family:var(--font-display);font-size:clamp(52px,6vw,88px);font-weight:600;line-height:1.05;letter-spacing:-.5px}
+.display-lg{font-family:var(--font-display);font-size:clamp(40px,4.5vw,64px);font-weight:600;line-height:1.1;letter-spacing:-.3px}
+.display-md{font-family:var(--font-display);font-size:clamp(30px,3.5vw,48px);font-weight:600;line-height:1.15}
+.display-sm{font-family:var(--font-display);font-size:clamp(24px,2.5vw,36px);font-weight:600;line-height:1.2}
+.title-caps{font-family:var(--font-title);font-size:12px;letter-spacing:3px;text-transform:uppercase;font-weight:600}
+.body-lg{font-size:18px;line-height:1.7;font-weight:300}
+.body-md{font-size:16px;line-height:1.7;font-weight:400}
+.body-sm{font-size:14px;line-height:1.6;color:var(--gray-600)}
+
+/* ═══════════════════════════════════════════════
+   GOLD DIVIDER
+═══════════════════════════════════════════════ */
+.gold-rule{display:flex;align-items:center;gap:16px;margin-bottom:24px}
+.gold-rule::before{content:'';width:40px;height:1px;background:var(--gold)}
+.gold-rule span{font-family:var(--font-title);font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold)}
+
+/* ═══════════════════════════════════════════════
+   BUTTONS
+═══════════════════════════════════════════════ */
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 32px;font-size:13px;font-weight:600;letter-spacing:.5px;border:none;transition:all .3s;position:relative;overflow:hidden}
+.btn::before{content:'';position:absolute;inset:0;background:rgba(255,255,255,.08);opacity:0;transition:opacity .2s}
+.btn:hover::before{opacity:1}
+.btn-gold{background:var(--gold);color:var(--navy)}
+.btn-gold:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:var(--shadow-gold)}
+.btn-outline-gold{background:transparent;border:1px solid var(--gold);color:var(--gold)}
+.btn-outline-gold:hover{background:var(--gold);color:var(--navy);transform:translateY(-2px)}
+.btn-outline-white{background:transparent;border:1px solid rgba(255,255,255,.4);color:var(--white)}
+.btn-outline-white:hover{background:rgba(255,255,255,.1);border-color:var(--white)}
+.btn-navy{background:var(--navy);color:var(--white)}
+.btn-navy:hover{background:var(--navy-light);transform:translateY(-2px)}
+.btn-lg{padding:18px 44px;font-size:14px}
+.btn-arrow::after{content:'→';margin-left:4px;transition:transform .2s}
+.btn-arrow:hover::after{transform:translateX(4px)}
+
+/* ═══════════════════════════════════════════════
+   NAVIGATION
+═══════════════════════════════════════════════ */
+#navbar{position:fixed;top:0;left:0;right:0;z-index:1000;transition:all .4s;background:transparent}
+.nav-inner{max-width:var(--max);margin:0 auto;padding:0 48px;display:flex;align-items:center;justify-content:space-between;height:80px}
+.nav-scrolled #navbar,#navbar.scrolled{background:rgba(11,22,40,.97);backdrop-filter:blur(20px);border-bottom:1px solid rgba(201,168,76,.15);box-shadow:0 4px 24px rgba(0,0,0,.2)}
+.nav-logo{display:flex;flex-direction:column;gap:0}
+.nav-logo-name{font-family:var(--font-title);font-size:20px;letter-spacing:4px;color:var(--white);font-weight:700}
+.nav-logo-tag{font-family:var(--font-body);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-top:-2px}
+.nav-links{display:flex;align-items:center;gap:4px}
+.nav-link{font-size:13px;font-weight:500;letter-spacing:.3px;color:rgba(255,255,255,.75);padding:8px 16px;transition:color .2s;background:none;border:none;position:relative}
+.nav-link::after{content:'';position:absolute;bottom:4px;left:16px;right:16px;height:1px;background:var(--gold);transform:scaleX(0);transition:transform .25s}
+.nav-link:hover{color:var(--white)}
+.nav-link:hover::after,.nav-link.active::after{transform:scaleX(1)}
+.nav-link.active{color:var(--white)}
+.nav-cta{background:var(--gold);color:var(--navy)!important;padding:10px 24px;font-weight:600;font-size:13px;letter-spacing:.3px;border:none;transition:all .2s}
+.nav-cta:hover{background:var(--gold-light)!important}
+.nav-cta::after{display:none!important}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;padding:8px;position:relative;z-index:1001}
+.hamburger span{width:26px;height:2px;background:var(--white);transition:all .35s cubic-bezier(.4,0,.2,1);transform-origin:center}
+.hamburger.active span:nth-child(1){transform:rotate(45deg) translateY(7px)}
+.hamburger.active span:nth-child(2){opacity:0;transform:translateX(-10px)}
+.hamburger.active span:nth-child(3){transform:rotate(-45deg) translateY(-7px)}
+.mobile-menu{position:fixed;top:80px;left:0;right:0;bottom:0;background:rgba(11,22,40,.98);backdrop-filter:blur(20px);padding:48px;z-index:999;transform:translateX(100%);opacity:0;transition:all .4s cubic-bezier(.4,0,.2,1);pointer-events:none;overflow-y:auto}
+.mobile-menu.open{transform:translateX(0);opacity:1;pointer-events:all}
+.mobile-menu .nav-link{display:block;padding:18px 0;border-bottom:1px solid rgba(255,255,255,.05);font-size:17px;color:rgba(255,255,255,.7);transition:all .2s;letter-spacing:.5px}
+.mobile-menu .nav-link:hover{color:var(--gold);padding-left:12px}
+.mobile-menu .nav-link:last-child{border-bottom:none}
+.mobile-menu .nav-cta{margin-top:32px;width:100%;justify-content:center;padding:16px;font-size:15px}
+/* Mobile visibility */
+
+@media screen and (max-width:900px){
+  .nav-links{display:none !important;}
+  .hamburger{display:flex !important;}
+   .nav-inner{padding:0 24px}
+}
+@media(min-width:901px){
+  .hamburger{display:none!important}
+ }
+
+@media(max-width:600px){
+  .nav-inner{padding:0 20px}
+  .mobile-menu{padding:32px 20px}
+}
+
+/* ═══════════════════════════════════════════════
+   HOME — HERO
+═══════════════════════════════════════════════ */
+.hero{min-height:100vh;background:var(--navy);display:flex;align-items:center;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;overflow:hidden}
+.hero-bg-photo{position:absolute;inset:0;background-image:url(hero\ bg.avif);background-size:cover;background-position:center 30%;opacity:.18;filter:grayscale(20%)}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(201,168,76,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,.04) 1px,transparent 1px);background-size:80px 80px;animation:gridMove 20s linear infinite}
+.hero-glow-1{position:absolute;top:-20%;right:-10%;width:700px;height:700px;background:radial-gradient(circle,rgba(30,58,138,.5) 0%,transparent 65%);pointer-events:none}
+.hero-glow-2{position:absolute;bottom:-10%;left:-10%;width:500px;height:500px;background:radial-gradient(circle,rgba(201,168,76,.14) 0%,transparent 65%);pointer-events:none}
+.hero-glow-3{position:absolute;top:40%;left:40%;width:400px;height:400px;background:radial-gradient(circle,rgba(27,94,75,.2) 0%,transparent 60%);pointer-events:none}
+.hero-content{position:relative;z-index:2;padding:140px 0 100px;width:100%}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:12px;padding:8px 20px;border:1px solid rgba(201,168,76,.3);background:rgba(201,168,76,.06);margin-bottom:40px}
+.hero-eyebrow span{font-family:var(--font-title);font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold)}
+.hero-eyebrow::before{content:'';width:6px;height:6px;background:var(--gold);border-radius:50%;animation:pulse 2s infinite}
+.hero-h1{font-family:var(--font-display);font-size:clamp(52px,7vw,100px);font-weight:600;line-height:.96;color:var(--white);margin-bottom:32px;letter-spacing:-.5px}
+.hero-h1 .accent{color:var(--gold);font-style:italic}
+.hero-sub{font-size:18px;line-height:1.75;color:rgba(255,255,255,.65);max-width:600px;margin-bottom:56px;font-weight:300}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:16px;margin-bottom:80px}
+.hero-stats{display:flex;gap:48px;padding-top:56px;border-top:1px solid rgba(255,255,255,.08)}
+.hero-stat-num{font-family:var(--font-display);font-size:40px;font-weight:600;color:var(--gold);line-height:1}
+.hero-stat-label{font-size:12px;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.45);margin-top:4px}
+/* hero right-side real photo */
+.hero-image-side{position:absolute;right:0;top:0;bottom:0;width:46%;overflow:hidden}
+.hero-img-overlay{position:absolute;inset:0;background:linear-gradient(90deg,var(--navy) 0%,rgba(11,22,40,.55) 45%,rgba(11,22,40,.2) 100%);z-index:1}
+.hero-img-real{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
+.hero-img-mock{width:100%;height:100%;background:linear-gradient(135deg,var(--navy-light) 0%,var(--navy-mid) 40%,#0d2550 100%);display:flex;align-items:center;justify-content:center}
+.hero-globe{width:420px;height:420px;border-radius:50%;border:1px solid rgba(201,168,76,.15);position:relative;display:flex;align-items:center;justify-content:center}
+.hero-globe::before{content:'';position:absolute;inset:-20px;border-radius:50%;border:1px solid rgba(201,168,76,.08)}
+.hero-globe::after{content:'';position:absolute;inset:-40px;border-radius:50%;border:1px solid rgba(201,168,76,.04)}
+.globe-inner{width:280px;height:280px;border-radius:50%;background:linear-gradient(135deg,rgba(30,58,138,.6),rgba(27,94,75,.4));border:1px solid rgba(201,168,76,.2);display:flex;align-items:center;justify-content:center}
+.globe-core{font-family:var(--font-title);font-size:28px;letter-spacing:4px;color:var(--gold)}
+
+/* ═══════════════════════════════════════════════
+   IMAGE UTILITIES
+═══════════════════════════════════════════════ */
+.img-cover{width:100%;height:100%;object-fit:cover;object-position:center;display:block;transition:transform .7s cubic-bezier(.25,.46,.45,.94)}
+.img-cover:hover{transform:scale(1.05)}
+.img-wrap{overflow:hidden;position:relative}
+.img-overlay-dark{position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(11,22,40,.85) 100%);z-index:1;transition:opacity .4s}
+.img-wrap:hover .img-overlay-dark{opacity:.7}
+.img-overlay-navy{position:absolute;inset:0;background:rgba(11,22,40,.55);z-index:1}
+.img-overlay-gold{position:absolute;inset:0;background:linear-gradient(135deg,rgba(11,22,40,.7) 0%,rgba(201,168,76,.1) 100%);z-index:1}
+/* Service visual with real photos */
+.service-visual-img{position:relative;aspect-ratio:1;overflow:hidden;cursor:pointer}
+.service-visual-img img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.8) contrast(1.05);transition:all .6s cubic-bezier(.25,.46,.45,.94)}
+.service-visual-img:hover img{transform:scale(1.06);filter:saturate(1) contrast(1.1)}
+.service-visual-img::after{content:'';position:absolute;inset:0;background:linear-gradient(160deg,rgba(11,22,40,.45) 0%,rgba(201,168,76,.08) 100%);pointer-events:none;transition:opacity .4s}
+.service-visual-img:hover::after{opacity:.7}
+.service-visual-img .sv-label{position:absolute;bottom:20px;left:20px;z-index:2;font-family:var(--font-title);font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);background:rgba(11,22,40,.8);padding:8px 14px;backdrop-filter:blur(12px);transition:all .3s}
+.service-visual-img:hover .sv-label{background:rgba(201,168,76,.9);color:var(--navy)}
+/* Blog card real photos */
+.blog-card-img-real{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s cubic-bezier(.25,.46,.45,.94)}
+.blog-card:hover .blog-card-img-real{transform:scale(1.06)}
+/* Resource hub top image */
+.hub-card-top-img{position:relative;min-height:180px;overflow:hidden}
+.hub-card-top-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.5;filter:grayscale(30%);transition:all .6s cubic-bezier(.25,.46,.45,.94)}
+.hub-card:hover .hub-card-top-img img{transform:scale(1.08);opacity:.65;filter:grayscale(10%)}
+.hub-card-top-img::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,22,40,.3) 0%,rgba(11,22,40,.85) 100%)}
+.hub-card-top-img .hub-card-type,.hub-card-top-img .hub-card-icon,.hub-card-top-img .hub-price{position:relative;z-index:1}
+/* Difference section background */
+.difference-img-side{position:relative;height:560px;overflow:hidden}
+.difference-img-side img{width:100%;height:100%;object-fit:cover;filter:grayscale(20%) contrast(1.05);transition:transform .8s cubic-bezier(.25,.46,.45,.94)}
+.difference-img-side:hover img{transform:scale(1.04)}
+.difference-img-side::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,var(--navy) 0%,transparent 40%)}
+/* Page hero photo backgrounds */
+.page-hero-img{position:absolute;inset:0;z-index:0}
+.page-hero-img img{width:100%;height:100%;object-fit:cover;object-position:center 30%;opacity:.12;filter:grayscale(30%)}
+/* Testimonials */
+.testimonials{padding:120px 0;background:var(--off-white)}
+.testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.testimonial-card{background:var(--white);padding:40px;border:1px solid var(--gray-200);position:relative;transition:all .3s}
+.testimonial-card::before{content:'❝';font-family:var(--font-display);font-size:64px;color:var(--gold-pale);position:absolute;top:16px;left:28px;line-height:1}
+.testimonial-card:hover{box-shadow:var(--shadow-md);border-color:rgba(201,168,76,.3);transform:translateY(-4px)}
+.testimonial-text{font-family:var(--font-display);font-size:18px;line-height:1.7;color:var(--navy);font-style:italic;margin-bottom:28px;padding-top:28px;position:relative;z-index:1}
+.testimonial-author{display:flex;align-items:center;gap:14px}
+.testimonial-avatar{width:48px;height:48px;border-radius:50%;overflow:hidden;background:var(--navy-light);flex-shrink:0;border:2px solid rgba(201,168,76,.3)}
+.testimonial-avatar img{width:100%;height:100%;object-fit:cover}
+.testimonial-name{font-weight:700;font-size:15px;margin-bottom:2px}
+.testimonial-role{font-size:12px;color:var(--gray-400);letter-spacing:.5px}
+.testimonial-stars{color:var(--gold);font-size:13px;letter-spacing:2px;margin-bottom:16px}
+/* Clients strip */
+.clients-strip{padding:60px 0;background:var(--navy);border-top:1px solid rgba(255,255,255,.05)}
+.clients-label{font-family:var(--font-title);font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.3);text-align:center;margin-bottom:32px}
+.clients-logos{display:flex;align-items:center;justify-content:center;gap:56px;flex-wrap:wrap}
+.client-logo{font-family:var(--font-title);font-size:13px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.2);transition:color .3s;cursor:default}
+.client-logo:hover{color:rgba(201,168,76,.6)}
+/* Founder photo */
+.founder-portrait-real{width:100%;height:100%;object-fit:cover;object-position:top center}
+.founder-upload-overlay{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(160deg,rgba(30,58,138,.6),rgba(27,94,75,.4));z-index:2}
+
+/* ═══════════════════════════════════════════════
+   TARGET vs TIME SECTION
+═══════════════════════════════════════════════ */
+.target-time{padding:100px 0;background:var(--gold)}
+.tt-intro{background:var(--navy);padding:48px 32px;margin-bottom:32px;text-align:center}
+.tt-intro h2{font-family:var(--font-display);font-size:clamp(28px,4vw,48px);font-weight:600;color:var(--white);margin-bottom:24px;line-height:1.2}
+.tt-intro p{font-size:17px;line-height:1.8;color:rgba(255,255,255,.75);margin-bottom:16px}
+.tt-intro p strong{color:var(--gold);font-weight:700}
+.tt-cols{display:grid;grid-template-columns:1fr;gap:24px;margin-bottom:32px}
+@media(min-width:768px){.tt-cols{grid-template-columns:1fr 1fr}}
+.tt-col{background:rgba(11,22,40,.08);padding:40px 32px;border:2px solid rgba(11,22,40,.12);text-align:center;transition:all .3s}
+.tt-col:hover{border-color:var(--navy);transform:translateY(-4px)}
+.tt-icon{width:72px;height:72px;background:var(--navy);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:32px;margin:0 auto 24px}
+.tt-title{font-family:var(--font-title);font-size:22px;letter-spacing:2px;text-transform:uppercase;color:var(--navy);margin-bottom:16px}
+.tt-desc{font-size:15px;line-height:1.7;color:rgba(11,22,40,.7)}
+.tt-question{background:var(--navy);padding:48px 32px;text-align:center}
+.tt-question h3{font-family:var(--font-display);font-size:clamp(24px,4vw,40px);font-weight:600;color:var(--gold);margin-bottom:16px;line-height:1.3}
+.tt-question p{font-size:16px;color:rgba(255,255,255,.7);margin-bottom:32px;line-height:1.7}
+
+/* ═══════════════════════════════════════════════
+   HOME — WHAT WE DO
+═══════════════════════════════════════════════ */
+.what-we-do{padding:120px 0;background:var(--white)}
+.section-header{margin-bottom:72px}
+.services-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--gray-200)}
+.service-col{background:var(--white);padding:56px 40px;transition:all .35s;position:relative;overflow:hidden}
+.service-col::before{content:'';position:absolute;top:0;left:0;width:2px;height:0;background:var(--gold);transition:height .4s}
+.service-col:hover::before{height:100%}
+.service-col:hover{background:var(--off-white)}
+.service-icon{width:52px;height:52px;background:var(--gold-pale);border:1px solid rgba(201,168,76,.2);display:flex;align-items:center;justify-content:center;margin-bottom:28px;font-size:22px}
+.service-title{font-family:var(--font-display);font-size:26px;font-weight:600;margin-bottom:16px;line-height:1.2}
+.service-body{font-size:15px;line-height:1.7;color:var(--gray-600)}
+
+/* ═══════════════════════════════════════════════
+   HOME — XFLY DIFFERENCE
+═══════════════════════════════════════════════ */
+.difference{padding:120px 0;background:var(--navy)}
+.difference-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.diff-statements{display:flex;flex-direction:column;gap:0}
+.diff-item{padding:28px 0;border-bottom:1px solid rgba(255,255,255,.07);display:flex;align-items:flex-start;gap:20px}
+.diff-item:last-child{border-bottom:none}
+.diff-bullet{width:8px;height:8px;background:var(--gold);border-radius:50%;flex-shrink:0;margin-top:8px}
+.diff-text{font-family:var(--font-display);font-size:22px;font-weight:500;color:var(--white);line-height:1.4;font-style:italic}
+.frameworks-list{display:flex;flex-direction:column;gap:12px;margin-top:16px}
+.framework-tag{padding:14px 20px;background:rgba(255,255,255,.04);border:1px solid rgba(201,168,76,.15);color:rgba(255,255,255,.8);font-size:14px;letter-spacing:.3px;transition:all .25s;display:flex;align-items:center;gap:12px}
+.framework-tag::before{content:'→';color:var(--gold);font-size:16px}
+.framework-tag:hover{background:rgba(201,168,76,.06);border-color:rgba(201,168,76,.3);color:var(--white)}
+
+/* ═══════════════════════════════════════════════
+   HOME — IMPACT METRICS
+═══════════════════════════════════════════════ */
+.impact{padding:100px 0;background:var(--gold)}
+.impact-inner{display:grid;grid-template-columns:repeat(4,1fr);gap:2px}
+.impact-stat{background:var(--gold);padding:48px 32px;text-align:center;position:relative}
+.impact-stat::after{content:'';position:absolute;right:0;top:20%;bottom:20%;width:1px;background:rgba(11,22,40,.15)}
+.impact-stat:last-child::after{display:none}
+.impact-num{font-family:var(--font-display);font-size:clamp(48px,5vw,72px);font-weight:700;color:var(--navy);line-height:1;margin-bottom:8px}
+.impact-label{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:rgba(11,22,40,.65);font-weight:600}
+
+/* ═══════════════════════════════════════════════
+   HOME — PROCESS
+═══════════════════════════════════════════════ */
+.process{padding:120px 0;background:var(--off-white)}
+.process-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative}
+.process-steps::before{content:'';position:absolute;top:32px;left:calc(12.5% + 16px);right:calc(12.5% + 16px);height:1px;background:linear-gradient(90deg,var(--gold),rgba(201,168,76,.3))}
+.process-step{padding:48px 32px 32px;text-align:center;position:relative}
+.step-num{width:64px;height:64px;background:var(--navy);border:2px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 28px;font-family:var(--font-title);font-size:18px;color:var(--gold);position:relative;z-index:1;transition:all .3s}
+.process-step:hover .step-num{background:var(--gold);color:var(--navy)}
+.step-title{font-family:var(--font-display);font-size:22px;font-weight:600;margin-bottom:12px}
+.step-body{font-size:14px;line-height:1.7;color:var(--gray-600)}
+
+/* ═══════════════════════════════════════════════
+   HOME — FEATURED RESOURCES
+═══════════════════════════════════════════════ */
+.resources-home{padding:120px 0;background:var(--white)}
+.resources-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:48px}
+.resource-card{border:1px solid var(--gray-200);padding:40px;transition:all .3s;position:relative;overflow:hidden}
+.resource-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--gold);transform:scaleX(0);transition:transform .3s;transform-origin:left}
+.resource-card:hover{border-color:rgba(201,168,76,.3);box-shadow:var(--shadow-md);transform:translateY(-4px)}
+.resource-card:hover::after{transform:scaleX(1)}
+.resource-tag{display:inline-block;font-family:var(--font-title);font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:5px 12px;background:var(--gold-pale);color:var(--gold);margin-bottom:20px;border:1px solid rgba(201,168,76,.2)}
+.resource-title{font-family:var(--font-display);font-size:22px;font-weight:600;margin-bottom:12px;line-height:1.3}
+.resource-desc{font-size:14px;line-height:1.6;color:var(--gray-600)}
+.resource-link{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:var(--gold);margin-top:20px;letter-spacing:.3px;transition:gap .2s}
+.resource-link:hover{gap:10px}
+
+/* ═══════════════════════════════════════════════
+   HOME — BOOKING
+═══════════════════════════════════════════════ */
+.booking-home{padding:120px 0;background:var(--navy)}
+.booking-options{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:56px}
+.booking-option{padding:36px;border:1px solid rgba(255,255,255,.08);cursor:pointer;transition:all .3s;position:relative;overflow:hidden}
+.booking-option::before{content:'';position:absolute;top:0;left:0;width:100%;height:2px;background:var(--gold);transform:scaleX(0);transition:transform .3s;transform-origin:left}
+.booking-option:hover::before{transform:scaleX(1)}
+.booking-option:hover{border-color:rgba(201,168,76,.3);background:rgba(201,168,76,.04)}
+.booking-opt-icon{font-size:28px;margin-bottom:16px}
+.booking-opt-title{font-family:var(--font-display);font-size:20px;font-weight:600;color:var(--white);margin-bottom:8px}
+.booking-opt-desc{font-size:14px;color:rgba(255,255,255,.5);line-height:1.6}
+.booking-opt-duration{font-family:var(--font-title);font-size:10px;letter-spacing:2px;color:var(--gold);margin-top:16px;text-transform:uppercase}
+
+/* ═══════════════════════════════════════════════
+   HOME — BLOG PREVIEW
+═══════════════════════════════════════════════ */
+.blog-home{padding:120px 0;background:var(--off-white)}
+.blog-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:24px}
+.blog-card{background:var(--white);overflow:hidden;transition:all .3s}
+.blog-card:hover{box-shadow:var(--shadow-md);transform:translateY(-4px)}
+.blog-card-img{height:220px;background:var(--navy-mid);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.blog-card-img-large{height:340px}
+.blog-img-placeholder{font-family:var(--font-title);font-size:32px;letter-spacing:4px;color:rgba(201,168,76,.4)}
+.blog-category{position:absolute;top:20px;left:20px;font-family:var(--font-title);font-size:9px;letter-spacing:2px;text-transform:uppercase;padding:5px 12px;background:var(--gold);color:var(--navy)}
+.blog-card-body{padding:28px}
+.blog-date{font-size:12px;color:var(--gray-400);letter-spacing:.5px;margin-bottom:10px}
+.blog-card-title{font-family:var(--font-display);font-size:20px;font-weight:600;line-height:1.3;margin-bottom:12px;transition:color .2s}
+.blog-card:hover .blog-card-title{color:var(--gold)}
+.blog-card-excerpt{font-size:14px;line-height:1.6;color:var(--gray-600)}
+.blog-card-large .blog-card-body{padding:36px}
+.blog-card-large .blog-card-title{font-size:26px}
+
+/* ═══════════════════════════════════════════════
+   SERVICES PAGE
+═══════════════════════════════════════════════ */
+.page-hero{padding:180px 0 100px;background:var(--navy);position:relative;overflow:hidden}
+.page-hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(201,168,76,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,.03) 1px,transparent 1px);background-size:80px 80px}
+.page-hero-inner{position:relative;z-index:1}
+.page-hero-title{font-family:var(--font-display);font-size:clamp(40px,5vw,72px);font-weight:600;color:var(--white);margin-bottom:24px;line-height:1.05}
+.page-hero-sub{font-size:18px;color:rgba(255,255,255,.6);max-width:640px;line-height:1.7;font-weight:300}
+.services-detail{padding:100px 0}
+.service-detail-block{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;padding:80px 0;border-bottom:1px solid var(--gray-100)}
+.service-detail-block:last-child{border-bottom:none}
+.service-detail-block.reverse{direction:rtl}
+.service-detail-block.reverse > *{direction:ltr}
+.service-features{list-style:none;display:flex;flex-direction:column;gap:12px;margin-top:28px}
+.service-features li{display:flex;align-items:center;gap:12px;font-size:15px;color:var(--gray-600)}
+.service-features li::before{content:'';width:6px;height:6px;background:var(--gold);border-radius:50%;flex-shrink:0}
+.service-visual{background:var(--navy);padding:56px;aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.service-visual::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(201,168,76,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,.04) 1px,transparent 1px);background-size:40px 40px}
+.service-visual-icon{font-size:64px;position:relative;z-index:1;margin-bottom:20px}
+.service-visual-title{font-family:var(--font-title);font-size:14px;letter-spacing:3px;color:var(--gold);position:relative;z-index:1}
+
+/* ═══════════════════════════════════════════════
+   RESOURCE HUB PAGE
+═══════════════════════════════════════════════ */
+.resource-filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:48px}
+.filter-btn{padding:10px 22px;border:1px solid var(--gray-200);background:transparent;font-size:13px;letter-spacing:.3px;cursor:pointer;transition:all .2s;font-family:var(--font-body)}
+.filter-btn.active,.filter-btn:hover{background:var(--navy);border-color:var(--navy);color:var(--white)}
+.hub-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.hub-card{border:1px solid var(--gray-200);overflow:hidden;transition:all .3s}
+.hub-card:hover{box-shadow:var(--shadow-md);border-color:rgba(201,168,76,.3)}
+.hub-card-top{padding:40px;background:var(--navy);position:relative;min-height:180px;display:flex;flex-direction:column;justify-content:space-between}
+.hub-card-top-free{background:var(--emerald)}
+.hub-card-type{font-family:var(--font-title);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.5)}
+.hub-card-icon{font-size:40px;margin-top:auto}
+.hub-price{font-family:var(--font-display);font-size:28px;font-weight:700;color:var(--gold)}
+.hub-price.free{color:var(--success, #4ade80)}
+.hub-card-body{padding:28px}
+.hub-card-title{font-family:var(--font-display);font-size:20px;font-weight:600;margin-bottom:8px}
+.hub-card-desc{font-size:14px;line-height:1.6;color:var(--gray-600);margin-bottom:20px}
+.btn-sm{padding:10px 22px;font-size:12px;letter-spacing:.5px}
+
+/* ═══════════════════════════════════════════════
+   ASSESSMENTS PAGE
+═══════════════════════════════════════════════ */
+.assessments-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-bottom:80px}
+.assess-card{border:1px solid var(--gray-200);padding:48px;transition:all .3s;cursor:pointer;position:relative;overflow:hidden}
+.assess-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--gold);transform:scaleY(0);transition:transform .3s;transform-origin:bottom}
+.assess-card:hover::before{transform:scaleY(1)}
+.assess-card:hover{box-shadow:var(--shadow-md);transform:translateY(-4px)}
+.assess-icon{width:64px;height:64px;background:var(--gold-pale);border:1px solid rgba(201,168,76,.2);display:flex;align-items:center;justify-content:center;font-size:28px;margin-bottom:24px}
+.assess-title{font-family:var(--font-display);font-size:24px;font-weight:600;margin-bottom:12px}
+.assess-desc{font-size:15px;line-height:1.7;color:var(--gray-600);margin-bottom:24px}
+.assess-meta{display:flex;gap:24px}
+.assess-meta-item{font-size:12px;color:var(--gray-400);letter-spacing:.5px;text-transform:uppercase}
+.assess-meta-item span{color:var(--gold);font-weight:600}
+
+/* ═══════════════════════════════════════════════
+   BLOG PAGE
+═══════════════════════════════════════════════ */
+.blog-categories{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:48px}
+.cat-btn{padding:8px 20px;border:1px solid var(--gray-200);background:transparent;font-size:13px;cursor:pointer;transition:all .2s;font-family:var(--font-title);letter-spacing:1px;text-transform:uppercase;font-size:11px}
+.cat-btn.active,.cat-btn:hover{background:var(--navy);border-color:var(--navy);color:var(--white)}
+.blog-main-grid{display:grid;grid-template-columns:1fr 320px;gap:56px}
+.blog-article-list{display:flex;flex-direction:column;gap:32px}
+.blog-article-item{display:grid;grid-template-columns:200px 1fr;gap:28px;padding-bottom:32px;border-bottom:1px solid var(--gray-100)}
+.blog-article-item:last-child{border-bottom:none}
+.article-thumb{height:140px;background:var(--navy-mid);position:relative;overflow:hidden;flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.article-thumb-text{font-family:var(--font-title);font-size:18px;color:rgba(201,168,76,.4);letter-spacing:3px}
+.article-category{font-family:var(--font-title);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.article-title{font-family:var(--font-display);font-size:20px;font-weight:600;line-height:1.3;margin-bottom:10px;transition:color .2s;cursor:pointer}
+.article-title:hover{color:var(--gold)}
+.article-excerpt{font-size:14px;line-height:1.6;color:var(--gray-600);margin-bottom:12px}
+.article-meta{font-size:12px;color:var(--gray-400)}
+.blog-sidebar h3{font-family:var(--font-display);font-size:22px;font-weight:600;margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid var(--gray-200)}
+.sidebar-popular-item{padding:16px 0;border-bottom:1px solid var(--gray-100);cursor:pointer}
+.sidebar-popular-item:last-child{border-bottom:none}
+.sidebar-popular-num{font-family:var(--font-title);font-size:11px;color:var(--gold);margin-bottom:4px;letter-spacing:1px}
+.sidebar-popular-title{font-size:14px;font-weight:600;line-height:1.4;transition:color .2s}
+.sidebar-popular-item:hover .sidebar-popular-title{color:var(--gold)}
+.newsletter-box{background:var(--navy);padding:32px;margin-top:40px}
+.newsletter-box h4{font-family:var(--font-display);font-size:20px;color:var(--white);margin-bottom:8px}
+.newsletter-box p{font-size:13px;color:rgba(255,255,255,.5);margin-bottom:20px;line-height:1.6}
+.newsletter-input{width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:var(--white);padding:12px 16px;font-size:14px;font-family:var(--font-body);margin-bottom:10px;outline:none;transition:border-color .2s}
+.newsletter-input:focus{border-color:var(--gold)}
+.newsletter-input::placeholder{color:rgba(255,255,255,.3)}
+
+/* ═══════════════════════════════════════════════
+   FOUNDER PAGE
+═══════════════════════════════════════════════ */
+.founder-hero{padding:180px 0 0;background:var(--navy);position:relative;overflow:hidden}
+.founder-hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(201,168,76,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,.03) 1px,transparent 1px);background-size:80px 80px}
+.founder-hero-grid{display:grid;grid-template-columns:1fr 420px;gap:80px;align-items:end;position:relative;z-index:1}
+.founder-hero-content{padding-bottom:80px}
+.founder-name{font-family:var(--font-title);font-size:clamp(28px,4vw,48px);letter-spacing:3px;color:var(--white);margin-bottom:8px}
+.founder-title-role{font-family:var(--font-display);font-size:18px;color:var(--gold);margin-bottom:32px;font-style:italic}
+.founder-intro{font-size:17px;line-height:1.8;color:rgba(255,255,255,.7);max-width:580px;font-weight:300}
+.founder-portrait{align-self:end;background:linear-gradient(180deg,var(--navy-light) 0%,var(--navy-mid) 60%);height:520px;display:flex;align-items:flex-end;justify-content:center;position:relative;overflow:hidden}
+.founder-portrait-placeholder{display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;height:100%;background:linear-gradient(160deg,rgba(30,58,138,.5),rgba(27,94,75,.4))}
+.founder-portrait-initials{font-family:var(--font-title);font-size:80px;letter-spacing:8px;color:rgba(201,168,76,.3)}
+.founder-portrait-note{font-family:var(--font-body);font-size:12px;color:rgba(201,168,76,.4);letter-spacing:2px;text-transform:uppercase;margin-top:8px}
+.founder-content{padding:100px 0;background:var(--white)}
+.founder-bio-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px}
+.founder-philosophy{background:var(--navy);padding:56px;margin-bottom:48px}
+.founder-philosophy blockquote{font-family:var(--font-display);font-size:clamp(22px,2.5vw,32px);font-weight:600;color:var(--white);line-height:1.4;font-style:italic;margin-bottom:16px}
+.founder-philosophy cite{font-size:13px;color:var(--gold);letter-spacing:1px;font-style:normal;font-family:var(--font-title)}
+.differentiator-list{display:flex;flex-direction:column;gap:16px}
+.diff-point{display:flex;align-items:flex-start;gap:16px;padding:20px;border:1px solid var(--gray-200);transition:all .25s}
+.diff-point:hover{border-color:rgba(201,168,76,.3);background:var(--off-white)}
+.diff-point-icon{color:var(--gold);font-size:20px;flex-shrink:0}
+.speaking-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px}
+.speaking-card{background:var(--navy);padding:32px;text-align:center;transition:all .3s}
+.speaking-card:hover{background:var(--navy-light)}
+.speaking-card-icon{font-size:36px;margin-bottom:16px}
+.speaking-card-title{font-family:var(--font-display);font-size:18px;color:var(--white);margin-bottom:8px}
+.speaking-card-desc{font-size:13px;color:rgba(255,255,255,.5);line-height:1.6}
+.founder-cta-block{background:var(--gold);padding:80px;text-align:center;margin-top:80px}
+.founder-cta-block h2{font-family:var(--font-display);font-size:clamp(28px,3.5vw,48px);font-weight:600;color:var(--navy);margin-bottom:16px}
+.founder-cta-block p{font-size:17px;color:rgba(11,22,40,.7);margin-bottom:36px;max-width:520px;margin-left:auto;margin-right:auto}
+
+/* ═══════════════════════════════════════════════
+   BOOKING PAGE
+═══════════════════════════════════════════════ */
+.booking-page{padding:100px 0}
+.booking-layout{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.booking-types{display:flex;flex-direction:column;gap:16px;margin-bottom:48px}
+.booking-type{padding:24px 28px;border:2px solid var(--gray-200);cursor:pointer;transition:all .25s;display:flex;align-items:center;gap:20px}
+.booking-type.selected,.booking-type:hover{border-color:var(--gold);background:var(--gold-pale)}
+.booking-type-icon{font-size:28px;flex-shrink:0}
+.booking-type-info h4{font-family:var(--font-display);font-size:18px;font-weight:600;margin-bottom:4px}
+.booking-type-info p{font-size:13px;color:var(--gray-600)}
+.booking-type-duration{font-family:var(--font-title);font-size:10px;letter-spacing:2px;color:var(--gold);margin-top:4px;text-transform:uppercase}
+.booking-form{background:var(--off-white);padding:48px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+.form-group{display:flex;flex-direction:column;gap:6px;margin-bottom:16px}
+label.form-label{font-size:12px;letter-spacing:1px;text-transform:uppercase;font-weight:600;color:var(--navy);font-family:var(--font-title)}
+input.form-input, textarea.form-input, select.form-input{background:var(--white);border:1px solid var(--gray-200);padding:12px 16px;font-size:15px;font-family:var(--font-body);color:var(--navy);outline:none;transition:border-color .2s;width:100%}
+input.form-input:focus, textarea.form-input:focus, select.form-input:focus{border-color:var(--gold)}
+textarea.form-input{min-height:100px;resize:vertical}
+select.form-input{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23C9A84C' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;padding-right:40px}
+.form-submit-row{display:flex;justify-content:flex-end;margin-top:8px}
+.booking-confirm{background:var(--navy);padding:40px;text-align:center;display:none}
+.booking-confirm.show{display:block}
+.booking-confirm h3{font-family:var(--font-display);font-size:28px;color:var(--gold);margin-bottom:12px}
+.booking-confirm p{font-size:16px;color:rgba(255,255,255,.7);line-height:1.6}
+
+/* ═══════════════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════════════ */
+footer{background:var(--navy);padding:80px 0 0}
+.footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr 1fr;gap:48px;padding-bottom:64px;border-bottom:1px solid rgba(255,255,255,.06)}
+.footer-brand-name{font-family:var(--font-title);font-size:22px;letter-spacing:4px;color:var(--white);margin-bottom:4px}
+.footer-brand-tag{font-size:11px;letter-spacing:2px;color:var(--gold);text-transform:uppercase;margin-bottom:20px;font-family:var(--font-body)}
+.footer-brand-desc{font-size:14px;line-height:1.7;color:rgba(255,255,255,.4);max-width:260px}
+.footer-social{display:flex;gap:10px;margin-top:28px}
+.social-icon{width:36px;height:36px;border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;font-size:14px;color:rgba(255,255,255,.5);cursor:pointer;transition:all .2s}
+.social-icon:hover{border-color:var(--gold);color:var(--gold)}
+.footer-col h4{font-family:var(--font-title);font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:20px}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:10px}
+.footer-links li{font-size:14px;color:rgba(255,255,255,.45);cursor:pointer;transition:color .2s}
+.footer-links li:hover{color:var(--white)}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;padding:28px 0;color:rgba(255,255,255,.3);font-size:13px}
+.footer-legal{display:flex;gap:24px}
+.footer-legal span{cursor:pointer;transition:color .2s}
+.footer-legal span:hover{color:var(--white)}
+
+/* ═══════════════════════════════════════════════
+   MODAL
+═══════════════════════════════════════════════ */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:2000;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s;padding:24px}
+.modal-overlay.open{opacity:1;pointer-events:all}
+.modal-box{background:var(--white);max-width:560px;width:100%;padding:56px;position:relative;transform:scale(.95);transition:transform .3s}
+.modal-overlay.open .modal-box{transform:scale(1)}
+.modal-close{position:absolute;top:20px;right:20px;background:none;border:none;font-size:22px;cursor:pointer;color:var(--gray-400);transition:color .2s}
+.modal-close:hover{color:var(--navy)}
+.modal-box h3{font-family:var(--font-display);font-size:28px;font-weight:600;margin-bottom:8px}
+.modal-box p{font-size:15px;color:var(--gray-600);margin-bottom:28px;line-height:1.6}
+
+/* ═══════════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════════ */
+media(max-width:1100px){
+  .container{padding:0 32px}
+  .hero-image-side{display:none}
+  .footer-top{grid-template-columns:1fr 1fr;gap:40px}
+}
+@media(max-width:900px){
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .section{padding:72px 0}
+  .services-cols{grid-template-columns:1fr}
+  .difference-grid,.booking-layout,.founder-hero-grid,.founder-bio-grid{grid-template-columns:1fr}
+  .impact-inner{grid-template-columns:repeat(2,1fr)}
+  .process-steps{grid-template-columns:1fr 1fr}
+  .process-steps::before{display:none}
+  .resources-grid,.hub-grid,.assessments-grid{grid-template-columns:1fr 1fr}
+  .blog-grid{grid-template-columns:1fr}
+  .blog-main-grid{grid-template-columns:1fr}
+  .blog-sidebar{display:none}
+  .service-detail-block{grid-template-columns:1fr;gap:40px}
+  .service-detail-block.reverse{direction:ltr}
+  .speaking-grid{grid-template-columns:1fr}
+  .footer-top{grid-template-columns:1fr 1fr}
+  .hero-stats{gap:32px;flex-wrap:wrap}
+  .form-row{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+  .container{padding:0 20px}
+  .hero-ctas{flex-direction:column}
+  .resources-grid,.hub-grid,.assessments-grid,.impact-inner{grid-template-columns:1fr}
+  .process-steps{grid-template-columns:1fr}
+  .booking-options{grid-template-columns:1fr}
+  .nav-inner{padding:0 20px}
+  .mobile-menu{padding:24px 20px}
+  .footer-top{grid-template-columns:1fr}
+  .booking-form{padding:28px 20px}
+  .founder-cta-block{padding:48px 24px}
+}
+/* ═══════════════════════════════════════════════
+   SCROLL ANIMATIONS
+═══════════════════════════════════════════════ */
+.reveal{opacity:0;transform:translateY(28px);transition:all .85s cubic-bezier(.25,.46,.45,.94)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:.12s}
+.reveal-delay-2{transition-delay:.24s}
+.reveal-delay-3{transition-delay:.36s}
+.reveal-delay-4{transition-delay:.48s}
+.reveal-delay-5{transition-delay:.6s}
+.reveal-scale{opacity:0;transform:scale(.94);transition:all .8s cubic-bezier(.25,.46,.45,.94)}
+.reveal-scale.visible{opacity:1;transform:scale(1)}
+.reveal-slide-right{opacity:0;transform:translateX(-32px);transition:all .8s cubic-bezier(.25,.46,.45,.94)}
+.reveal-slide-right.visible{opacity:1;transform:translateX(0)}
+/* Stagger children */
+.stagger-children > *{opacity:0;transform:translateY(20px);transition:all .7s cubic-bezier(.25,.46,.45,.94)}
+.stagger-children.visible > *:nth-child(1){opacity:1;transform:translateY(0);transition-delay:.1s}
+.stagger-children.visible > *:nth-child(2){opacity:1;transform:translateY(0);transition-delay:.2s}
+.stagger-children.visible > *:nth-child(3){opacity:1;transform:translateY(0);transition-delay:.3s}
+.stagger-children.visible > *:nth-child(4){opacity:1;transform:translateY(0);transition-delay:.4s}
+.stagger-children.visible > *:nth-child(5){opacity:1;transform:translateY(0);transition-delay:.5s}
+.stagger-children.visible > *:nth-child(6){opacity:1;transform:translateY(0);transition-delay:.6s}
+/* Parallax effect on images */
+.parallax-img{transition:transform .1s linear}
+/* Smooth global scroll */
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){
+  *{animation:none!important;transition:none!important}
+  .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════
+     NAVBAR
+═══════════════════════════════════════ -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <div class="nav-logo" onclick="navigate('home')" style="cursor:pointer">
+      <div class="nav-logo-name">XFLY</div>
+      <div class="nav-logo-tag">Strategies</div>
+    </div>
+    <div class="nav-links">
+      <button class="nav-link" onclick="navigate('home')">Home</button>
+      <button class="nav-link" onclick="navigate('services')">Services</button>
+      <button class="nav-link" onclick="navigate('resources')">Resources</button>
+      <button class="nav-link" onclick="navigate('assessments')">Assessments</button>
+      <button class="nav-link" onclick="navigate('blog')">Insights</button>
+      <button class="nav-link" onclick="navigate('founder')">Founder</button>
+      <button class="nav-link nav-cta btn" onclick="navigate('booking')">Book a Call</button>
+    </div>
+    <button class="hamburger" onclick="toggleMobile()" id="hamburger">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <button class="nav-link" onclick="navigate('home');toggleMobile()">Home</button>
+  <button class="nav-link" onclick="navigate('services');toggleMobile()">Services</button>
+  <button class="nav-link" onclick="navigate('resources');toggleMobile()">Resources</button>
+  <button class="nav-link" onclick="navigate('assessments');toggleMobile()">Assessments</button>
+  <button class="nav-link" onclick="navigate('blog');toggleMobile()">Insights</button>
+  <button class="nav-link" onclick="navigate('founder');toggleMobile()">Founder</button>
+  <button class="nav-link" onclick="navigate('booking');toggleMobile()">Book a Call</button>
+</div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div id="modal-content"></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     PAGE: HOME
+═══════════════════════════════════════ -->
+<div class="page active" id="page-home">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg">
+      <div class="hero-bg-photo"></div>
+      <div class="hero-grid"></div>
+      <div class="hero-glow-1"></div>
+      <div class="hero-glow-2"></div>
+      <div class="hero-glow-3"></div>
+    </div>
+    <div class="hero-image-side">
+      <div class="hero-img-overlay"></div>
+      <img class="hero-img-real" src="hero africa plan.avif" alt="African business professionals in strategic planning session" loading="eager">
+    </div>
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-eyebrow anim-fade-up"><span>Transformation & Growth Advisory</span></div>
+        <h1 class="hero-h1 anim-fade-up-d1">
+          We help you<br>   
+          Design and Achieve <em><br> BIGGER</em>
+          GOALS FASTER
+        </h1>
+        <p class="hero-sub anim-fade-up-d2">XFLY Strategies helps organizations move from ambition to structured execution — building systems that produce measurable, scalable performance.</p>
+        <div class="hero-ctas anim-fade-up-d3">
+          <button class="btn btn-gold btn-lg btn-arrow" onclick="navigate('booking')">Book a Strategy Call</button>
+          <button class="btn btn-outline-white btn-lg" onclick="navigate('assessments')">Take the Growth Assessment</button>
+        </div>
+        <div class="hero-stats anim-fade-up-d3">
+          <div>
+            <div class="hero-stat-num" data-count="">0</div>
+            <div class="hero-stat-label">Leaders Trained</div>
+          </div>
+          <div>
+            <div class="hero-stat-num" data-count="">0</div>
+            <div class="hero-stat-label">Institutions Advised</div>
+          </div>
+          <div>
+            <div class="hero-stat-num" data-count="">0</div>
+            <div class="hero-stat-label">Frameworks Deployed</div>
+          </div>
+          <div>
+            <div class="hero-stat-num" data-count="">0</div>
+            <div class="hero-stat-label">Countries Reached</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TARGET vs TIME (Core Philosophy) -->
+  <section class="target-time">
+    <div class="container">
+      <div class="tt-intro reveal">
+        <h2>The Two Factors That Determine Everything You Achieve</h2>
+        <p>To be the best version of yourself or achieve your best results depends on just two critical factors:</p>
+        <p>Your <strong>GOALS</strong> (which is your TARGET) and your <strong>DAILY ACTIVITIES</strong> (which is your TIME).</p>
+        <p>You're either missing it or failing at your <strong>TARGET</strong> level, missing it or failing at the use of your <strong>TIME</strong>, or both.</p>
+      </div>
+      <div class="tt-cols">
+        <div class="tt-col reveal reveal-delay-1">
+          <div class="tt-icon">🎯</div>
+          <div class="tt-title">TARGET</div>
+          <div class="tt-desc">Your goals, vision, strategy, and what you're aiming to achieve. Are your targets clear, compelling, and correctly architected for exponential results?</div>
+        </div>
+        <div class="tt-col reveal reveal-delay-2">
+          <div class="tt-icon">⏰</div>
+          <div class="tt-title">TIME</div>
+          <div class="tt-desc">How you structure your days, manage your energy, and execute your priorities. Is your time aligned with your highest-value activities?</div>
+        </div>
+      </div>
+      <div class="tt-question reveal reveal-delay-3">
+        <h3>Which Are You Failing At?</h3>
+        <p>Most people struggle with TARGET clarity, TIME mastery, or both. Take our free assessment to discover your exact constraint — and the precise system to fix it.</p>
+        <button class="btn btn-gold btn-lg btn-arrow" onclick="navigate('assessments')">Take the Assessment Now</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT WE DO -->
+  <section class="what-we-do">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="gold-rule"><span>What We Do</span></div>
+        <h2 class="display-lg" style="max-width:560px">Where Strategy Meets Structured Execution</h2>
+      </div>
+      <div class="services-cols">
+        <div class="service-col reveal">
+          <div class="img-wrap" style="height:200px;margin:-56px -40px 36px;overflow:hidden">
+            <img class="img-cover" src="https://images.unsplash.com/photo-1664575196644-808978af9b1f?w=700&auto=format&fit=crop&q=80" alt="Strategy consulting - Nigerian business professional at work" style="height:200px;transform-origin:center">
+            <div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,var(--white) 100%)"></div>
+          </div>
+          <div class="service-icon">⚡</div>
+          <h3 class="service-title">Strategy & Advisory</h3>
+          <p class="service-body">Clarity before speed. Direction before execution. We help organizations design growth architecture that turns ambition into structured, measurable outcomes. We build the map before the journey.</p>
+          <button class="btn btn-navy btn-arrow btn-sm" style="margin-top:28px" onclick="navigate('services')">Explore Service</button>
+        </div>
+        <div class="service-col reveal reveal-delay-2">
+          <div class="img-wrap" style="height:200px;margin:-56px -40px 36px;overflow:hidden">
+            <img class="img-cover" src="https://images.unsplash.com/photo-1664575262619-b28fef7a40a4?w=700&auto=format&fit=crop&q=80" alt="Leadership development - Kenyan executive leading team" style="height:200px;transform-origin:center">
+            <div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,var(--white) 100%)"></div>
+          </div>
+          <div class="service-icon">🏛</div>
+          <h3 class="service-title">Leadership & Culture Systems</h3>
+          <p class="service-body">Build leaders who multiply capacity. We design leadership development frameworks that create decision velocity, accountability culture, and the human infrastructure your growth demands.</p>
+          <button class="btn btn-navy btn-arrow btn-sm" style="margin-top:28px" onclick="navigate('services')">Explore Service</button>
+        </div>
+        <div class="service-col reveal reveal-delay-3">
+          <div class="img-wrap" style="height:200px;margin:-56px -40px 36px;overflow:hidden">
+            <img class="img-cover" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=700&auto=format&fit=crop&q=80" alt="Performance frameworks" style="height:200px;transform-origin:center">
+            <div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,var(--white) 100%)"></div>
+          </div>
+          <div class="service-icon">📈</div>
+          <h3 class="service-title">Performance & Scaling Frameworks</h3>
+          <p class="service-body">From activity to profitable impact. We deploy execution systems that eliminate noise, accelerate decisions, and engineer the organizational conditions for 10X to 1000X growth.</p>
+          <button class="btn btn-navy btn-arrow btn-sm" style="margin-top:28px" onclick="navigate('services')">Explore Service</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE XFLY DIFFERENCE -->
+  <section class="difference">
+    <div class="container">
+      <div class="difference-grid">
+        <div>
+          <div class="gold-rule reveal"><span>The XFLY Difference</span></div>
+          <h2 class="display-lg text-white reveal" style="margin-bottom:48px">We Don't Consult.<br>We <em style="color:var(--gold)">Engineer.</em></h2>
+          <div class="diff-statements">
+            <div class="diff-item reveal reveal-delay-1">
+              <div class="diff-bullet"></div>
+              <div class="diff-text">We don't offer motivation. We build systems that produce results by design.</div>
+            </div>
+            <div class="diff-item reveal reveal-delay-2">
+              <div class="diff-bullet"></div>
+              <div class="diff-text">We don't chase activity. We design performance architectures that deliver measurable outcomes.</div>
+            </div>
+            <div class="diff-item reveal reveal-delay-3">
+              <div class="diff-bullet"></div>
+              <div class="diff-text">We don't settle for incremental growth. We engineer exponential capacity at every level.</div>
+            </div>
+            <div class="diff-item reveal reveal-delay-4">
+              <div class="diff-bullet"></div>
+              <div class="diff-text">We don't apply theory. We deploy proven frameworks tested across governments, institutions, and enterprises.</div>
+            </div>
+          </div>
+        </div>
+        <div class="reveal reveal-delay-2">
+          <div class="difference-img-side" style="margin-bottom:32px">
+            <img src="https://images.unsplash.com/photo-1664575602554-2f5d8e7a8c4d?w=900&auto=format&fit=crop&q=80" alt="Strategic execution - West African professional woman" class="img-cover" style="height:560px">
+            <div style="position:absolute;inset:0;background:linear-gradient(90deg,var(--navy) 0%,transparent 35%);z-index:1"></div>
+            <div style="position:absolute;bottom:32px;left:32px;z-index:2">
+              <div style="font-family:var(--font-title);font-size:22px;letter-spacing:3px;color:var(--gold);margin-bottom:8px">GOALS & DAILY INPUTS FRAMEWORKS</div>
+            </div>
+          </div>
+          <div class="gold-rule"><span>An Effective Goal + Profitable Day = Success </span></div>
+          <h3 class="display-sm text-white" style="margin-bottom:28px;line-height:1.2">Proprietary Systems That Multiply Results</h3>
+          <div class="frameworks-list">
+            <div class="framework-tag">90_Day_Profitable_Day_Planner™</div>
+            <div class="framework-tag">15 Ingredients of a Profitable Day™</div>
+            <div class="framework-tag">Effective vs Ineffective Goal Architecture</div>
+            <div class="framework-tag">10X–1000X Strategic Thinking Model</div>
+            <div class="framework-tag">GOAL SHEET Team version</div>
+            <div class="framework-tag">GOAL SHEET WITH EXAMPLES</div>
+            <div class="framework-tag">Organizational Capacity Multipliers</div>
+            <div class="framework-tag">Daily_Profitability_Checklist</div>
+            <div class="framework-tag">EXECUTIVE GOAL ALIGNMENT SHEET CORPORATE VERSION</div>
+          </div>
+          <button class="btn btn-outline-gold btn-arrow" style="margin-top:36px" onclick="navigate('resources')">Explore All Frameworks</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- IMPACT -->
+  <section class="impact">
+    <div class="container" style="padding:0">
+      <div class="impact-inner">
+        <div class="impact-stat reveal">
+          <div class="impact-num" data-count="">0</div>
+          <div class="impact-label">Leaders Trained</div>
+        </div>
+        <div class="impact-stat reveal reveal-delay-1">
+          <div class="impact-num" data-count="">0</div>
+          <div class="impact-label">Institutions Advised</div>
+        </div>
+        <div class="impact-stat reveal reveal-delay-2">
+          <div class="impact-num" data-count="">0</div>
+          <div class="impact-label">Frameworks Deployed</div>
+        </div>
+        <div class="impact-stat reveal reveal-delay-3">
+          <div class="impact-num" data-count=""></div>
+          <div class="impact-label">Countries Reached</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="process">
+    <div class="container">
+      <div class="section-header text-center reveal">
+        <div class="gold-rule" style="justify-content:center"><span>Our Approach</span></div>
+        <h2 class="display-lg" style="margin-bottom:16px">The XFLY Engagement Process</h2>
+        <p class="body-lg text-gray" style="max-width:520px;margin:0 auto;color:var(--gray-600)">Every engagement follows a proven four-phase methodology designed to produce lasting, scalable transformation.</p>
+      </div>
+      <div class="process-steps">
+        <div class="process-step reveal">
+          <div class="step-num">01</div>
+          <h3 class="step-title">Diagnose</h3>
+          <p class="step-body">Deep organizational assessment to uncover real constraints, gaps, and hidden growth opportunities with precision.</p>
+        </div>
+        <div class="process-step reveal reveal-delay-1">
+          <div class="step-num">02</div>
+          <h3 class="step-title">Design</h3>
+          <p class="step-body">Co-create a bespoke strategic architecture—tailored frameworks, systems, and roadmaps built for your specific context.</p>
+        </div>
+        <div class="process-step reveal reveal-delay-2">
+          <div class="step-num">03</div>
+          <h3 class="step-title">Deploy</h3>
+          <p class="step-body">Execute the strategy with structured implementation support, embedded coaching, and real-time performance tracking.</p>
+        </div>
+        <div class="process-step reveal reveal-delay-3">
+          <div class="step-num">04</div>
+          <h3 class="step-title">Multiply</h3>
+          <p class="step-body">Build internal capacity for self-sustaining growth—so the organization scales beyond the engagement itself.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED RESOURCES -->
+  <section class="resources-home">
+    <div class="container">
+      <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:56px">
+        <div class="reveal">
+          <div class="gold-rule"><span>Resource Hub</span></div>
+          <h2 class="display-lg">Frameworks. Insights.<br>Tools for Scale.</h2>
+        </div>
+        <button class="btn btn-outline-gold btn-arrow reveal" onclick="navigate('resources')">Explore All Resources</button>
+      </div>
+      <div class="resources-grid">
+        <div class="resource-card reveal">
+          <div class="resource-tag">Free PDF</div>
+          <h3 class="resource-title">The Profitable Day System™ — Starter Guide</h3>
+          <p class="resource-desc">The 15 foundational ingredients that separate high-performance days from reactive, low-output days. Instant download.</p>
+          <div class="resource-link btn-arrow">Download Free</div>
+        </div>
+        <div class="resource-card reveal reveal-delay-1">
+          <div class="resource-tag">eBook</div>
+          <h3 class="resource-title">Engineering Goals That Scale: The Architecture of Effective Goal Design</h3>
+          <p class="resource-desc">Move beyond goal-setting into goal architecture. A systematic approach to designing objectives that produce 10X returns.</p>
+          <div class="resource-link btn-arrow">Get the eBook</div>
+        </div>
+        <div class="resource-card reveal reveal-delay-2">
+          <div class="resource-tag">Masterclass</div>
+          <h3 class="resource-title">10X to 1000X: Strategic Thinking for Exponential Organizations</h3>
+          <p class="resource-desc">A 90-minute video masterclass on how elite organizations rewire their thinking to engineer transformational scale.</p>
+          <div class="resource-link btn-arrow">Access Masterclass</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOKING SECTION -->
+  <section class="booking-home">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start">
+        <div class="reveal">
+          <div class="gold-rule"><span>Book a Session</span></div>
+          <h2 class="display-lg text-white" style="margin-bottom:24px">Start Your Growth<br><em style="color:var(--gold)">Conversation.</em></h2>
+          <p class="body-lg" style="color:rgba(255,255,255,.6);max-width:460px;margin-bottom:40px">Choose the engagement that aligns with your current need. Every session is tailored, confidential, and designed to deliver immediate clarity.</p>
+          <button class="btn btn-gold btn-lg btn-arrow" onclick="navigate('booking')">View Full Calendar</button>
+        </div>
+        <div class="booking-options reveal reveal-delay-1">
+          <div class="booking-option" onclick="navigate('booking')">
+            <div class="booking-opt-icon">🎯</div>
+            <div class="booking-opt-title">Strategy Clarity Call</div>
+            <div class="booking-opt-desc">Rapid diagnostic of your current strategic position. Walk away with immediate clarity on your highest-leverage actions.</div>
+            <div class="booking-opt-duration">30 minutes · Complimentary</div>
+          </div>
+          <div class="booking-option" onclick="navigate('booking')">
+            <div class="booking-opt-icon">🏢</div>
+            <div class="booking-opt-title">Organizational Diagnostic</div>
+            <div class="booking-opt-desc">Deep assessment of your organization's growth constraints, leadership capacity, and system gaps.</div>
+            <div class="booking-opt-duration">90 minutes · Premium</div>
+          </div>
+          <div class="booking-option" onclick="navigate('booking')">
+            <div class="booking-opt-icon">👑</div>
+            <div class="booking-opt-title">Executive Advisory Intensive</div>
+            <div class="booking-opt-desc">Full-day or half-day immersive advisory for senior leaders building scalable growth systems.</div>
+            <div class="booking-opt-duration">4–8 hours · Premium</div>
+          </div>
+          <div class="booking-option" onclick="navigate('booking')">
+            <div class="booking-opt-icon">🎤</div>
+            <div class="booking-opt-title">Keynote Speaker Request</div>
+            <div class="booking-opt-desc">Book Precious Phil-ETA for your conference, leadership summit, or corporate event.</div>
+            <div class="booking-opt-duration">Custom Duration</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOG PREVIEW -->
+  <section class="blog-home">
+    <div class="container">
+      <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:56px">
+        <div class="reveal">
+          <div class="gold-rule"><span>Insights</span></div>
+          <h2 class="display-lg">Growth, Leadership<br>& Execution.</h2>
+        </div>
+        <button class="btn btn-navy btn-arrow reveal" onclick="navigate('blog')">Visit Blog</button>
+      </div>
+      <div class="blog-grid">
+        <div class="blog-card blog-card-large reveal">
+          <div class="blog-card-img blog-card-img-large img-wrap">
+            <img class="blog-card-img-real" src="strategy article.avif" alt="Strategy article - African business professional" style="height:340px">
+            <span class="blog-category">Strategy & Growth</span>
+          </div>
+          <div class="blog-card-body">
+            <div class="blog-date">February 12, 2025</div>
+            <h3 class="blog-card-title">Why Busy Is Not Profitable: The Architecture of a High-Performance Day</h3>
+            <p class="blog-card-excerpt">Most leaders confuse motion with momentum. Discover how the most productive executives in the world structure their days around outputs, not activities.</p>
+            <div class="resource-link btn-arrow" onclick="navigate('blog')">Read Article</div>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:24px">
+          <div class="blog-card reveal reveal-delay-1">
+            <div class="blog-card-img img-wrap">
+              <img class="blog-card-img-real" src="hero africa plan.avif" alt="Leadership article - African team collaboration" style="height:220px">
+              <span class="blog-category">Leadership</span>
+            </div>
+            <div class="blog-card-body">
+              <div class="blog-date">January 28, 2025</div>
+              <h3 class="blog-card-title">Engineering Goals That Actually Scale Your Organization</h3>
+              <div class="resource-link btn-arrow" onclick="navigate('blog')">Read Article</div>
+            </div>
+          </div>
+          <div class="blog-card reveal reveal-delay-2">
+            <div class="blog-card-img img-wrap">
+              <img class="blog-card-img-real" src="execution article.avif" alt="Execution article" style="height:220px">
+              <span class="blog-category">Execution</span>
+            </div>
+            <div class="blog-card-body">
+              <div class="blog-date">January 15, 2025</div>
+              <h3 class="blog-card-title">From Strategy to Execution: The Systems Leaders Miss</h3>
+              <div class="resource-link btn-arrow" onclick="navigate('blog')">Read Article</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- FOUNDER SPOTLIGHT -->
+  <section style="padding:120px 0;background:var(--navy)">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:380px 1fr;gap:80px;align-items:center">
+        <div class="reveal reveal-scale" style="position:relative;aspect-ratio:4/5;overflow:hidden">
+          <img src="Amb stand.png" alt="Precious Phil-ETA" style="width:100%;height:100%;object-fit:cover">
+          <div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(11,22,40,.4) 100%)"></div>
+        </div>
+        <div class="reveal reveal-delay-1">
+          <div class="gold-rule"><span>The Founder</span></div>
+          <h2 class="display-md text-white" style="margin-bottom:20px">Precious Phil-ETA</h2>
+          <p style="font-family:var(--font-display);font-size:19px;font-style:italic;color:var(--gold);margin-bottom:28px">Founder & Lead Strategist, XFLY Strategies</p>
+          <p class="body-lg" style="color:rgba(255,255,255,.65);margin-bottom:24px;line-height:1.8">A systems thinker at the intersection of strategy, leadership, and execution — helping organizations move from ambition to scaled, measurable impact.</p>
+          <p class="body-md" style="color:rgba(255,255,255,.5);margin-bottom:36px;line-height:1.75">Through consulting, training, and ecosystem partnerships, Precious has supported leaders, institutions, and entrepreneurs across 12 countries in translating bold vision into practical, measurable outcomes.</p>
+          <button class="btn btn-gold btn-arrow" onclick="navigate('founder')">Meet Precious Phil-ETA</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials">
+    <div class="container">
+      <div class="section-header text-center reveal" style="margin-bottom:64px">
+        <div class="gold-rule" style="justify-content:center"><span>Client Voices</span></div>
+        <h2 class="display-lg">Results That Speak<br>for Themselves</h2>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card reveal">
+          <div class="testimonial-stars">★★★★★</div>
+          <div class="testimonial-text">"XFLY didn't give us a deck and leave. They helped us rebuild the operating architecture of our organization from the inside out. The results in 90 days were beyond what I thought possible."</div>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar"><img src="https://images.unsplash.com/photo-1506863530036-1efeddceb993?w=96&auto=format&fit=crop&q=80" alt="Joyce Effiong - Nigerian CEO"></div>
+            <div><div class="testimonial-name">Joyce Effiong</div><div class="testimonial-role">CEO, Goldrich Africa</div></div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal reveal-delay-1">
+          <div class="testimonial-stars">★★★★★</div>
+          <div class="testimonial-text">"Precious has a rare gift: he sees the system behind your challenges before you do. Our leadership team left the advisory intensive with absolute clarity on priorities and the tools to execute at a completely different level."</div>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar"><img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=96&auto=format&fit=crop&q=80" alt="Amara Diallo - Ghanaian director"></div>
+            <div><div class="testimonial-name">Amara Diallo</div><div class="testimonial-role">Director, Regional Development Authority</div></div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal reveal-delay-2" style="background:var(--navy);border-color:rgba(201,168,76,.2)">
+          <div style="font-family:var(--font-title);font-size:10px;letter-spacing:2px;color:var(--gold);margin-bottom:16px;text-transform:uppercase">From the Founder</div>
+          <div class="testimonial-text" style="color:rgba(255,255,255,.85)">"I built XFLY on a simple belief: growth should be engineered, not hoped for. Every engagement is an opportunity to prove that structured thinking and disciplined execution produce results that feel impossible—until they're not."</div>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar"><img src="Amb sit glass.png" alt="Precious Phil-ETA"></div>
+            <div><div class="testimonial-name" style="color:var(--white)">Precious Phil-ETA</div><div class="testimonial-role" style="color:var(--gold)">Founder, XFLY Strategies</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLIENTS STRIP -->
+  <div class="clients-strip">
+    <div class="container">
+      <div class="clients-label">Trusted By Leaders Across Industries & Continents</div>
+      <div class="clients-logos">
+        <div class="client-logo">FEDERAL MINISTRY</div>
+        <div class="client-logo">APEX VENTURES</div>
+        <div class="client-logo">MERIDIAN GROUP</div>
+        <div class="client-logo">NEXUS INSTITUTE</div>
+        <div class="client-logo">GROWTH CAPITAL</div>
+        <div class="client-logo">SUMMIT CORP</div>
+      </div>
+    </div>
+  </div>
+</div>
+═══════════════════════════════════════ -->
+<div class="page" id="page-services">
+  <section class="page-hero">
+    <div class="page-hero-img"><img src="hero africa plan.avif" alt="Services - African business professionals"></div>
+    <div class="container">
+      <div class="page-hero-inner">
+        <div class="gold-rule anim-fade-up"><span>What We Offer</span></div>
+        <h1 class="page-hero-title anim-fade-up-d1">Strategic Services for<br>Organizations Built to Scale</h1>
+        <p class="page-hero-sub anim-fade-up-d2">We work with governments, institutions, corporations, and growth-stage enterprises to design the strategy, develop the leaders, and build the systems that produce exponential, sustainable performance.</p>
+      </div>
+    </div>
+  </section>
+  <section class="services-detail">
+    <div class="container">
+      <!-- Strategy Consulting -->
+      <div class="service-detail-block reveal">
+        <div>
+          <div class="gold-rule"><span>Service 01</span></div>
+          <h2 class="display-md" style="margin-bottom:16px">Strategy Consulting</h2>
+          <p class="body-lg" style="color:var(--gray-600);margin-bottom:24px">We help organizations build the strategic clarity and growth architecture needed to translate vision into measurable, scalable outcomes. Clarity before speed. Direction before execution.</p>
+          <ul class="service-features">
+            <li>Market positioning & competitive strategy design</li>
+            <li>Growth architecture & scaling roadmaps</li>
+            <li>Execution frameworks & accountability systems</li>
+            <li>Strategic planning facilitation & retreats</li>
+            <li>Annual strategy reviews & recalibration</li>
+          </ul>
+          <button class="btn btn-gold btn-arrow" style="margin-top:36px" onclick="navigate('booking')">Enquire About This Service</button>
+        </div>
+        <div class="service-visual-img reveal">
+          <img src="strategy consulting.avif" alt="Strategy Consulting - Nigerian business professionals" style="width:100%;height:100%;min-height:420px;object-fit:cover">
+          <div class="sv-label">Strategy & Advisory</div>
+        </div>
+      </div>
+      <!-- Transformation Advisory -->
+      <div class="service-detail-block reverse reveal">
+        <div>
+          <div class="gold-rule"><span>Service 02</span></div>
+          <h2 class="display-md" style="margin-bottom:16px">Transformation Advisory</h2>
+          <p class="body-lg" style="color:var(--gray-600);margin-bottom:24px">Deep organizational transformation for institutions ready to redesign their operating model, culture, and performance systems. We don't redesign org charts—we redesign capacity.</p>
+          <ul class="service-features">
+            <li>Organizational redesign & restructuring</li>
+            <li>Culture shift strategy & implementation</li>
+            <li>Performance reset & renewal programs</li>
+            <li>Change management architecture</li>
+            <li>Government & public sector advisory</li>
+          </ul>
+          <button class="btn btn-gold btn-arrow" style="margin-top:36px" onclick="navigate('booking')">Enquire About This Service</button>
+        </div>
+        <div class="service-visual-img reveal">
+          <img src="Training.jpg" alt="Transformation Advisory - African woman executive" style="width:100%;height:100%;min-height:420px;object-fit:cover">
+          <div class="sv-label">Transformation Advisory</div>
+        </div>
+      </div>
+      <!-- Leadership Development -->
+      <div class="service-detail-block reveal">
+        <div>
+          <div class="gold-rule"><span>Service 03</span></div>
+          <h2 class="display-md" style="margin-bottom:16px">Leadership Development</h2>
+          <p class="body-lg" style="color:var(--gray-600);margin-bottom:24px">Executive capability development designed for leaders who must build organizations that multiply capacity. We develop leaders who produce other leaders—not just followers.</p>
+          <ul class="service-features">
+            <li>Executive capability building programs</li>
+            <li>Decision velocity & quality frameworks</li>
+            <li>Strategic thinking intensives</li>
+            <li>Leadership team alignment workshops</li>
+            <li>High-potential leadership acceleration</li>
+          </ul>
+          <button class="btn btn-gold btn-arrow" style="margin-top:36px" onclick="navigate('booking')">Enquire About This Service</button>
+        </div>
+        <div class="service-visual-img reveal">
+          <img src="leadership development.avif" alt="Leadership Development - Kenyan team leadership" style="width:100%;height:100%;min-height:420px;object-fit:cover">
+          <div class="sv-label">Leadership Development</div>
+        </div>
+      </div>
+      <!-- Capacity Building -->
+      <div class="service-detail-block reverse reveal">
+        <div>
+          <div class="gold-rule"><span>Service 04</span></div>
+          <h2 class="display-md" style="margin-bottom:16px">Capacity Building</h2>
+          <p class="body-lg" style="color:var(--gray-600);margin-bottom:24px">Institutional strengthening for governments, NGOs, and large enterprises that need to build scalable, internally self-sustaining capacity for growth and performance.</p>
+          <ul class="service-features">
+            <li>Institutional strengthening programs</li>
+            <li>Government & public sector advisory</li>
+            <li>Enterprise scale modeling</li>
+            <li>Ecosystem & startup builder support</li>
+            <li>Performance systems implementation</li>
+          </ul>
+          <button class="btn btn-gold btn-arrow" style="margin-top:36px" onclick="navigate('booking')">Enquire About This Service</button>
+        </div>
+        <div class="service-visual-img reveal">
+          <img src="Training.jpg" alt="Capacity Building" style="width:100%;height:100%;min-height:420px;object-fit:cover">
+          <div class="sv-label">Capacity Building</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- CTA Band -->
+  <div style="background:var(--gold);padding:80px 0;text-align:center">
+    <div class="container">
+      <h2 class="display-md" style="margin-bottom:16px">Ready to Explore a Partnership?</h2>
+      <p class="body-lg" style="color:rgba(11,22,40,.7);margin-bottom:36px;max-width:480px;margin-left:auto;margin-right:auto">Every engagement begins with a conversation. Let's identify the right service for your specific growth stage and goals.</p>
+      <button class="btn btn-navy btn-lg btn-arrow" onclick="navigate('booking')">Schedule a Discovery Call</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     PAGE: RESOURCES
+═══════════════════════════════════════ -->
+<div class="page" id="page-resources">
+  <section class="page-hero">
+    <div class="page-hero-img"><img src="strategy consulting.avif" alt="Resources - Nigerian professionals"></div>
+    <div class="container">
+      <div class="page-hero-inner">
+        <div class="gold-rule anim-fade-up"><span>Resource Hub</span></div>
+        <h1 class="page-hero-title anim-fade-up-d1">Frameworks, Tools &<br>Knowledge for Scale</h1>
+        <p class="page-hero-sub anim-fade-up-d2">Free resources, premium products, and powerful assessments drawn from XFLY's proprietary frameworks—built to help leaders and organizations grow with precision.</p>
+      </div>
+    </div>
+  </section>
+  <section class="section" style="background:var(--white)">
+    <div class="container">
+      <div class="resource-filters reveal">
+  <button class="filter-btn active" onclick="filterResources('all',this)">All Resources</button>
+  <button class="filter-btn" onclick="filterResources('free',this)">Free</button>
+  <button class="filter-btn" onclick="filterResources('ebook',this)">eBooks</button>
+  <button class="filter-btn" onclick="filterResources('audio',this)">Audio</button>
+  <button class="filter-btn" onclick="filterResources('video',this)">Video</button>
+  <button class="filter-btn" onclick="filterResources('course',this)">Courses</button>
+  <button class="filter-btn" onclick="filterResources('toolkit',this)">Premium Toolkits</button>
+  <button class="filter-btn" onclick="openAdminDashboard()" style="background:var(--gold);color:var(--navy);margin-left:auto;font-weight:600;border-color:var(--gold)">📊 Admin Dashboard →</button>
+</div>
+      <div class="hub-grid" id="resourcesGrid">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+  </section>
+  <!-- Assessment CTA -->
+  <div style="background:var(--navy);padding:80px 0">
+    <div class="container text-center">
+      <div class="gold-rule" style="justify-content:center"><span>Assessment Tools</span></div>
+      <h2 class="display-md text-white" style="margin-bottom:16px">Measure Where You Stand<br>Before You Scale</h2>
+      <p class="body-lg" style="color:rgba(255,255,255,.6);margin-bottom:36px;max-width:480px;margin-left:auto;margin-right:auto">Take one of our diagnostic assessments and receive a detailed report on your growth readiness, leadership capacity, and strategic clarity.</p>
+      <button class="btn btn-gold btn-lg btn-arrow" onclick="navigate('assessments')">Take a Free Assessment</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     PAGE: ASSESSMENTS
+═══════════════════════════════════════ -->
+<div class="page" id="page-assessments">
+  <section class="page-hero">
+    <div class="page-hero-img"><img src="performance framework.avif" alt="Assessments"></div>
+    <div class="container">
+      <div class="page-hero-inner">
+        <div class="gold-rule anim-fade-up"><span>Diagnostic Tools</span></div>
+        <h1 class="page-hero-title anim-fade-up-d1">Know Your Numbers.<br>Scale with Precision.</h1>
+        <p class="page-hero-sub anim-fade-up-d2">Our proprietary assessments deliver instant, actionable reports across four critical dimensions of organizational performance. Complete a 5-minute assessment and receive your custom growth roadmap.</p>
+      </div>
+    </div>
+  </section>
+  <section class="section" style="background:var(--white)">
+    <div class="container">
+      <div class="assessments-grid">
+        <div class="assess-card reveal" onclick="navigate('scorecard')">
+          <div class="assess-icon">🚀</div>
+          <h3 class="assess-title">Scale Readiness Score</h3>
+          <p class="assess-desc">Diagnose your organization's readiness to scale 10X–1000X across vision, execution, leadership capacity, and growth infrastructure.</p>
+          <div class="assess-meta">
+            <div class="assess-meta-item">Duration: <span>5 min</span></div>
+            <div class="assess-meta-item">Questions: <span>12</span></div>
+            <div class="assess-meta-item">Result: <span>Instant PDF</span></div>
+          </div>
+          <a href="file:///C:/Users/PERSONAL/Downloads/xfly-scorecard-platform.html"> <button class="btn btn-gold btn-arrow" style="margin-top:28px">Start Assessment</button></a>
+        </div>
+        <div class="assess-card reveal reveal-delay-1">
+          <div class="assess-icon">🎯</div>
+          <h3 class="assess-title">Strategic Clarity Index</h3>
+          <p class="assess-desc">Evaluate the quality and alignment of your strategic direction—vision, priorities, resource allocation, and execution coherence.</p>
+          <div class="assess-meta">
+            <div class="assess-meta-item">Duration: <span>6 min</span></div>
+            <div class="assess-meta-item">Questions: <span>10</span></div>
+            <div class="assess-meta-item">Result: <span>Instant PDF</span></div>
+          </div>
+          <a href="file:///C:/Users/PERSONAL/Downloads/xfly-scorecard-platform.html" target="_blank" rel="noopener noreferrer"><button class="btn btn-gold btn-arrow" style="margin-top:28px">Start Assessment</button></a>
+        </div>
+        <div class="assess-card reveal reveal-delay-2">
+          <div class="assess-icon">👑</div>
+          <h3 class="assess-title">Leadership Execution Index</h3>
+          <p class="assess-desc">Measure your leadership team's capacity to translate strategy into consistent, high-quality execution in complex, high-pressure environments.</p>
+          <div class="assess-meta">
+            <div class="assess-meta-item">Duration: <span>7 min</span></div>
+            <div class="assess-meta-item">Questions: <span>8</span></div>
+            <div class="assess-meta-item">Result: <span>Instant PDF</span></div>
+          </div>
+         <a href="file:///C:/Users/PERSONAL/Downloads/xfly-scorecard-platform.html" target="_blank" rel="noopener noreferrer"> <button class="btn btn-gold btn-arrow" style="margin-top:28px">Start Assessment</button></a>
+        </div>
+        <div class="assess-card reveal reveal-delay-3">
+          <div class="assess-icon">📊</div>
+          <h3 class="assess-title">Organizational Scale Capacity</h3>
+          <p class="assess-desc">A comprehensive organizational health assessment evaluating systems, culture, talent density, financial readiness, and market position.</p>
+          <div class="assess-meta">
+            <div class="assess-meta-item">Duration: <span>8 min</span></div>
+            <div class="assess-meta-item">Questions: <span>12</span></div>
+            <div class="assess-meta-item">Result: <span>Instant PDF</span></div>
+          </div>
+         <a href="file:///C:/Users/PERSONAL/Downloads/xfly-scorecard-platform.html" target="_blank" rel="noopener noreferrer"><button class="btn btn-gold btn-arrow" style="margin-top:28px">Start Assessment</button></a>
+        </div>
+      </div>
+      <!-- Results promise -->
+      <div style="background:var(--navy);padding:64px;text-align:center" class="reveal">
+        <div class="gold-rule" style="justify-content:center"><span>After Your Assessment</span></div>
+        <h2 class="display-md text-white" style="margin-bottom:24px">Instant Insights. Actionable Roadmap.</h2>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:40px;text-align:left">
+          <div>
+            <div style="font-size:36px;margin-bottom:12px">📧</div>
+            <h4 style="font-family:var(--font-display);font-size:18px;color:var(--white);margin-bottom:8px">Auto Email Report</h4>
+            <p style="font-size:14px;color:rgba(255,255,255,.5);line-height:1.6">Receive your detailed PDF report by email within 60 seconds of completing your assessment.</p>
+          </div>
+          <div>
+            <div style="font-size:36px;margin-bottom:12px">🗺</div>
+            <h4 style="font-family:var(--font-display);font-size:18px;color:var(--white);margin-bottom:8px">Priority Roadmap</h4>
+            <p style="font-size:14px;color:rgba(255,255,255,.5);line-height:1.6">Get your top 4 priority actions and a 90-day growth roadmap based on your exact results.</p>
+          </div>
+          <div>
+            <div style="font-size:36px;margin-bottom:12px">📞</div>
+            <h4 style="font-family:var(--font-display);font-size:18px;color:var(--white);margin-bottom:8px">Consultation Offer</h4>
+            <p style="font-size:14px;color:rgba(255,255,255,.5);line-height:1.6">Every assessment result includes an offer to book a complimentary strategy session with XFLY.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ══════════════════════════════════════
+     PAGE: BLOG
+═══════════════════════════════════════ -->
+<div class="page" id="page-blog">
+  <section class="page-hero">
+    <div class="page-hero-img"><img src="blog.avif" alt="Blog"></div>
+    <div class="container">
+      <div class="page-hero-inner">
+        <div class="gold-rule anim-fade-up"><span>Insights & Intelligence</span></div>
+        <h1 class="page-hero-title anim-fade-up-d1">Growth, Leadership<br>& Execution</h1>
+        <p class="page-hero-sub anim-fade-up-d2">Strategic intelligence for ambitious leaders. Every article is drawn from real engagements, proven frameworks, and the frontlines of organizational transformation.</p>
+      </div>
+    </div>
+  </section>
+  <section class="section bg-white">
+    <div class="container">
+      <div class="blog-categories reveal">
+        <button class="cat-btn active" onclick="setCat('all',this)">All</button>
+        <button class="cat-btn" onclick="setCat('strategy',this)">Strategy & Growth</button>
+        <button class="cat-btn" onclick="setCat('leadership',this)">Leadership Systems</button>
+        <button class="cat-btn" onclick="setCat('execution',this)">Execution & Performance</button>
+        <button class="cat-btn" onclick="setCat('kingdom',this)">Kingdom Leadership</button>
+        <button class="cat-btn" onclick="setCat('transformation',this)">Transformation</button>
+      </div>
+      <div class="blog-main-grid">
+        <div class="blog-article-list" id="blogList">
+          <!-- Populated by JS -->
+        </div>
+        <aside class="blog-sidebar reveal">
+          <h3>Popular Articles</h3>
+          <div id="popularPosts"></div>
+          <div class="newsletter-box">
+            <h4>The XFLY Intelligence Brief</h4>
+            <p>Strategic insights for growth leaders—delivered bi-weekly to your inbox.</p>
+            <input class="newsletter-input" type="email" placeholder="Your email address">
+            <button class="btn btn-gold" style="width:100%" onclick="showToast('Subscribed! Welcome to the XFLY Brief.')">Subscribe</button>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ══════════════════════════════════════
+     PAGE: FOUNDER
+═══════════════════════════════════════ -->
+<div class="page" id="page-founder">
+  <section class="founder-hero">
+    <div class="container">
+      <div class="founder-hero-grid">
+        <div class="founder-hero-content">
+          <div class="gold-rule anim-fade-up"><span>Meet the Founder</span></div>
+          <h1 class="founder-name anim-fade-up-d1">Precious Phil-ETA</h1>
+          <p class="founder-title-role anim-fade-up-d1">Founder & Lead Strategist, XFLY Strategies</p>
+          <p class="founder-intro anim-fade-up-d2">A systems thinker at the intersection of strategy, leadership, and execution — helping organizations move from ambition to scaled, measurable impact.</p>
+          <div style="display:flex;gap:16px;margin-top:40px" class="anim-fade-up-d3">
+            <button class="btn btn-gold btn-lg" onclick="navigate('booking')">Book a Keynote</button>
+            <button class="btn btn-outline-white btn-lg" onclick="navigate('booking')">Strategy Session</button>
+          </div>
+        </div>
+        <div class="founder-portrait anim-fade-up-d2" style="position:relative">
+          <!-- Replace this img src with Precious's actual photo -->
+          <img class="founder-portrait-real" src="Amb sit glass.png" alt="Precious Phil-ETA — Founder, XFLY Strategies">
+          <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(0deg,rgba(11,22,40,.95) 0%,transparent 100%);padding:28px 32px;z-index:3">
+            <div style="font-family:var(--font-title);font-size:11px;letter-spacing:3px;color:var(--gold);margin-bottom:4px"></div>
+            <div style="font-size:12px;color:rgba(255,255,255,.4)"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="founder-content">
+    <div class="container">
+      <div class="founder-bio-grid">
+        <div>
+          <div class="gold-rule reveal"><span>Biography</span></div>
+          <h2 class="display-md reveal" style="margin-bottom:28px">Building Systems That<br>Multiply Capacity</h2>
+          <p class="body-lg reveal" style="color:var(--gray-600);margin-bottom:20px">Precious Phil-ETA is the Founder and Lead Strategist of XFLY Strategies, a transformation and growth advisory firm dedicated to helping organizations achieve exponential performance and scalable impact.</p>
+          <p class="body-md reveal reveal-delay-1" style="color:var(--gray-600);margin-bottom:20px">A systems thinker with a passion for results, Precious works at the intersection of strategy, leadership, and execution. He believes meaningful progress does not come from small improvements, but from deliberate frameworks that multiply capacity, accelerate decisions, and unlock new levels of influence.</p>
+          <p class="body-md reveal reveal-delay-2" style="color:var(--gray-600);margin-bottom:36px">Through consulting, training, and ecosystem partnerships, he has supported leaders, institutions, and entrepreneurs in translating bold vision into practical, measurable outcomes.</p>
+          <div class="gold-rule reveal"><span>What Makes His Work Different</span></div>
+          <div class="differentiator-list reveal">
+            <div class="diff-point">
+              <div class="diff-point-icon">→</div>
+              <div>Turning complex challenges into clear strategic pathways leaders can immediately navigate</div>
+            </div>
+            <div class="diff-point">
+              <div class="diff-point-icon">→</div>
+              <div>Building practical models leaders can immediately apply to their specific context and challenges</div>
+            </div>
+            <div class="diff-point">
+              <div class="diff-point-icon">→</div>
+              <div>Strengthening culture and accountability as foundations for sustainable, scalable performance</div>
+            </div>
+            <div class="diff-point">
+              <div class="diff-point-icon">→</div>
+              <div>Thinking beyond limits toward 10X–1000X possibilities — and building the systems to get there</div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="founder-philosophy reveal">
+            <div class="gold-rule"><span>Core Philosophy</span></div>
+            <blockquote>"Growth should be engineered, not hoped for."</blockquote>
+            <cite>— Precious Phil-ETA, Founder, XFLY Strategies</cite>
+          </div>
+          <div class="reveal reveal-delay-1" style="background:var(--off-white);padding:40px">
+            <div class="gold-rule"><span>The Vision Behind XFLY</span></div>
+            <h3 class="display-sm" style="margin-bottom:16px">A New Generation of Globally Competitive Institutions</h3>
+            <p class="body-md" style="color:var(--gray-600)">XFLY was founded to catalyze a new generation of globally competitive institutions — innovative, resilient, and structurally sound. Beyond the boardroom, Precious is passionate about raising leaders whose influence creates transformation across industries and generations.</p>
+          </div>
+          <div class="reveal reveal-delay-2" style="margin-top:24px;background:var(--navy);padding:40px">
+            <div class="gold-rule"><span>The Calling</span></div>
+            <p class="body-md text-white" style="opacity:.75;line-height:1.8;font-style:italic">"I believe the world changes when equipped leaders lead well. My work is to ensure every leader I touch has the systems, clarity, and capacity to produce exponential outcomes — for themselves, their organizations, and the world they're called to serve."</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Speaking Section -->
+      <div style="margin-top:100px">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start" class="reveal">
+          <div>
+            <div class="gold-rule"><span>Speaking</span></div>
+            <h2 class="display-md" style="margin-bottom:24px">Keynote Speaker &<br>Conference Presenter</h2>
+            <p class="body-lg" style="color:var(--gray-600);margin-bottom:24px">Precious brings his signature blend of strategic frameworks, compelling narrative, and practical insight to stages across the world. His keynotes don't just inspire—they leave audiences with actionable tools.</p>
+            <p class="body-md" style="color:var(--gray-600);margin-bottom:36px">He speaks on strategy, leadership, organizational performance, execution systems, and Kingdom-centered leadership.</p>
+            <button class="btn btn-gold btn-lg btn-arrow" onclick="navigate('booking')">Request a Keynote</button>
+          </div>
+          <div class="speaking-grid">
+            <div class="speaking-card">
+              <div class="speaking-card-icon">🎤</div>
+              <div class="speaking-card-title">Conference Keynotes</div>
+              <div class="speaking-card-desc">High-impact keynote addresses for corporate and leadership conferences</div>
+            </div>
+            <div class="speaking-card">
+              <div class="speaking-card-icon">🏛</div>
+              <div class="speaking-card-title">Executive Workshops</div>
+              <div class="speaking-card-desc">Deep-dive workshops and intensives for senior leadership teams</div>
+            </div>
+            <div class="speaking-card">
+              <div class="speaking-card-icon">📺</div>
+              <div class="speaking-card-title">Media & Podcasts</div>
+              <div class="speaking-card-desc">TV, radio, podcast, and media appearances on growth & strategy</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="founder-cta-block reveal">
+        <h2>Ready to Experience the XFLY Difference?</h2>
+        <p>Book Precious for a keynote, strategy session, or advisory engagement. Every conversation begins with genuine curiosity about your challenge.</p>
+        <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
+          <button class="btn btn-navy btn-lg btn-arrow" onclick="navigate('booking')">Book Precious for a Keynote</button>
+          <button class="btn btn-outline-gold btn-lg" style="color:var(--navy);border-color:var(--navy)" onclick="navigate('booking')">Request a Strategy Session</button>
+        </div>
+      </div>
+    </div>
+    <img class="founder-portrait-real" src="Amb Tshirt Tgoals.png" height="500px" width="500px" alt="Precious Phil-ETA — Founder, XFLY Strategies">
+  </section>
+</div>
+
+<!-- ══════════════════════════════════════
+     PAGE: BOOKING
+═══════════════════════════════════════ -->
+<div class="page" id="page-booking">
+  <section class="page-hero" style="padding-bottom:60px">
+    <div class="page-hero-img"><img src="booking call" alt="Booking - West African professional"></div>
+    <div class="container">
+      <div class="page-hero-inner">
+        <div class="gold-rule anim-fade-up"><span>Get in Touch</span></div>
+        <h1 class="page-hero-title anim-fade-up-d1">Start Your Growth<br>Conversation</h1>
+        <p class="page-hero-sub anim-fade-up-d2">Choose your session type below and complete the booking form. Our team will confirm within 24 hours with calendar details and preparation materials.</p>
+      </div>
+    </div>
+  </section>
+  <section class="booking-page">
+    <div class="container">
+      <div class="booking-layout">
+        <!-- Session Types -->
+        <div class="reveal">
+          <div class="gold-rule"><span>Select Session Type</span></div>
+          <h2 class="display-sm" style="margin-bottom:32px">What Would Be Most<br>Useful Right Now?</h2>
+          <div class="booking-types" id="bookingTypes">
+            <div class="booking-type selected" onclick="selectBooking(this)">
+              <div class="booking-type-icon">🎯</div>
+              <div class="booking-type-info">
+                <h4>Strategy Clarity Call</h4>
+                <p>Rapid diagnostic of your strategic position with immediate actionable clarity.</p>
+                <div class="booking-type-duration">30 minutes · Complimentary</div>
+              </div>
+            </div>
+            <div class="booking-type" onclick="selectBooking(this)">
+              <div class="booking-type-icon">🔍</div>
+              <div class="booking-type-info">
+                <h4>Organizational Diagnostic Session</h4>
+                <p>Deep assessment of constraints, capacity, and growth opportunities.</p>
+                <div class="booking-type-duration">90 minutes · Premium</div>
+              </div>
+            </div>
+            <div class="booking-type" onclick="selectBooking(this)">
+              <div class="booking-type-icon">⚡</div>
+              <div class="booking-type-info">
+                <h4>Leadership Systems Consultation</h4>
+                <p>Design your leadership development architecture and capability roadmap.</p>
+                <div class="booking-type-duration">60 minutes · Premium</div>
+              </div>
+            </div>
+            <div class="booking-type" onclick="selectBooking(this)">
+              <div class="booking-type-icon">👑</div>
+              <div class="booking-type-info">
+                <h4>Executive Advisory Intensive</h4>
+                <p>Full-day or half-day immersive advisory for senior leaders.</p>
+                <div class="booking-type-duration">4–8 hours · Premium</div>
+              </div>
+            </div>
+            <div class="booking-type" onclick="selectBooking(this)">
+              <div class="booking-type-icon">🎤</div>
+              <div class="booking-type-info">
+                <h4>Keynote Speaking Request</h4>
+                <p>Book Precious Phil-ETA for your event, conference, or summit.</p>
+                <div class="booking-type-duration">Custom · Custom Rate</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Form -->
+        <div class="reveal reveal-delay-1">
+          <div class="booking-form" id="bookingForm">
+            <div class="gold-rule"><span>Your Details</span></div>
+            <h3 class="display-sm" style="margin-bottom:28px">Reserve Your Session</h3>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">First Name *</label>
+                <input class="form-input" type="text" placeholder="First name" id="bkFirst">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Last Name *</label>
+                <input class="form-input" type="text" placeholder="Last name" id="bkLast">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Email Address *</label>
+              <input class="form-input" type="email" placeholder="your@email.com" id="bkEmail">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Phone Number</label>
+              <input class="form-input" type="tel" placeholder="+1 (000) 000-0000">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Organisation / Company</label>
+              <input class="form-input" type="text" placeholder="Your organization name">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Your Role / Title</label>
+              <select class="form-input">
+                <option value="">Select your role</option>
+                <option>Founder / CEO</option>
+                <option>C-Suite Executive</option>
+                <option>Director / Senior Manager</option>
+                <option>Government Official</option>
+                <option>Institutional Leader</option>
+                <option>Entrepreneur</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">What's Your Biggest Growth Challenge?</label>
+              <textarea class="form-input" placeholder="Briefly describe what you're working through — the more specific, the more valuable our time together."></textarea>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Preferred Time Zone</label>
+              <select class="form-input">
+                <option>UTC/GMT</option>
+                <option>EST (UTC-5)</option>
+                <option>PST (UTC-8)</option>
+                <option>WAT (UTC+1)</option>
+                <option>EAT (UTC+3)</option>
+                <option>IST (UTC+5:30)</option>
+                <option>SGT (UTC+8)</option>
+                <option>AEST (UTC+10)</option>
+              </select>
+            </div>
+            <div class="form-submit-row">
+              <button class="btn btn-gold btn-lg btn-arrow" onclick="submitBooking()">Confirm Booking Request</button>
+            </div>
+          </div>
+          <div class="booking-confirm" id="bookingConfirm">
+            <div style="font-size:48px;margin-bottom:16px">✓</div>
+            <h3>Booking Request Received</h3>
+            <p>Thank you. Our team will review your request and confirm your session within 24 hours with calendar invitation and preparation materials.<br><br>We look forward to the conversation.</p>
+            <button class="btn btn-gold" style="margin-top:28px" onclick="navigate('home')">Return to Home</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ══════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════ -->
+<footer id="main-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-name">XFLY</div>
+        <div class="footer-brand-tag">Strategies</div>
+        <p class="footer-brand-desc">A transformation and growth advisory firm helping organizations design strategy, strengthen leadership, and build systems for scalable global impact.</p>
+        <div class="footer-social">
+          <div class="social-icon">in</div>
+          <div class="social-icon">𝕏</div>
+          <div class="social-icon">▶</div>
+          <div class="social-icon">f</div>
+          <div class="social-icon">📧</div>
+        </div>
+      </div>
+      <div>
+        <h4 class="footer-col h4">Services</h4>
+        <ul class="footer-links">
+          <li onclick="navigate('services')">Strategy Consulting</li>
+          <li onclick="navigate('services')">Transformation Advisory</li>
+          <li onclick="navigate('services')">Leadership Development</li>
+          <li onclick="navigate('services')">Capacity Building</li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer-col h4">Resources</h4>
+        <ul class="footer-links">
+          <li onclick="navigate('resources')">Free Downloads</li>
+          <li onclick="navigate('resources')">eBooks & Courses</li>
+          <li onclick="navigate('assessments')">Assessments</li>
+          <li onclick="navigate('blog')">Insights Blog</li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer-col h4">Company</h4>
+        <ul class="footer-links">
+          <li onclick="navigate('founder')">Meet the Founder</li>
+          <li onclick="navigate('booking')">Book a Session</li>
+          <li>Media & Press</li>
+          <li>Partners</li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer-col h4">Contact</h4>
+        <ul class="footer-links">
+          <li onclick="navigate('booking')">Schedule a Call</li>
+          <li>hello@xflystrategies.com</li>
+          <li>General Enquiries</li>
+          <li>Speaking Requests</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2025 XFLY Strategies. All rights reserved.</div>
+      <div class="footer-legal">
+        <span>Privacy Policy</span>
+        <span>Terms of Service</span>
+        <span>Cookie Policy</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- TOAST -->
+<div id="toast" style="position:fixed;bottom:32px;left:50%;transform:translateX(-50%) translateY(60px);background:var(--navy);border:1px solid var(--gold);color:var(--white);padding:14px 28px;font-size:14px;letter-spacing:.3px;z-index:3000;transition:transform .3s,opacity .3s;opacity:0;pointer-events:none"></div>
+
+<script>
+// ════════════════════════════════════════
+// DATA
+// ════════════════════════════════════════
+const blogPosts = [
+  {id:1,category:'Strategy & Growth',cat:'strategy',title:'Why Busy Is Not Profitable: The Architecture of a High-Performance Day',excerpt:'Most leaders confuse motion with momentum. Discover how the world\'s most productive executives structure their days around outputs, not activities—and why the Profitable Day System changes everything.',date:'Feb 12, 2025',readTime:'8 min read',img:'https://images.unsplash.com/photo-1664575196412-ed801e8333a1?w=400&auto=format&fit=crop&q=80'},
+  {id:2,category:'Leadership Systems',cat:'leadership',title:'Engineering Goals That Actually Scale Your Organization',excerpt:'Move beyond goal-setting into goal architecture. A systematic approach to designing objectives that produce 10X returns and align entire organizations around what actually matters.',date:'Jan 28, 2025',readTime:'7 min read',img:'https://images.unsplash.com/photo-1664575276819-f51a46af8e10?w=400&auto=format&fit=crop&q=80'},
+  {id:3,category:'Execution & Performance',cat:'execution',title:'From Strategy to Execution: The Critical Systems Leaders Miss',excerpt:'The graveyard of corporate strategy is filled with brilliant plans that never moved. Here\'s why most organizations fail at execution—and the system that closes the gap permanently.',date:'Jan 15, 2025',readTime:'9 min read',img:'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&auto=format&fit=crop&q=80'},
+  {id:4,category:'Organizational Transformation',cat:'transformation',title:'Scaling Without Losing Culture: The Leader\'s Dilemma Solved',excerpt:'Every fast-scaling organization faces the culture decay problem. This framework shows how to scale structure without sacrificing the values and behaviors that made you successful.',date:'Jan 5, 2025',readTime:'6 min read',img:'https://images.unsplash.com/photo-1664575602554-2f5d8e7a8c4d?w=400&auto=format&fit=crop&q=80'},
+  {id:5,category:'Kingdom Leadership',cat:'kingdom',title:'Kingdom Principles in the Boardroom: Servant Leadership at Scale',excerpt:'What happens when you apply kingdom-centered leadership principles to corporate strategy? The results are more profound—and more profitable—than most executives expect.',date:'Dec 18, 2024',readTime:'8 min read',img:'https://images.unsplash.com/photo-1664575262619-b28fef7a40a4?w=400&auto=format&fit=crop&q=80'},
+  {id:6,category:'Strategy & Growth',cat:'strategy',title:'The 10X to 1000X Mindset: How Leaders Think About Exponential Scale',excerpt:'There\'s a specific cognitive shift that separates organizations that achieve 10X from those that merely improve incrementally. This article maps the strategic thinking transformation.',date:'Dec 10, 2024',readTime:'10 min read',img:'https://images.unsplash.com/photo-1664575196644-808978af9b1f?w=400&auto=format&fit=crop&q=80'},
+];
+
+const resources = [
+  {type:'free',typeLabel:'Free PDF',title:'The Profitable Day System™ — Starter Guide',desc:'The 15 foundational ingredients that separate high-performance days from reactive, low-output days.',icon:'📋',price:'Free',tag:'free'},
+  {type:'ebook',typeLabel:'eBook',title:'Engineering Goals That Scale',desc:'A systematic approach to designing objectives that produce 10X returns and align organizations.',icon:'📖',price:'$27',tag:'ebook'},
+  {type:'audio',typeLabel:'Audio Program',title:'The Strategic Leader Audio Series',desc:'6-hour deep-dive audio program on strategy, decision-making, and organizational leadership.',icon:'🎧',price:'$97',tag:'audio'},
+  {type:'video',typeLabel:'Video Masterclass',title:'10X to 1000X Strategic Thinking',desc:'90-minute masterclass on how elite organizations rewire their thinking for exponential scale.',icon:'🎬',price:'$147',tag:'video'},
+  {type:'free',typeLabel:'Free Checklist',title:'The Executive Morning System Checklist',desc:'A 12-point morning protocol used by high-performance executives to structure peak productivity.',icon:'✅',price:'Free',tag:'free'},
+  {type:'course',typeLabel:'Online Course',title:'The Growth Architecture Masterclass',desc:'Complete 8-module online course on building a scalable growth system from foundation to scale.',icon:'🎓',price:'$497',tag:'course'},
+  {type:'toolkit',typeLabel:'Premium Toolkit',title:'The Strategic Planning Toolkit™',desc:'Complete toolkit for facilitating a world-class annual strategic planning retreat. Templates, frameworks, facilitation guides.',icon:'🛠',price:'$297',tag:'toolkit'},
+  {type:'audio',typeLabel:'Audiobook',title:'The Capacity Multiplier: An Audiobook',desc:'Full audiobook on the core principles of organizational capacity building and scalable performance design.',icon:'🔊',price:'$47',tag:'audio'},
+  {type:'free',typeLabel:'Free Assessment',title:'Organizational Health Self-Assessment',desc:'A 20-question rapid diagnostic to identify your top organizational constraints. Free PDF results included.',icon:'📊',price:'Free',tag:'free'},
+];
+
+// ════════════════════════════════════════
+// NAVIGATION
+// ════════════════════════════════════════
+function navigate(page) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const target = document.getElementById('page-'+page);
+  if (target) {
+    target.classList.add('active');
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+  document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+  if (page==='home') document.querySelectorAll('.nav-link')[0]?.classList.add('active');
+  if (page==='scorecard') navigate('assessments');
+  
+  // Close mobile menu if open
+  const menu = document.getElementById('mobileMenu');
+  const ham = document.getElementById('hamburger');
+  if (menu.classList.contains('open')) {
+    menu.classList.remove('open');
+    ham.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  
+  setupReveal();
+  if (page==='home') initCounters();
+  if (page==='resources') renderResources('all');
+  if (page==='blog') renderBlog('all');
+}
+
+function toggleMobile() {
+  const menu = document.getElementById('mobileMenu');
+  const ham = document.getElementById('hamburger');
+  menu.classList.toggle('open');
+  ham.classList.toggle('active');
+  document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+}
+
+// ════════════════════════════════════════
+// SCROLL EFFECTS
+// ════════════════════════════════════════
+let observer;
+
+window.addEventListener('scroll', () => {
+  const navbar = document.getElementById('navbar');
+  if (window.scrollY > 40) {
+    document.body.classList.add('nav-scrolled');
+    navbar.classList.add('scrolled');
+  } else {
+    document.body.classList.remove('nav-scrolled');
+    navbar.classList.remove('scrolled');
+  }
+  parallaxEffect();
+});
+
+function setupReveal() {
+  if (observer) observer.disconnect();
+  
+  observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, {
+    threshold: 0.08,
+    rootMargin: '0px 0px -60px 0px'
+  });
+
+  document.querySelectorAll('.reveal, .reveal-scale, .reveal-slide-right, .stagger-children').forEach(el => {
+    observer.observe(el);
+  });
+}
+
+function parallaxEffect() {
+  const scrolled = window.pageYOffset;
+  document.querySelectorAll('.parallax-img').forEach(el => {
+    const speed = el.dataset.speed || 0.3;
+    const yPos = -(scrolled * speed);
+    el.style.transform = `translateY(${yPos}px)`;
+  });
+}
+
+// ════════════════════════════════════════
+// COUNTER ANIMATION
+// ════════════════════════════════════════
+function initCounters() {
+  document.querySelectorAll('[data-count]').forEach(el => {
+    const target = +el.getAttribute('data-count');
+    const suffix = el.textContent.includes('+') ? '+' : '';
+    let current = 0;
+    const step = Math.ceil(target / 60);
+    const timer = setInterval(() => {
+      current = Math.min(current + step, target);
+      el.textContent = current + suffix;
+      if (current >= target) clearInterval(timer);
+    }, 20);
+  });
+}
+
+// ════════════════════════════════════════
+// RESOURCES
+// ════════════════════════════════════════
+const resourceImgs = [
+  'https://images.unsplash.com/photo-1664575196412-ed801e8333a1?w=400&auto=format&fit=crop&q=80',
+  'https://images.unsplash.com/photo-1664575602554-2f5d8e7a8c4d?w=400&auto=format&fit=crop&q=80',
+  'https://images.unsplash.com/photo-1664575262619-b28fef7a40a4?w=400&auto=format&fit=crop&q=80',
+  'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400&auto=format&fit=crop&q=80',
+  'https://images.unsplash.com/photo-1664575196644-808978af9b1f?w=400&auto=format&fit=crop&q=80',
+  'https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?w=400&auto=format&fit=crop&q=80',
+  'https://images.unsplash.com/photo-1664575276819-f51a46af8e10?w=400&auto=format&fit=crop&q=80',
+  'https://images.unsplash.com/photo-1664575602276-acd073f104c1?w=400&auto=format&fit=crop&q=80',
+  'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&auto=format&fit=crop&q=80',
+];
+
+function renderResources(filter) {
+  const grid = document.getElementById('resourcesGrid');
+  if (!grid) return;
+  const filtered = filter === 'all' ? resources : resources.filter(r => r.tag === filter);
+  grid.innerHTML = filtered.map((r,i) => `
+    <div class="hub-card reveal">
+      <div class="hub-card-top hub-card-top-img" style="background:var(--navy)">
+        <img src="${resourceImgs[i % resourceImgs.length]}" alt="${r.title}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.35;filter:grayscale(20%)">
+        <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,22,40,.2) 0%,rgba(11,22,40,.88) 100%)"></div>
+        <div class="hub-card-type" style="position:relative;z-index:2;color:rgba(255,255,255,.6)">${r.typeLabel}</div>
+        <div class="hub-card-icon" style="position:relative;z-index:2;font-size:40px;margin-top:auto">${r.icon}</div>
+        <div class="hub-price ${r.price==='Free'?'free':''}" style="position:relative;z-index:2">${r.price}</div>
+      </div>
+      <div class="hub-card-body">
+        <div class="hub-card-title">${r.title}</div>
+        <div class="hub-card-desc">${r.desc}</div>
+        <button class="btn ${r.price==='Free'?'btn-navy':'btn-gold'} btn-sm btn-arrow" onclick="openResourceModal('${r.title}','${r.price}')">
+          ${r.price==='Free'?'Download Free':'Get Access'}
+        </button>
+      </div>
+    </div>`).join('');
+  setupReveal();
+}
+
+function filterResources(f, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderResources(f);
+}
+
+function openResourceModal(title, price) {
+  const content = document.getElementById('modal-content');
+  const isFree = price === 'Free';
+  content.innerHTML = `
+    <div class="gold-rule"><span>${isFree?'Free Download':'Get Access'}</span></div>
+    <h3 style="margin-bottom:8px">${title}</h3>
+    <p>${isFree?'Enter your email to receive your free download instantly.':'Complete your details to access this resource.'}</p>
+    <input class="form-input" style="margin-bottom:12px" type="text" placeholder="Full Name">
+    <input class="form-input" style="margin-bottom:12px" type="email" placeholder="Email Address">
+    <input class="form-input" style="margin-bottom:20px" type="text" placeholder="Organisation">
+    ${!isFree?`<div style="background:var(--gold-pale);border:1px solid rgba(201,168,76,.2);padding:16px;margin-bottom:20px;font-size:14px;color:var(--gray-600)">Secure checkout powered by Stripe. ${price} one-time payment.</div>`:''}
+    <button class="btn btn-gold" style="width:100%" onclick="closeModal();showToast('${isFree?'Download sent to your email!':'Access granted! Check your email.'}')">${isFree?'Send My Free Download':'Complete Purchase'} →</button>`;
+  document.getElementById('modal').classList.add('open');
+}
+
+// ════════════════════════════════════════
+// BLOG
+// ════════════════════════════════════════
+function renderBlog(cat) {
+  const list = document.getElementById('blogList');
+  const pop = document.getElementById('popularPosts');
+  if (!list) return;
+  const posts = cat === 'all' ? blogPosts : blogPosts.filter(p => p.cat === cat);
+  list.innerHTML = posts.map(p => `
+    <div class="blog-article-item reveal">
+      <div class="article-thumb img-wrap" style="width:200px;flex-shrink:0">
+        <img src="${p.img}" alt="${p.title}" style="width:200px;height:140px;object-fit:cover;display:block;transition:transform .4s">
+      </div>
+      <div>
+        <div class="article-category">${p.category}</div>
+        <div class="article-title">${p.title}</div>
+        <div class="article-excerpt">${p.excerpt}</div>
+        <div class="article-meta">${p.date} · ${p.readTime}</div>
+      </div>
+    </div>`).join('');
+  if (pop) {
+    pop.innerHTML = blogPosts.slice(0,4).map((p,i) => `
+      <div class="sidebar-popular-item">
+        <div class="sidebar-popular-num">0${i+1}</div>
+        <div class="sidebar-popular-title">${p.title}</div>
+      </div>`).join('');
+  }
+  setupReveal();
+}
+
+function setCat(cat, btn) {
+  document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderBlog(cat);
+}
+
+// ════════════════════════════════════════
+// BOOKING
+// ════════════════════════════════════════
+function selectBooking(el) {
+  document.querySelectorAll('.booking-type').forEach(b => b.classList.remove('selected'));
+  el.classList.add('selected');
+}
+
+function submitBooking() {
+  const f = document.getElementById('bkFirst').value.trim();
+  const l = document.getElementById('bkLast').value.trim();
+  const e = document.getElementById('bkEmail').value.trim();
+  if (!f||!l||!e) { showToast('Please fill in required fields.'); return; }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e)) { showToast('Please enter a valid email address.'); return; }
+  document.getElementById('bookingForm').style.display = 'none';
+  document.getElementById('bookingConfirm').classList.add('show');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+// ════════════════════════════════════════
+// MODAL
+// ════════════════════════════════════════
+function closeModal() {
+  document.getElementById('modal').classList.remove('open');
+}
+document.getElementById('modal').addEventListener('click', e => {
+  if (e.target === document.getElementById('modal')) closeModal();
+});
+
+// ════════════════════════════════════════
+// TOAST
+// ════════════════════════════════════════
+let toastT;
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.style.transform = 'translateX(-50%) translateY(0)';
+  t.style.opacity = '1';
+  clearTimeout(toastT);
+  toastT = setTimeout(() => {
+    t.style.transform = 'translateX(-50%) translateY(60px)';
+    t.style.opacity = '0';
+  }, 3500);
+}
+
+// ════════════════════════════════════════
+// INIT
+// ════════════════════════════════════════
+document.addEventListener('DOMContentLoaded', () => {
+  document.body.classList.add('loading');
+  setTimeout(() => document.body.classList.remove('loading'), 100);
+  
+  setupReveal();
+  initCounters();
+  renderBlog('all');
+  renderResources('all');
+  
+  // Mark home nav active
+  document.querySelectorAll('.nav-link')[0]?.classList.add('active');
+  
+  // Initial navbar transparent
+  document.getElementById('navbar').style.background = 'transparent';
+  
+  // Preload critical images
+  const criticalImages = [
+    'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1800&auto=format&fit=crop&q=80',
+    'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&auto=format&fit=crop&q=80'
+  ];
+  criticalImages.forEach(src => {
+    const img = new Image();
+    img.src = src;
+  });
+  // ════════════════════════════════════════
+// ADMIN DASHBOARD ACCESS
+// ════════════════════════════════════════
+window.openAdminDashboard = function
+() {
+  const password = prompt('Enter admin password:');
+  const correctPassword = 'xfly2025'; // Change this to your desired password
+  
+  if (password === correctPassword) {
+    window.open('xfly-admin.html', '_blank');
+  } else if (password !== null) {
+    showToast('Incorrect password. Access denied.');
+  }
+}
+});
+</script>
+</body>
+</html>
+
